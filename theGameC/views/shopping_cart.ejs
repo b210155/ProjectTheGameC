@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TheGameC - 首頁</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/shopping_cart.css" />
+    <style></style>
+  </head>
+  <body>
+    <!-- header -->
+    <%- include('share/header')%>
+
+    <!-- section1 最上方影片 + 封面 -->
+    <section class="section1">
+      <div class="s1container"><img src="/img/wallet/bg.jpg" /></div>
+      <div class="video">
+        <img src="/img/shop/image 23.png" alt="" />
+      </div>
+    </section>
+
+    <!-- section2 購物車 -->
+    <section class="section2">
+      <div class="title">
+        <img src="/img/shop/shopping-cart.png" /><span>購物車</span>
+      </div>
+      <div class="cart">
+        <ul>
+          <li>
+            <span></span>
+            <span>商品名稱</span>
+            <span>價格</span>
+            <span>小記</span>
+            <span></span>
+          </li>
+          <!-- 樣本 -->
+          <li>
+            <span><img src="/img/shop/game/far_cry.jpg" alt="" /></span>
+            <span>極地戰嚎3</span>
+            <span
+              ><div><span>單價 NT$</span><span>499</span></div>
+            </span>
+            <span
+              ><div><span>NT$</span><span id="cartCost">499</span></div>
+            </span>
+            <span><img src="/img/shop/Trash.png" /></span>
+          </li>
+          <li>
+            <span><img src="/img/shop/game/far_cry.jpg" alt="" /></span>
+            <span>極地戰嚎3</span>
+            <span
+              ><div><span>單價 NT$</span><span>499</span></div>
+            </span>
+            <span
+              ><div><span>NT$</span><span id="cartCost">499</span></div>
+            </span>
+            <span><img src="/img/shop/Trash.png" /></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- section3 結帳 -->
+    <section class="section3">
+      <form action="">
+        <!-- 左邊部分 -->
+        <div class="left">
+          <div class="leftcontainer">
+            <p>VISA或信用卡資訊</p>
+            <div class="creditEnter">
+              <div>
+                <label for="">持卡人姓名</label> <br />
+                <input type="text" />
+              </div>
+              <div>
+                <label for="">信用卡卡號</label> <br />
+                <input type="text" />
+              </div>
+              <div>
+                <label for="">有效日期</label> <br />
+                <input type="number" placeholder="月 / 年" />
+              </div>
+              <div>
+                <label for="">安全碼</label> <br />
+                <input type="text" placeholder="背面三碼" />
+              </div>
+              <br /><br />
+              <div class="cartCreditConfirmBtnDiv">
+                <button>確認結帳</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 右邊部分 -->
+        <div class="right">
+          <div class="rightcontainer">
+            <ul>
+              <li>
+                <span>小計</span>
+                <span>NT$<span class="subtotal">0</span></span>
+              </li>
+              <hr />
+              <li>
+                <span>訂單總計</span>
+                <span class="total">NT$<span id="total">0</span></span>
+              </li>
+            </ul>
+          </div>
+          <a href="#">繼續選購</a>
+        </div>
+      </form>
+    </section>
+
+    <!-- footer -->
+    <%- include('share/footer')%>
+
+    <script src="/app/app.js"></script>
+  </body>
+</html>

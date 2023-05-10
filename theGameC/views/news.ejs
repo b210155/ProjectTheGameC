@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TheGameC - 最新消息</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/news.css" />
+    <style></style>
+  </head>
+  <body>
+    <!-- header -->
+    <%- include('share/header')%>
+
+    <!-- section1 -->
+    <!-- <section class="section1">
+      <div class="s1h1"><h1><%= title_TC %></h1></div>
+    </section> -->
+    <br />
+    <section class="section1">
+      <div class="s1Info">
+        <h1><%= title_TC %></h1>
+        <p><%= title_text %></p>
+      </div>
+      <div class="s1Img"><img src=<%=`/img/news/${title_Img}` %> alt="" /></div>
+    </section>
+
+    <!-- section2 -->
+    <section class="section2">
+      <!-- 左半部 -->
+      <div class="s2left">
+        <% newsArr[currentPage-1].map(function(elem, index) { %>
+        <!---->
+        <div class="new">
+          <div class="newImg">
+            <img src=<%=`/img/news/${elem.news_img}` %> alt="" />
+          </div>
+          <div class="newContent">
+            <h3><%= elem.news_title %></h3>
+            <p class="newDate">發文日期：<%= elem.formatted_created_at %></p>
+            <p class="newInfo">
+              <%= elem.content %>
+              <br />
+              <br />
+              <span><%= elem.dateTime %></span>
+            </p>
+          </div>
+        </div>
+        <hr />
+        <!---->
+        <% }) %>
+
+        <!-- <div class="s2left">
+        <% newsData.map(function (elem, i) { %>
+        <div class="new">
+          <div class="newImg">
+            <img src=<%=`/img/news/${newsData[i].news_img}` %> alt="" />
+          </div>
+          <div class="newContent">
+            <h3><%= newsData[i].news_title %></h3>
+            <p class="newDate">
+              發文日期：<%= newsData[i].formatted_created_at %>
+            </p>
+            <p class="newInfo">
+              <%= newsData[i].content %>
+              <br />
+              <br />
+              <span><%= newsData[i].dateTime %></span>
+            </p>
+          </div>
+        </div>
+        <hr />
+        <% }) %> -->
+      </div>
+      <!-- 右半部 -->
+      <!-- <hr /> -->
+      <div class="s2right">
+        <div class="newClass">
+          <!-- 單個分類 -->
+          <!-- 最新消息 -->
+          <li>
+            <a href="/news/latest">
+              <div class="oneNewClass">
+                <img src="/img/news/latest/cover.jpg" alt="" />
+                <span>最新消息</span>
+                <!-- 重疊效果 -->
+                <div class="overlap"></div>
+                <div class="bright"></div></div
+            ></a>
+          </li>
+          <!-- 遊戲更新 -->
+          <li>
+            <a href="/news/games_updates">
+              <div class="oneNewClass">
+                <img src="/img/news/games_updates/cover.jpg" alt="" />
+                <span>遊戲更新</span>
+                <!-- 重疊效果 -->
+                <div class="overlap"></div>
+                <div class="bright"></div></div
+            ></a>
+          </li>
+          <!-- 優惠活動 -->
+          <li>
+            <a href="/news/products_promotions">
+              <div class="oneNewClass">
+                <img src="/img/news/products_promotions/cover.jpg" alt="" />
+                <span>優惠活動</span>
+                <!-- 重疊效果 -->
+                <div class="overlap"></div>
+                <div class="bright"></div></div
+            ></a>
+          </li>
+          <!-- 新品上架 -->
+          <li>
+            <a href="/news/new_products">
+              <div class="oneNewClass">
+                <img src="/img/news/new_products/cover.jpg" alt="" />
+                <span>新品上架</span>
+                <!-- 重疊效果 -->
+                <div class="overlap"></div>
+                <div class="bright"></div></div
+            ></a>
+          </li>
+        </div>
+      </div>
+    </section>
+
+    <!-- section3 -->
+    <section class="section3">
+      <% for(let i = 1; i<= totalPages;i++){ %>
+      <a
+        class="<%= (i == currentPage)? 'PageSelected' : '' %>"
+        href="/news/<%= title %>?page=<%= i %>"
+      >
+        <%= i %></a
+      >
+      <% } %>
+    </section>
+
+    <!-- footer -->
+    <%- include('share/footer')%>
+
+    <script src="/app/app.js"></script>
+  </body>
+</html>

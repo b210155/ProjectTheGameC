@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>錢包 - 個人資訊</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/wallet.css" />
+    <script type="text/javascript" src="/app/jquery.js"></script>
+  </head>
+  <body>
+    <!-- header -->
+    <%- include('share/header')%>
+
+    <!-- section -->
+    <section class="section">
+      <!-- 左半部 -->
+      <%- include('share/wallet/wallet_left')%>
+
+      <!-- 右半部 -->
+      <div class="s1right">
+        <div class="s1rightSec">
+          <div class="s1Rtop"><p>帳號資訊</p></div>
+          <div class="s1Rdown">
+            <div class="s1RDtitle">
+              <p>基本資訊</p>
+              <img
+                onclick="editPI()"
+                src="/img/wallet/edit.png"
+                alt=""
+                title="編輯基本資訊"
+              />
+            </div>
+            <div class="s1RDinfo">
+              <table>
+                <tr>
+                  <th>暱稱：</th>
+                  <td id="nickname">
+                    <%= userData.nickname ? userData.nickname :
+                    userData.username ? userData.username : '尚未填寫'; %>
+                  </td>
+                </tr>
+                <tr>
+                  <th>使用者名稱：</th>
+                  <td id="username">
+                    <%= userData.username?userData.username:"尚未填寫" %>
+                  </td>
+                </tr>
+                <tr>
+                  <th>手機號碼：</th>
+                  <td id="phone">
+                    <%= userData.phone?userData.phone:"尚未填寫" %>
+                  </td>
+                </tr>
+                <tr>
+                  <th>電子信箱：</th>
+                  <td id="email">
+                    <%= userData.email?userData.email:"尚未填寫" %>
+                  </td>
+                </tr>
+                <tr>
+                  <th>出生日期：</th>
+                  <td id="birthday">
+                    <%= userData.birthday?userData.birthday:"尚未填寫" %>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 修改個人資訊 -->
+    <dialog id="PIdialog">
+      <button id="closeDialog">
+        <img src="/img/wallet/close.png" alt="" />
+      </button>
+      <form id="updateForm" method="put" action="/updatePI">
+        <input
+          type="hidden"
+          id="user_id"
+          name="user_id"
+          value="<%= userData.user_id %>"
+        />
+        <div>
+          <p>修改個人資訊</p>
+          <div class="PIfirm">
+            <li>
+              <span>暱稱：</span>
+              <input
+                id="edit_nickname"
+                name="edit_nickname"
+                placeholder="取一個喜歡的暱稱"
+                value="<%= userData.nickname %>"
+              />
+            </li>
+            <li>
+              <span>手機：</span>
+              <input
+                type="tel"
+                id="edit_phone"
+                name="edit_phone"
+                pattern="^09\d{2}\d{6}$"
+                title="請輸入09開頭的10碼電話號碼"
+                value="<%= userData.phone %>"
+                required
+              />
+            </li>
+          </div>
+        </div>
+        <button id="update" type="submit">確認修改</button>
+      </form>
+    </dialog>
+
+    <script src="/app/app.js"></script>
+
+    <script>
+      // /* dialog展示 */
+      // function editPI() {
+      //   document.querySelector("#PIdialog").showModal();
+      // }
+      // closeDialog.addEventListener("click", () => {
+      //   document.querySelector("dialog").close();
+      // });
+
+      // /* 更新 */
+      // $(function () {
+      //   $("#update").on("click", function () {
+      //     const userId = $("#user_id").val();
+      //     $.ajax({
+      //       url: `http://localhost:80/wallet/updatePI/${userId}`,
+      //       type: "PUT",
+      //       data: {
+      //         phone: $("input[name='edit_phone']").val(),
+      //         nickname: $("input[name='edit_nickname']").val(),
+      //       },
+      //     }).done((data) => {
+      //       console.log(data);
+
+      //       $("#phone").text($("input[name='edit_phone']").val());
+      //       $("#nickname").text($("input[name='edit_nickname']").val());
+      //       document.querySelector("dialog").close();
+      //     });
+      //   });
+      // });
+
+      /* dialog展示 */
+      function editPI() {
+        document.querySelector("#PIdialog").showModal();
+      }
+      closeDialog.addEventListener("click", () => {
+        document.querySelector("dialog").close();
+      });
+
+      /* 更新 */
+      $(function () {
+        $("#updateForm").on("submit", function () {
+          event.preventDefault();
+          const userId = $("#user_id").val();
+          $.ajax({
+            url: `http://localhost:80/wallet/updatePI/${userId}`,
+            type: "PUT",
+            data: {
+              phone: $("input[name='edit_phone']").val(),
+              nickname: $("input[name='edit_nickname']").val(),
+            },
+          }).done((data) => {
+            console.log(data);
+            $("#phone").text($("input[name='edit_phone']").val());
+            $("#nickname").text($("input[name='edit_nickname']").val());
+            document.querySelector("dialog").close();
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

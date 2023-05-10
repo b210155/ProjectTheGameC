@@ -1,0 +1,52 @@
+<div class="sleft">
+  <ul class="snav">
+    <li class="<%= currentRoute === 'Route_PI' ? 'walletMyRouter' : '' %>">
+      <a href="/wallet/PI/2"
+        ><img class="walletIcon" src="/img/wallet/wallet_user.png" alt="" />
+        <img
+          class="walletIcon_hover"
+          src="/img/wallet/wallet_user(hover).png"
+          alt=""
+        /><span>個人資訊</span></a
+      >
+    </li>
+    <li
+      class="<%= currentRoute === 'Route_recharge' ? 'walletMyRouter' : '' %>"
+    >
+      <a href="/wallet/recharge/2"
+        ><img
+          class="walletIcon"
+          src="/img/wallet/wallet_recharge.png"
+          alt=""
+        /><img
+          class="walletIcon_hover"
+          src="/img/wallet/wallet_recharge(hover).png"
+          alt=""
+        /><span>儲值頁面</span></a
+      >
+    </li>
+    <li
+      class="<%= currentRoute === 'Route_exchange' ? 'walletMyRouter' : '' %>"
+    >
+      <a href="/wallet/exchange/2"
+        ><img
+          class="walletIcon"
+          src="/img/wallet/wallet_exchange.png"
+          alt=""
+        /><img
+          class="walletIcon_hover"
+          src="/img/wallet/wallet_exchange(hover).png"
+          alt=""
+        /><span>轉點系統</span></a
+      >
+    </li>
+  </ul>
+  <!-- 餘額 -->
+  <div class="sbalance">
+    <img src="/img/wallet/coinIcon.png" />
+    <span
+      >C幣餘額：<span id="mybalance"><%= userData.c_coin_balance %></span></span
+    >
+  </div>
+</div>
+<script></script>
