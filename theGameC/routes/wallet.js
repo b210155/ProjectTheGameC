@@ -21,33 +21,22 @@ page.get(`/PI/:id`, async (req, res) => {
     `http://localhost:80/wallet/recharge_data/${req.params.id}`
   );
 
-  // 沒登入就點 wallet，或者 :id 沒有內容者，跳轉到登入頁面
-
+  // 沒登入就點 wallet，跳轉到登入頁面且 alert
   if (req.session.userId) {
-    // 123
-    res.render("wallet_PI", {
-      title: "My Wallet",
-      currentRoute: "Route_PI",
-      userData: usersSelect.data,
-      userRechargeData: coinRecharge_data.data,
-      LoginUserID: req.session.userId,
-    });
+    if (req.session.userId == req.params.id) {
+      res.render("wallet_PI", {
+        title: "My Wallet",
+        currentRoute: "Route_PI",
+        userData: usersSelect.data,
+        userRechargeData: coinRecharge_data.data,
+        // LoginUserID: req.session.userId,
+      });
+    } else {
+      res.render("Denied");
+    }
   } else {
     res.redirect("/login?alert=needLogin");
   }
-
-  // if (usersSelect.data == "") {
-  //   res.redirect("/login?alert=needLogin");
-  // } else {
-  //   res.render("wallet_PI", {
-  //     title: "My Wallet",
-  //     currentRoute: "Route_PI",
-  //     userData: usersSelect.data,
-  //     userRechargeData: coinRecharge_data.data,
-  //   });
-  // }
-
-  // console.log(usersSelect.data == undefined);
 });
 
 // ----------------
@@ -57,11 +46,20 @@ page.get("/recharge/:id", async (req, res) => {
     `http://localhost:80/user/${req.params.id}`
   );
 
-  res.render("wallet_recharge", {
-    title: "My Wallet",
-    currentRoute: "Route_recharge",
-    userData: usersSelect.data,
-  });
+  if (req.session.userId) {
+    if (req.session.userId == req.params.id) {
+      res.render("wallet_recharge", {
+        title: "My Wallet",
+        currentRoute: "Route_recharge",
+        userData: usersSelect.data,
+        // LoginUserID: req.session.userId,
+      });
+    } else {
+      res.render("Denied");
+    }
+  } else {
+    res.redirect("/login?alert=needLogin");
+  }
 });
 
 // ----------------
@@ -89,17 +87,27 @@ page.get("/exchange/:id", async (req, res) => {
     GameData.games = userGames.data.games.split(",");
     GameData.images = userGames.data.images.split(",");
     GameData.gameID = userGames.data.gameID.split(",");
-    console.log("這是 gamedata：" + GameData);
+    // console.log("這是 gamedata：" + GameData);
   } else {
     var GameData = { games: 0, images: 0 };
-    console.log(GameData);
+    // console.log(GameData);
   }
-  res.render("wallet_exchange", {
-    title: "My Wallet",
-    currentRoute: "Route_exchange",
-    userData: usersSelect.data,
-    userGame: GameData,
-  });
+
+  if (req.session.userId) {
+    if (req.session.userId == req.params.id) {
+      res.render("wallet_exchange", {
+        title: "My Wallet",
+        currentRoute: "Route_exchange",
+        userData: usersSelect.data,
+        userGame: GameData,
+        // LoginUserID: req.session.userId,
+      });
+    } else {
+      res.render("Denied");
+    }
+  } else {
+    res.redirect("/login?alert=needLogin");
+  }
 });
 
 // 綁定為 http://localhost/wallet/...

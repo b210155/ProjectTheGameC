@@ -30,6 +30,24 @@ app.use(
   })
 );
 
+/* 常用中介軟體設置 */
+app.use((req, res, next) => {
+  // 所有路由都套用 req.session.userId
+  if (req.session.userId) {
+    // 如果使用者已經登入，將 LoginUserID 設定為使用者 ID
+    res.locals.LoginUserID = req.session.userId;
+  } else {
+    // 如果使用者沒有登入，LoginUserID 設定為 null
+    res.locals.LoginUserID = null;
+  }
+
+  // 上一頁，設定 referer 變數
+  res.locals.referer = req.get("referer");
+
+  // 呼叫 next()，將控制權傳遞到下一個中介軟體或路由處理函式
+  next();
+});
+
 /*--- 導入網頁路由 ---*/
 const indexPage = require("./routes/index"); // 首頁
 const loginPage = require("./routes/login"); // 登入頁

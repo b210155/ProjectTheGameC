@@ -85,7 +85,10 @@
     <a href="#" title="搜索欄"
       ><img src="/img/header/head_search.png" alt=""
     /></a>
-    <a id="GoWalletPage" href="/wallet/PI/2" title="錢包"
+    <a
+      id="GoWalletPage"
+      href="<%= LoginUserID ? `/wallet/PI/${LoginUserID}`: `/login?alert=needLogin`  %>"
+      title="錢包"
       ><img src="/img/header/head_wallet.png" alt=""
     /></a>
     <a id="GoLoginPage" href="/login" title="登入">
