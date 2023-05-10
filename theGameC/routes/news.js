@@ -38,6 +38,7 @@ page.get("/latest", async (req, res) => {
 
 /* 遊戲更新 */
 page.get("/games_updates", async (req, res) => {
+  // 123
   const pageLimit = 5; // 一個分頁有幾筆新聞
   const currentPage = req.query.page || 1; // 當前頁，預設為 1
   let newsSelect = await axios.get(

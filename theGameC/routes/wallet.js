@@ -24,6 +24,7 @@ page.get(`/PI/:id`, async (req, res) => {
   // 沒登入就點 wallet，或者 :id 沒有內容者，跳轉到登入頁面
 
   if (req.session.userId) {
+    // 123
     res.render("wallet_PI", {
       title: "My Wallet",
       currentRoute: "Route_PI",
