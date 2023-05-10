@@ -1,7 +1,7 @@
 <div class="sleft">
   <ul class="snav">
     <li class="<%= currentRoute === 'Route_PI' ? 'walletMyRouter' : '' %>">
-      <a href="/wallet/PI/2"
+      <a href="/wallet/PI/<%= LoginUserID %>"
         ><img class="walletIcon" src="/img/wallet/wallet_user.png" alt="" />
         <img
           class="walletIcon_hover"
@@ -13,7 +13,7 @@
     <li
       class="<%= currentRoute === 'Route_recharge' ? 'walletMyRouter' : '' %>"
     >
-      <a href="/wallet/recharge/2"
+      <a href="/wallet/recharge/<%= LoginUserID %>"
         ><img
           class="walletIcon"
           src="/img/wallet/wallet_recharge.png"
@@ -28,7 +28,7 @@
     <li
       class="<%= currentRoute === 'Route_exchange' ? 'walletMyRouter' : '' %>"
     >
-      <a href="/wallet/exchange/2"
+      <a href="/wallet/exchange/<%= LoginUserID %>"
         ><img
           class="walletIcon"
           src="/img/wallet/wallet_exchange.png"

@@ -22,16 +22,29 @@ page.get(`/PI/:id`, async (req, res) => {
   );
 
   // 沒登入就點 wallet，或者 :id 沒有內容者，跳轉到登入頁面
-  if (usersSelect.data == "") {
-    res.redirect("/login?alert=needLogin");
-  } else {
+
+  if (req.session.userId) {
     res.render("wallet_PI", {
       title: "My Wallet",
       currentRoute: "Route_PI",
       userData: usersSelect.data,
       userRechargeData: coinRecharge_data.data,
+      LoginUserID: req.session.userId,
     });
+  } else {
+    res.redirect("/login?alert=needLogin");
   }
+
+  // if (usersSelect.data == "") {
+  //   res.redirect("/login?alert=needLogin");
+  // } else {
+  //   res.render("wallet_PI", {
+  //     title: "My Wallet",
+  //     currentRoute: "Route_PI",
+  //     userData: usersSelect.data,
+  //     userRechargeData: coinRecharge_data.data,
+  //   });
+  // }
 
   // console.log(usersSelect.data == undefined);
 });

@@ -23,22 +23,17 @@ page.get("/latest", async (req, res) => {
   }
 
   console.log(newsArr);
-
-  if (req.session.userId) {
-    res.render("news", {
-      title: "latest",
-      title_TC: "最新消息",
-      title_Img: "latest/cover.jpg",
-      title_text:
-        "提供最新的多樣化消息，讓用戶能提前了解將來到的全新活動、遊戲及體驗，提前布局各種新功能和新玩法。",
-      newsData: newsSelect.data,
-      currentPage: currentPage,
-      totalPages: totalPages,
-      newsArr: newsArr,
-    });
-  } else {
-    res.redirect("/login?alert=needLogin");
-  }
+  res.render("news", {
+    title: "latest",
+    title_TC: "最新消息",
+    title_Img: "latest/cover.jpg",
+    title_text:
+      "提供最新的多樣化消息，讓用戶能提前了解將來到的全新活動、遊戲及體驗，提前布局各種新功能和新玩法。",
+    newsData: newsSelect.data,
+    currentPage: currentPage,
+    totalPages: totalPages,
+    newsArr: newsArr,
+  });
 });
 
 /* 遊戲更新 */
