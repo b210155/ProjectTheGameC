@@ -31,8 +31,8 @@ page.post("/insertRecharge/:user_id", (req, res) => {
     }
   );
 
-  console.log("req.body: ", req.body);
-  console.log("req.params.user_id: ", req.params);
+  // console.log("req.body: ", req.body);
+  // console.log("req.params.user_id: ", req.params);
 });
 
 ///////////////////
@@ -60,8 +60,8 @@ page.post("/insertExchange/:user_id", (req, res) => {
     }
   );
 
-  console.log("req.body: ", req.body);
-  console.log("req.params.user_id: ", req.params);
+  // console.log("req.body: ", req.body);
+  // console.log("req.params.user_id: ", req.params);
 });
 
 module.exports = page;

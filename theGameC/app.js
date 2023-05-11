@@ -25,7 +25,7 @@ app.use(
       path: "/",
       httpOnly: true,
       secure: false,
-      maxAge: 100 * 1000,
+      maxAge: 120 * 1000,
     },
   })
 );
