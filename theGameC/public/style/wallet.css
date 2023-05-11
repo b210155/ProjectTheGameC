@@ -24,6 +24,8 @@
   justify-content: center;
   align-items: center;
   border: 2px rgba(0, 0, 0, 0.2) solid;
+  background-color: #d4d4d4;
+  cursor: pointer;
 }
 .section .sleft .avatarDiv img {
   width: auto;
@@ -447,7 +449,7 @@ dialog#rechargedialog .credit_paypal_gash form .gashEnter div.rechargeConfirmBtn
   font-size: 1rem;
   cursor: pointer;
 }
-dialog#rechargedialog button#closeDialog {
+dialog#rechargedialog button#closeRDialog {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -455,7 +457,7 @@ dialog#rechargedialog button#closeDialog {
   border: none;
   cursor: pointer;
 }
-dialog#rechargedialog button#closeDialog img {
+dialog#rechargedialog button#closeRDialog img {
   width: 20px;
   height: 20px;
   -webkit-user-select: none;
@@ -625,7 +627,7 @@ dialog#rechargedialog button#closeDialog img {
   font-size: 1rem;
   cursor: pointer;
 }
-#exchangedialog button#closeDialog {
+#exchangedialog button#closeEXDialog {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -633,7 +635,7 @@ dialog#rechargedialog button#closeDialog img {
   border: none;
   cursor: pointer;
 }
-#exchangedialog button#closeDialog img {
+#exchangedialog button#closeEXDialog img {
   width: 20px;
   height: 20px;
   -webkit-user-select: none;
@@ -716,7 +718,7 @@ dialog#rechargedialog button#closeDialog img {
   font-size: 1rem;
   cursor: pointer;
 }
-#PIdialog button#closeDialog {
+#PIdialog button#closePIDialog {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -725,7 +727,88 @@ dialog#rechargedialog button#closeDialog img {
   outline: none;
   cursor: pointer;
 }
-#PIdialog button#closeDialog img {
+#PIdialog button#closePIDialog img {
+  width: 20px;
+  height: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+#avatarDialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border: none;
+  padding: 40px 20px;
+}
+#avatarDialog form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  gap: 15px;
+}
+#avatarDialog form div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+#avatarDialog form div .avatarSim {
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  border: 1px black dotted;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d4d4d4;
+}
+#avatarDialog form div .avatarSim img {
+  width: auto;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+#avatarDialog form div p {
+  font-size: 1.15rem;
+  color: #1c3d5c;
+  text-align: center;
+  font-weight: 600;
+}
+#avatarDialog form div input {
+  width: 220px;
+  font-size: 1.1rem;
+}
+#avatarDialog form button {
+  width: 120px;
+  background-color: #0071db;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+#avatarDialog button#closeAVADialog {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+#avatarDialog button#closeAVADialog img {
   width: 20px;
   height: 20px;
   -webkit-user-select: none;

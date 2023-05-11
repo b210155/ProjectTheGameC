@@ -149,7 +149,7 @@
     </section>
 
     <dialog id="rechargedialog">
-      <button id="closeDialog">
+      <button id="closeRDialog">
         <img src="/img/wallet/close.png" alt="" />
       </button>
       <!-- 使用信用卡儲值 -->
@@ -360,7 +360,7 @@
                 .closest(".methodDiv")
                 .querySelector(".method1 li").innerText;
               document.querySelector(".creditEnter").style.display = "block";
-              document.querySelector("dialog").showModal();
+              document.querySelector("#rechargedialog").showModal();
 
               console.log("credit");
               console.log(ntd);
@@ -374,7 +374,7 @@
                 .closest(".methodDiv")
                 .querySelector(".method1 li").innerText;
               document.querySelector(".paypalEnter").style.display = "block";
-              document.querySelector("dialog").showModal();
+              document.querySelector("#rechargedialog").showModal();
 
               console.log("paypal");
               console.log(ntd);
@@ -388,7 +388,7 @@
                 .closest(".methodDiv")
                 .querySelector(".method1 li").innerText;
               document.querySelector(".gashEnter").style.display = "block";
-              document.querySelector("dialog").showModal();
+              document.querySelector("#rechargedialog").showModal();
 
               console.log("gash");
               console.log(ntd);
@@ -402,8 +402,8 @@
       }
 
       // 關閉 dialog
-      closeDialog.addEventListener("click", () => {
-        document.querySelector("dialog").close();
+      closeRDialog.addEventListener("click", () => {
+        document.querySelector("#rechargedialog").close();
         document.querySelector(".creditEnter").style.display = "none";
         document.querySelector(".paypalEnter").style.display = "none";
         document.querySelector(".gashEnter").style.display = "none";

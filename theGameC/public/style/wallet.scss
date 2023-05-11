@@ -25,6 +25,8 @@
       justify-content: center;
       align-items: center;
       border: 2px rgba(0, 0, 0, 0.2) solid;
+      background-color: #d4d4d4;
+      cursor: pointer;
       img {
         width: auto;
         height: 100%;
@@ -480,7 +482,7 @@ dialog#rechargedialog {
     }
   }
 
-  button#closeDialog {
+  button#closeRDialog {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -668,7 +670,7 @@ dialog#rechargedialog {
       cursor: pointer;
     }
   }
-  button#closeDialog {
+  button#closeEXDialog {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -758,7 +760,87 @@ dialog#rechargedialog {
       cursor: pointer;
     }
   }
-  button#closeDialog {
+  button#closePIDialog {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ffffff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    img {
+      width: 20px;
+      height: 20px;
+      user-select: none;
+    }
+  }
+}
+
+#avatarDialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border: none;
+  padding: 40px 20px;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    gap: 15px;
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      .avatarSim {
+        width: 150px;
+        height: 150px;
+        border-radius: 100px;
+        border: 1px black dotted;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #d4d4d4;
+        img {
+          width: auto;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+      p {
+        font-size: 1.15rem;
+        color: #1c3d5c;
+        text-align: center;
+        font-weight: 600;
+      }
+      input {
+        width: 220px;
+        font-size: 1.1rem;
+      }
+    }
+
+    button {
+      width: 120px;
+      background-color: #0071db;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.05rem;
+      cursor: pointer;
+    }
+  }
+
+  button#closeAVADialog {
     position: absolute;
     top: 10px;
     right: 10px;
