@@ -55,6 +55,9 @@ const gamePage = require("./routes/games"); // 遊戲大頁
 const walletPage = require("./routes/wallet"); // 錢包頁
 const newsPage = require("./routes/news"); // 新聞頁
 const shoppingCartPage = require("./routes/products"); // 購物車頁
+const mailPage = require("./routes/mail"); // 客服信箱頁
+const qaPage = require("./routes/qa"); // 客服信箱頁
+const rulePage = require("./routes/rule"); // 客服信箱頁
 
 /*--- 導入 CRUD for 全體 路由 ---*/
 // 這與專屬某網頁的CRUD不同，這裡主要放給全體路由都能做使用的CRUD
@@ -75,6 +78,9 @@ app.use("/news/", newsPage);
 app.use("/products/", shoppingCartPage);
 app.use("/login", loginPage);
 app.use("/games", gamePage);
+app.use("/mail", mailPage);
+app.use("/qa", qaPage);
+app.use("/rule/", rulePage);
 
 /*--- CRUD for All 路由 ---*/
 // ex. 想看 user6 的資料就是
