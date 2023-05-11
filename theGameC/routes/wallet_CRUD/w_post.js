@@ -3,6 +3,19 @@ const page = express.Router();
 
 const config = require("../CRUD/config"); // 引用 config
 
+const multer = require("multer"); // 上傳不同檔案類型
+
+// 大頭貼上傳事先設定
+const avatarStorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/img/upload/Avatar/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, "avatar_" + Date.now() + file.originalname.split("."[1]));
+  },
+});
+const avatar = multer({ storage: avatarStorage });
+
 ///////////////////
 /* recharge 儲值 */
 ///////////////////
@@ -64,4 +77,15 @@ page.post("/insertExchange/:user_id", (req, res) => {
   // console.log("req.params.user_id: ", req.params);
 });
 
+/**************************** */
+page.post("/upload_file", avatar.single("avatar"), (req, res) => {
+  var file = req.file;
+
+  console.log("檔案類型：%s", file.mimetype);
+  console.log("原始檔名：%s", file.originalname);
+  console.log("檔案大小：%s", file.size);
+  console.log("檔案存放路徑：%s", file.path);
+
+  res.send("上傳成功");
+});
 module.exports = page;

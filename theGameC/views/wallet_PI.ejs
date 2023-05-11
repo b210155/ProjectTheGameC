@@ -108,44 +108,39 @@
                 required
               />
             </li>
+            <hr />
+            <!-- <li>
+              <div>
+                <span>頭貼：</span>
+                <input type="file" name="avatar" accept=".jpg, .jpeg, .png" />
+              </div>
+            </li> -->
           </div>
         </div>
         <button id="update" type="submit">確認修改</button>
       </form>
     </dialog>
 
+    <div>
+      <form
+        action="/wallet/upload_file"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <li>
+          <div>
+            <span>頭貼：</span>
+            <input type="file" name="avatar" accept=".jpg, .jpeg, .png" />
+            <br />
+            <button type="submit" name="avatar">上傳</button>
+          </div>
+        </li>
+      </form>
+    </div>
+
     <script src="/app/app.js"></script>
 
     <script>
-      // /* dialog展示 */
-      // function editPI() {
-      //   document.querySelector("#PIdialog").showModal();
-      // }
-      // closeDialog.addEventListener("click", () => {
-      //   document.querySelector("dialog").close();
-      // });
-
-      // /* 更新 */
-      // $(function () {
-      //   $("#update").on("click", function () {
-      //     const userId = $("#user_id").val();
-      //     $.ajax({
-      //       url: `http://localhost:80/wallet/updatePI/${userId}`,
-      //       type: "PUT",
-      //       data: {
-      //         phone: $("input[name='edit_phone']").val(),
-      //         nickname: $("input[name='edit_nickname']").val(),
-      //       },
-      //     }).done((data) => {
-      //       console.log(data);
-
-      //       $("#phone").text($("input[name='edit_phone']").val());
-      //       $("#nickname").text($("input[name='edit_nickname']").val());
-      //       document.querySelector("dialog").close();
-      //     });
-      //   });
-      // });
-
       /* dialog展示 */
       function editPI() {
         document.querySelector("#PIdialog").showModal();
@@ -165,6 +160,7 @@
             data: {
               phone: $("input[name='edit_phone']").val(),
               nickname: $("input[name='edit_nickname']").val(),
+              // avatar: $("input[name='avatar']").val(),
             },
           }).done((data) => {
             console.log(data);
@@ -173,6 +169,26 @@
             document.querySelector("dialog").close();
           });
         });
+
+        ////////////////////
+        // $("#updateForm").on("submit", function () {
+        //   event.preventDefault();
+        //   const userId = $("#user_id").val();
+        //   $.ajax({
+        //     url: `http://localhost:80/wallet/updatePI/${userId}`,
+        //     type: "PUT",
+        //     data: {
+        //       phone: $("input[name='edit_phone']").val(),
+        //       nickname: $("input[name='edit_nickname']").val(),
+        //       // avatar: $("input[name='avatar']").val(),
+        //     },
+        //   }).done((data) => {
+        //     console.log(data);
+        //     $("#phone").text($("input[name='edit_phone']").val());
+        //     $("#nickname").text($("input[name='edit_nickname']").val());
+        //     document.querySelector("dialog").close();
+        //   });
+        // });
       });
     </script>
   </body>

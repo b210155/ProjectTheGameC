@@ -7,7 +7,7 @@ phone VARCHAR(11),  -- 電話
 birthday DATE NOT NULL,  -- 生日
 c_coin_balance INT UNSIGNED DEFAULT 0, -- c幣餘額
 nickname VARCHAR(15), -- 暱稱 (預設為帳號)
--- avatar VARCHAR(255) DEFAULT 'default_avatar.jpg', -- 大頭貼
+avatar VARCHAR(255) DEFAULT 'avatar_default.jpg', -- 大頭貼
 registration_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- 帳號建立時間
 );
 

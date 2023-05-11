@@ -6,7 +6,7 @@
 
 /* 左半部 */
 .section .sleft {
-  padding: 110px 0;
+  padding: 85px 0;
   width: 25%;
   display: flex;
   flex-direction: column;
@@ -14,6 +14,22 @@
   background-image: url("../img/wallet/bg(15).png");
   background-size: cover;
   background-position: center center;
+}
+.section .sleft .avatarDiv {
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px rgba(0, 0, 0, 0.2) solid;
+}
+.section .sleft .avatarDiv img {
+  width: auto;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .section .sleft .snav {
   display: flex;
