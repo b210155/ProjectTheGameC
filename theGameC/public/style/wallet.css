@@ -213,6 +213,25 @@
   width: 80%;
   margin: 0 auto;
 }
+.section .s1right div.s1rightSec .s1Rdown #Gamesdropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 0 20px 0;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  gap: 10px;
+  cursor: pointer;
+}
+.section .s1right div.s1rightSec .s1Rdown #Gamesdropdown p {
+  color: #8d8d8d;
+}
+.section .s1right div.s1rightSec .s1Rdown #Gamesdropdown .GamesdropdownImg {
+  filter: brightness(50%);
+  width: 20px;
+  transition: transform 0.65s;
+}
 .section .s1right div.s1rightSec .s1Rdown p {
   color: #8d8d8d;
   font-size: 1.1rem;
@@ -220,14 +239,19 @@
   padding: 0 10px 10px 10px;
   letter-spacing: 3px;
 }
+.section .s1right div.s1rightSec .s1Rdown #myGamesArea.expanded {
+  display: none;
+}
 .section .s1right div.s1rightSec .s1Rdown #myGamesArea {
   width: 70%;
+  height: auto;
+  overflow: hidden;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0 0 50px 0;
-  gap: 15px;
+  transition: max-height 0.3s ease;
 }
 .section .s1right div.s1rightSec .s1Rdown #myGamesArea #myGame {
   background-color: #1d1d1d;
@@ -237,6 +261,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin-bottom: 15px;
 }
 .section .s1right div.s1rightSec .s1Rdown #myGamesArea #myGame #myGameImgDiv {
   border-top-left-radius: 10px;

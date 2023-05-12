@@ -66,11 +66,13 @@
   <form id="avatarForm">
     <div>
       <p>頭貼</p>
+      <br />
       <span>步驟：選擇檔案後 1.先上傳圖片 2.再確認更改</span>
       <div class="avatarSim">
         <img src="<%= userData.avatar %>" alt="" />
       </div>
       <input type="file" name="avatar" accept=".jpg, .jpeg, .png" />
+      <span>只接受 jpg、jpeg、png 檔</span>
       <br />
       <span>是否要上傳此圖片</span
       ><span id="imgSimUse" style="color: red"></span>
