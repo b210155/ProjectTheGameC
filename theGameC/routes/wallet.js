@@ -12,14 +12,37 @@ const wallet_GD_CRUD = require("./wallet_CRUD/GD_CRUD");
 // ----------------
 /* PI 頁面 */
 page.get(`/PI/:id`, async (req, res) => {
-  // 用戶資料
+  /* 用戶資料 */
   let usersSelect = await axios.get(
     `http://localhost:80/user/${req.params.id}`
   );
-  // 儲值紀錄
+  /* 儲值紀錄 */
   let coinRecharge_data = await axios.get(
     `http://localhost:80/wallet/recharge_data/${req.params.id}`
   );
+
+  /* 使用者擁有的遊戲 */
+  let userGames = await axios.get(
+    `http://localhost:80/user_games/${req.params.id}`
+  );
+  // 如果使用者沒有任何遊戲資料，就給空陣列，以免 undefined.split() 錯誤
+  if (
+    userGames &&
+    userGames.data &&
+    userGames.data.games &&
+    userGames.data.images &&
+    userGames.data.gameCoin
+  ) {
+    var GameData = { ...userGames.data };
+    GameData.games = userGames.data.games.split(",");
+    GameData.images = userGames.data.images.split(",");
+    GameData.gameID = userGames.data.gameID.split(",");
+    GameData.gameCoin = userGames.data.gameCoin.split(",");
+    // console.log("這是 gamedata：" + GameData);
+  } else {
+    var GameData = { games: 0, images: 0 };
+    // console.log(GameData);
+  }
 
   // 沒登入就點 wallet，跳轉到登入頁面且 alert
   if (req.session.userId) {
@@ -29,6 +52,7 @@ page.get(`/PI/:id`, async (req, res) => {
         currentRoute: "Route_PI",
         userData: usersSelect.data,
         userRechargeData: coinRecharge_data.data,
+        userGame: GameData,
         // LoginUserID: req.session.userId,
       });
     } else {
@@ -81,12 +105,14 @@ page.get("/exchange/:id", async (req, res) => {
     userGames &&
     userGames.data &&
     userGames.data.games &&
-    userGames.data.images
+    userGames.data.images &&
+    userGames.data.gameCoin
   ) {
     var GameData = { ...userGames.data };
     GameData.games = userGames.data.games.split(",");
     GameData.images = userGames.data.images.split(",");
     GameData.gameID = userGames.data.gameID.split(",");
+    GameData.gameCoin = userGames.data.gameCoin.split(",");
     // console.log("這是 gamedata：" + GameData);
   } else {
     var GameData = { games: 0, images: 0 };
