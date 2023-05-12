@@ -5,4 +5,5 @@ CREATE TABLE shopping_carts ( -- 購物車資料表(一欄表示一個商品)
   price INT UNSIGNED NOT NULL, -- 購物車內單項商品價格
   FOREIGN KEY (user_id) REFERENCES users(user_id),
   FOREIGN KEY (product_id) REFERENCES products(product_id)
+  UNIQUE (user_id, product_id)
 );

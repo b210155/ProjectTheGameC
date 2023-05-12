@@ -78,14 +78,23 @@ page.post("/insertExchange/:user_id", (req, res) => {
 });
 
 /**************************** */
+/* 大頭貼上傳 (與資料庫無關) */
 page.post("/upload_file", avatar.single("avatar"), (req, res) => {
   var file = req.file;
 
-  console.log("檔案類型：%s", file.mimetype);
-  console.log("原始檔名：%s", file.originalname);
-  console.log("檔案大小：%s", file.size);
-  console.log("檔案存放路徑：%s", file.path);
+  if (!req.file) {
+    var filePath = "/img/login/avatar/avatar_default.jpg";
+  } else {
+    var filePath = "/img/upload/Avatar/" + file.filename;
+  }
 
-  res.send("上傳成功");
+  // console.log("檔案類型：%s", file.mimetype);
+  // console.log("原始檔名：%s", file.originalname);
+  // console.log("檔案大小：%s", file.size);
+  // console.log("檔案存放路徑：%s", file.path);
+  // console.log("檔案s", file.filename);
+
+  // 將此傳給前端使用
+  res.send(filePath);
 });
 module.exports = page;

@@ -16,7 +16,12 @@
       </ul>
       <ul>
         <li><a href="#">客服支援</a></li>
-        <li><a href="#">錢包</a></li>
+        <li>
+          <a
+            href="<%= LoginUserID ? `/wallet/PI/${LoginUserID}`: `/login?alert=needLogin`  %>"
+            >錢包</a
+          >
+        </li>
         <li><a href="#">我需要協助</a></li>
       </ul>
       <ul>

@@ -23,7 +23,8 @@ page.get("/user_games/:id", (req, res) => {
   users.username,
   GROUP_CONCAT(user_games.image) AS images,
   GROUP_CONCAT(games.game_name) AS games,
-  GROUP_CONCAT(games.game_id) AS gameID
+  GROUP_CONCAT(games.game_id) AS gameID,
+  GROUP_CONCAT(user_games.coin_in_game) AS gameCoin
 FROM
   user_games
   INNER JOIN users ON user_games.user_id = users.user_id

@@ -66,6 +66,53 @@
                   </td>
                 </tr>
               </table>
+              <br />
+            </div>
+            <hr />
+            <!-- 你擁有的遊戲 -->
+            <div class="s1RDtitle">
+              <p>我的遊戲庫</p>
+            </div>
+            <br />
+            <div id="myGamesArea">
+              <!-- 一個遊戲 -->
+              <% if(userGame.games != []){ %>
+              <%userGame.games.map(function(v,i){ %>
+              <div id="myGame">
+                <div id="myGameImgDiv">
+                  <img src=<%=`/img/Games/${userGame.images[i]}` %> />
+                </div>
+                <div id="myGameInfo">
+                  <p><%= v %></p>
+                  <p>當前點數：<span><%= userGame.gameCoin[i] %></span></p>
+                </div>
+              </div>
+              <% }) } else if (userGame.games == 0) {%>
+              <div
+                class="game_div"
+                style="
+                  padding-left: 40px;
+                  flex-direction: column;
+                  justify-content: center;
+                  width: 50%;
+                  height: 200px;
+                "
+              >
+                <p style="font-size: 1.15rem; color: black">
+                  您目前尚未遊玩任何遊戲，
+                </p>
+                <br />
+                <p style="font-size: 1.15rem; color: black">
+                  加入遊戲後就可以體驗轉點功能囉！
+                </p>
+                <br /><br />
+                <a
+                  href="/games"
+                  style="font-size: 1.15rem; text-decoration: none"
+                  >點我進入遊戲頁面</a
+                >
+              </div>
+              <% } %>
             </div>
           </div>
         </div>
@@ -74,7 +121,7 @@
 
     <!-- 修改個人資訊 -->
     <dialog id="PIdialog">
-      <button id="closeDialog">
+      <button id="closePIDialog">
         <img src="/img/wallet/close.png" alt="" />
       </button>
       <form id="updateForm" method="put" action="/updatePI">
@@ -93,6 +140,7 @@
                 id="edit_nickname"
                 name="edit_nickname"
                 placeholder="取一個喜歡的暱稱"
+                pattern="^(?:[\x00-\x7F]|[\u4E00-\u9FFF]){1,15}$"
                 value="<%= userData.nickname %>"
               />
             </li>
@@ -121,23 +169,6 @@
       </form>
     </dialog>
 
-    <div>
-      <form
-        action="/wallet/upload_file"
-        method="post"
-        enctype="multipart/form-data"
-      >
-        <li>
-          <div>
-            <span>頭貼：</span>
-            <input type="file" name="avatar" accept=".jpg, .jpeg, .png" />
-            <br />
-            <button type="submit" name="avatar">上傳</button>
-          </div>
-        </li>
-      </form>
-    </div>
-
     <script src="/app/app.js"></script>
 
     <script>
@@ -145,9 +176,12 @@
       function editPI() {
         document.querySelector("#PIdialog").showModal();
       }
-      closeDialog.addEventListener("click", () => {
-        document.querySelector("dialog").close();
+      closePIDialog.addEventListener("click", () => {
+        document.querySelector("#PIdialog").close();
       });
+
+      // nickname 限制自數 (尚未寫)
+      let nicknameLimit = $("input#edit_nickname").val();
 
       /* 更新 */
       $(function () {
@@ -166,29 +200,9 @@
             console.log(data);
             $("#phone").text($("input[name='edit_phone']").val());
             $("#nickname").text($("input[name='edit_nickname']").val());
-            document.querySelector("dialog").close();
+            document.querySelector("#PIdialog").close();
           });
         });
-
-        ////////////////////
-        // $("#updateForm").on("submit", function () {
-        //   event.preventDefault();
-        //   const userId = $("#user_id").val();
-        //   $.ajax({
-        //     url: `http://localhost:80/wallet/updatePI/${userId}`,
-        //     type: "PUT",
-        //     data: {
-        //       phone: $("input[name='edit_phone']").val(),
-        //       nickname: $("input[name='edit_nickname']").val(),
-        //       // avatar: $("input[name='avatar']").val(),
-        //     },
-        //   }).done((data) => {
-        //     console.log(data);
-        //     $("#phone").text($("input[name='edit_phone']").val());
-        //     $("#nickname").text($("input[name='edit_nickname']").val());
-        //     document.querySelector("dialog").close();
-        //   });
-        // });
       });
     </script>
   </body>

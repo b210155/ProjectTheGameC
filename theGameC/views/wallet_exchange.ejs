@@ -55,7 +55,9 @@
                   加入遊戲後就可以體驗轉點功能囉！
                 </p>
                 <br /><br />
-                <a href="#" style="font-size: 1.15rem; text-decoration: none"
+                <a
+                  href="/games"
+                  style="font-size: 1.15rem; text-decoration: none"
                   >點我進入遊戲頁面</a
                 >
               </div>
@@ -116,7 +118,7 @@
 
     <!-- 確認轉點視窗 -->
     <dialog id="exchangedialog">
-      <button id="closeDialog">
+      <button id="closeEXDialog">
         <img src="/img/wallet/close.png" alt="" />
       </button>
       <form
@@ -197,12 +199,12 @@
             gameName.innerText;
           document.querySelector("#exchangeCoin").innerHTML = coin;
           $("input#coinNum").val(coin);
-          document.querySelector("dialog").showModal();
+          document.querySelector("#exchangedialog").showModal();
         }
       }
       // 關閉 dialog
-      closeDialog.addEventListener("click", () => {
-        document.querySelector("dialog").close();
+      closeEXDialog.addEventListener("click", () => {
+        document.querySelector("#exchangedialog").close();
       });
 
       //-----------------------------------------
