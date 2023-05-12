@@ -430,6 +430,30 @@ input[type=number]::-webkit-inner-spin-button {
   margin: 0;
 }
 
+
+
+/* onlogin.css */
+.userName{
+  color: #0071DB;
+  font-size: 24px;
+}
+.onloginH2{
+  margin-bottom: 1.3rem;
+  letter-spacing: 8px;
+}
+.onloginA{
+  font-size: 1.2rem;
+  color: #0057A8;
+  text-decoration: none;
+}
+.onloginDiv{
+  margin-top: 3rem;
+}
+
+
+
+
+
 /* RWD */
 @media screen and (max-width:1300px) {
 
