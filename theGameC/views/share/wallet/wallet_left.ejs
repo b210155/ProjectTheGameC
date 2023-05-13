@@ -69,7 +69,7 @@
       <br />
       <span>步驟：選擇檔案後 1.先上傳圖片 2.再確認更改</span>
       <div class="avatarSim">
-        <img src="<%= userData.avatar %>" alt="" />
+        <img id="avatarSimImg" src="<%= userData.avatar %>" alt="" />
       </div>
       <input type="file" name="avatar" accept=".jpg, .jpeg, .png" />
       <span>只接受 jpg、jpeg、png 檔</span>
@@ -104,6 +104,14 @@
   // 大頭貼上傳
   $(function () {
     let avatarUrl = "/img/login/avatar/avatar_default.jpg"; // 大頭貼結果，預設為此圖
+    /* 大頭貼選取預覽 */
+    $("#avatarForm input[type=file]").change(function () {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $("#avatarSimImg").attr("src", e.target.result);
+      };
+      reader.readAsDataURL(this.files[0]);
+    });
     /* 大頭貼上傳 */
     $("#avatarForm").on("submit", function (event) {
       event.preventDefault(); // 防止表單自動提交，以便提交後從後端獲取資料在前端使用
