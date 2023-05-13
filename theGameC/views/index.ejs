@@ -1,123 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- jquery -->
-    <script
-      src="https://code.jquery.com/jquery-3.6.4.js"
-      integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
-      crossorigin="anonymous"
-    ></script>
-    <script src="/app/jquery.js"></script>
-    <!-- bootstrap5 icon -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
-    />
-    <!-- css -->
-    <link rel="stylesheet" href="/style/style.css" />
-    <link rel="stylesheet" href="/style/index.css" />
-    <!-- AOS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- slick -->
-    <link rel="stylesheet" href="/kits/slick/slick/slick.css" />
-    <link rel="stylesheet" href="/kits/slick/slick/slick-theme.css" />
-    <!-- splide -->
-    <script src="
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
+  <script src="/app/jquery.js"></script>
+  <!-- bootstrap5 icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css" />
+  <!-- css -->
+  <link rel="stylesheet" href="/style/style.css" />
+  <link rel="stylesheet" href="/style/index.css" />
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- slick -->
+  <link rel="stylesheet" href="/kits/slick/slick/slick.css" />
+  <link rel="stylesheet" href="/kits/slick/slick/slick-theme.css" />
+  <!-- splide -->
+  <script src="
 https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
 "></script>
-    <link
-      href="
+  <link href="
 https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
-"
-      rel="stylesheet"
-    />
-    <!-- fullPage.css -->
-    <link rel="stylesheet" href="/kits/fullpage/fullpage.css" />
-    <link rel="icon" href="/img/header/logoicon.ico" />
-    <title>ThegameC首頁</title>
-  </head>
+" rel="stylesheet" />
+  <!-- fullPage.css -->
+  <link rel="stylesheet" href="/kits/fullpage/fullpage.css" />
+  <link rel="icon" href="/img/header/logoicon.ico" />
+  <title>ThegameC首頁</title>
+</head>
 
-  <body>
-    <!-- header -->
-    <%- include('share/header')%>
+<body>
+  <!-- header -->
+  <%- include('share/header')%>
 
     <div id="fullpage">
       <div class="section">
         <!-- carousel -->
         <div class="carousel">
           <h1>線上遊戲</h1>
-          <section
-            class="center slider"
-            style="transition: 1s"
-            data-aos="zoom-in"
-          >
+          <section class="center slider" style="transition: 1s" data-aos="zoom-in">
             <div>
-              <img src="/img/index/maplestory.jpg" />
-              <h1>《新楓之谷》</h1>
-              <p>2D冒險遊戲</p>
+              <img src="/img/Games/<%- gameimg[0].image %>" />
+              <h1>《<%- gameimg[0].game_name %>》</h1>
+              <p><%- gameimg[0].game_type %></p>
               <p></p>
             </div>
 
             <div>
-              <img src="/img/index/maplestory.jpg" />
-              <h1>《新楓之谷》</h1>
-              <p>2D冒險遊戲</p>
-              <p></p>
+              <img src="/img/Games/<%- gameimg[1].image %>" />
+              <h1>《<%- gameimg[1].game_name %>》</h1>
+              <p><%- gameimg[1].game_type %></p>
+            </div>
+            <div>
+              <img src="/img/Games/<%- gameimg[2].image %>" />
+              <h1>《<%- gameimg[2].game_name %>》</h1>
+              <p><%- gameimg[2].game_type %></p>
+            </div>
+            <div>
+              <img src="/img/Games/<%- gameimg[3].image %>" />
+              <h1>《<%- gameimg[3].game_name %>》</h1>
+              <p><%- gameimg[3].game_type %></p>
+            </div>
+            <div>
+              <img src="/img/Games/<%- gameimg[4].image %>" />
+              <h1>《<%- gameimg[4].game_name %>》</h1>
+              <p><%- gameimg[4].game_type %></p>
+            </div>
+            <div>
+              <img src="/img/Games/<%- gameimg[5].image %>" />
+              <h1>《<%- gameimg[5].game_name %>》</h1>
+              <p><%- gameimg[5].game_type %></p>
+            </div>
+            <div>
+              <img src="/img/Games/<%- gameimg[6].image %>" />
+              <h1>《<%- gameimg[6].game_name %>》</h1>
+              <p><%- gameimg[6].game_type %></p>
+            </div>
+            <div>
+              <img src="/img/Games/<%- gameimg[7].image %>" />
+              <h1>《<%- gameimg[7].game_name %>》</h1>
+              <p><%- gameimg[7].game_type %></p>
             </div>
 
-            <div>
-              <img src="/img/index/maplestory.jpg" />
-              <h1>《新楓之谷》</h1>
-              <p>2D冒險遊戲</p>
-              <p></p>
-            </div>
 
-            <div>
-              <img src="/img/index/maplestory.jpg" />
-              <h1>《新楓之谷》</h1>
-              <p>2D冒險遊戲</p>
-              <p></p>
-            </div>
 
-            <div>
-              <img src="/img/index/maplestory.jpg" />
-              <h1>《新楓之谷》</h1>
-              <p>2D冒險遊戲</p>
-              <p></p>
-            </div>
-
-            <div>
-              <img src="/img/index/maplestory.jpg" />
-              <h1>《新楓之谷》</h1>
-              <p>2D冒險遊戲</p>
-              <p></p>
-            </div>
-
-            <div>
-              <img src="/img/index/maplestory.jpg" />
-              <h1>《新楓之谷》</h1>
-              <p>2D冒險遊戲</p>
-              <p></p>
-            </div>
-
-            <div>
-              <img src="/img/index/maplestory.jpg" />
-              <h1>《新楓之谷》</h1>
-              <p>2D冒險遊戲</p>
-              <p></p>
-            </div>
-
-            <div>
-              <img src="/img/index/maplestory.jpg" />
-              <h1>《新楓之谷》</h1>
-              <p>2D冒險遊戲</p>
-              <p></p>
-            </div>
           </section>
           <div class="carouselbut">
-            <a href="">探索更多</a>
+            <a href="/games">探索更多</a>
           </div>
         </div>
       </div>
@@ -129,114 +100,118 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
           </div>
           <div class="botm">
             <div class="pic">
-              <section
-                id="main-carousel"
-                class="splide"
-                aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel."
-              >
+              <section id="main-carousel" class="splide"
+                aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
                 <div class="splide__track">
                   <img class="alpha" src="/img/index/Comp.gif" alt="" />
                   <ul class="splide__list">
-                    <li class="splide__slide">
-                      <img src="/img/index/assassin1.png" alt="" />
+                    <li class="splide__slide bigpic">
+                      <img src="/img/Products/<%- products[0].image %>" alt="" />
                     </li>
-                    <li class="splide__slide">
-                      <img src="/img/index/marksman1.png" alt="" />
+                    <li class="splide__slide bigpic">
+                      <img src="/img/Products/<%- products[1].image %>" alt="" />
                     </li>
-                    <li class="splide__slide">
-                      <img src="/img/index/assassin1.png" alt="" />
+                    <li class="splide__slide bigpic">
+                      <img src="/img/Products/<%- products[2].image %>" alt="" />
                     </li>
-                    <li class="splide__slide">
-                      <img src="/img/index/support1.png" alt="" />
+                    <li class="splide__slide bigpic">
+                      <img src="/img/Products/<%- products[3].image %>" alt="" />
                     </li>
-                    <li class="splide__slide">
-                      <img src="/img/index/marksman1.png" alt="" />
+                    <li class="splide__slide bigpic">
+                      <img src="/img/Products/<%- products[4].image %>" alt="" />
                     </li>
                   </ul>
                 </div>
               </section>
-              <section
-                id="thumbnail-carousel"
-                class="splide"
-                aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel."
-              >
+              <section id="thumbnail-carousel" class="splide"
+                aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
                 <div class="splide__track">
                   <ul class="splide__list">
-                    <li id="picimg1" class="splide__slide border">
-                      <img src="/img/index/LOL.jpg" alt="" />
+                    <li id="picimg1" class="splide__slide border smallpic">
+                      <img src="/img/Products/<%- products[0].image %>" alt="" />
                     </li>
-                    <li id="picimg2" class="splide__slide border">
-                      <img src="/img/index/LOL.jpg" alt="" />
+                    <li id="picimg2" class="splide__slide border smallpic">
+                      <img src="/img/Products/<%- products[1].image %>" alt="" />
                     </li>
-                    <li id="picimg3" class="splide__slide border">
-                      <img src="/img/index/LOL.jpg" alt="" />
+                    <li id="picimg3" class="splide__slide border smallpic">
+                      <img src="/img/Products/<%- products[2].image %>" alt="" />
                     </li>
-                    <li id="picimg4" class="splide__slide border">
-                      <img src="/img/index/LOL.jpg" alt="" />
+                    <li id="picimg4" class="splide__slide border smallpic">
+                      <img src="/img/Products/<%- products[3].image %>" alt="" />
                     </li>
-                    <li id="picimg5" class="splide__slide border">
-                      <img src="/img/index/LOL.jpg" alt="" />
+                    <li id="picimg5" class="splide__slide border smallpic">
+                      <img src="/img/Products/<%- products[4].image %>" alt="" />
                     </li>
                   </ul>
                 </div>
               </section>
             </div>
             <div id="text1" class="text">
-              <h1>《極地戰壕3》</h1>
+              <h1>《<%= products[0].product_name %>》</h1>
               <p>
-                進入血脈賁張的現代游擊革命世界。探索令人嘆為觀止的景觀、直覺式的槍戰、多元的遊戲體驗與更多精彩內容——現在正是加入戰鬥的最好時機。
+                <%= products[0].product_type %>類遊戲
               </p>
               <p>
-                免費試玩《極地戰嚎 6》，親自體驗為何《GAME
-                INFORMER》刊物會給予「從頭到尾絕無冷場」的評價。購買遊戲本體還可保留你所有的進度。
+                <%- products[0].description %>
+              </p>
+              <p>
+                NT$<%= products[0].price %>
               </p>
               <a href=""><i class="bi bi-shop-window"></i></a>
               <a href=""><i class="bi bi-cart2"></i></a>
             </div>
             <div id="text2" class="text">
-              <h1>《新楓之谷》</h1>
+              <h1>《<%= products[1].product_name %>》</h1>
               <p>
-                進入血脈賁張的現代游擊革命世界。探索令人嘆為觀止的景觀、直覺式的槍戰、多元的遊戲體驗與更多精彩內容——現在正是加入戰鬥的最好時機。
+                <%= products[1].product_type %>類遊戲
               </p>
               <p>
-                免費試玩《極地戰嚎 6》，親自體驗為何《GAME
-                INFORMER》刊物會給予「從頭到尾絕無冷場」的評價。購買遊戲本體還可保留你所有的進度。
+                <%- products[1].description %>
+              </p>
+              <p>
+                NT$<%= products[1].price %>
               </p>
               <a href=""><i class="bi bi-shop-window"></i></a>
               <a href=""><i class="bi bi-cart2"></i></a>
             </div>
             <div id="text3" class="text">
-              <h1>《PUBG》</h1>
+              <h1>《<%= products[2].product_name %>》</h1>
               <p>
-                進入血脈賁張的現代游擊革命世界。探索令人嘆為觀止的景觀、直覺式的槍戰、多元的遊戲體驗與更多精彩內容——現在正是加入戰鬥的最好時機。
+                <%= products[2].product_type %>類遊戲
               </p>
               <p>
-                免費試玩《極地戰嚎 6》，親自體驗為何《GAME
-                INFORMER》刊物會給予「從頭到尾絕無冷場」的評價。購買遊戲本體還可保留你所有的進度。
+                <%- products[2].description %>
+              </p>
+              <p>
+                NT$<%= products[2].price %>
               </p>
               <a href=""><i class="bi bi-shop-window"></i></a>
               <a href=""><i class="bi bi-cart2"></i></a>
             </div>
             <div id="text4" class="text">
-              <h1>《糖豆人》</h1>
+              <h1>《<%= products[3].product_name %>》</h1>
               <p>
-                進入血脈賁張的現代游擊革命世界。探索令人嘆為觀止的景觀、直覺式的槍戰、多元的遊戲體驗與更多精彩內容——現在正是加入戰鬥的最好時機。
+                <%= products[3].product_type %>類遊戲
               </p>
               <p>
-                免費試玩《極地戰嚎 6》，親自體驗為何《GAME
-                INFORMER》刊物會給予「從頭到尾絕無冷場」的評價。購買遊戲本體還可保留你所有的進度。
+                <%- products[3].description %>
+              </p>
+              <p>
+                NT$<%= products[3].price %>
               </p>
               <a href=""><i class="bi bi-shop-window"></i></a>
               <a href=""><i class="bi bi-cart2"></i></a>
             </div>
             <div id="text5" class="text">
-              <h1>《世紀帝國》</h1>
+              <h1>《<%= products[4].product_name %>》</h1>
               <p>
-                進入血脈賁張的現代游擊革命世界。探索令人嘆為觀止的景觀、直覺式的槍戰、多元的遊戲體驗與更多精彩內容——現在正是加入戰鬥的最好時機。
+                <%= products[4].product_type %>類遊戲
               </p>
               <p>
-                免費試玩《極地戰嚎 6》，親自體驗為何《GAME
-                INFORMER》刊物會給予「從頭到尾絕無冷場」的評價。購買遊戲本體還可保留你所有的進度。
+                <%- products[4].description %>
+              </p>
+              <p>
+                NT$<%= products[4].price %>
               </p>
               <a href=""><i class="bi bi-shop-window"></i></a>
               <a href=""><i class="bi bi-cart2"></i></a>
@@ -251,13 +226,13 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
             <img src="/img/header/head_logo.png" alt="logo" />
             <h2>熱門遊戲夏季特賣</h2>
             <div class="timebox1">
-              <span class="timetext">30</span>
+              <span class="timetext days"></span>
               <span>Day</span>
-              <span class="timetext">18</span>
+              <span class="timetext hours"></span>
               <span>Hr</span>
-              <span class="timetext">35</span>
+              <span class="timetext minutes"></span>
               <span>Min</span>
-              <span class="timetext">10</span>
+              <span class="timetext seconds"></span>
               <span>Sec</span>
             </div>
             <!-- <a href=""><span>火速前往</span></a> -->
@@ -291,20 +266,20 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
               <div class="newsleft">
                 <a href="">
                   <div class="newsbox">
-                    <img src="/img/index/LOL.jpg" alt="" />
-                    <h2>03/26 英雄聯盟更新 全新英雄登場！</h2>
+                    <img src="/img/news/<%- news[0].news_img %>" alt="" />
+                    <h2><%- news[0].news_title %></h2>
                     <p>
-                      進入血脈賁張的現代游擊革命世界。探索令人嘆為觀止的景觀、直覺式的槍戰、多元的遊戲體驗與更多精彩內容——現在正是加入戰鬥的最好時機。
+                      <%- news[0].content %>
                     </p>
                   </div>
                   <br /><br /><br /><br /><br /><br />
                 </a>
                 <a href="">
                   <div class="newsbox">
-                    <img src="/img/index/LOL.jpg" alt="" />
-                    <h2>03/26 英雄聯盟更新 全新英雄登場！</h2>
+                    <img src="/img/news/<%- news[2].news_img %>" alt="" />
+                    <h2><%- news[2].news_title %></h2>
                     <p>
-                      進入血脈賁張的現代游擊革命世界。探索令人嘆為觀止的景觀、直覺式的槍戰、多元的遊戲體驗與更多精彩內容——現在正是加入戰鬥的最好時機。
+                      <%- news[2].content %>
                     </p>
                   </div>
                 </a>
@@ -314,41 +289,38 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                 <br /><br /><br /><br /><br /><br />
                 <a href="">
                   <div class="newsbox">
-                    <img src="/img/index/LOL.jpg" alt="" />
-                    <h2>03/26 英雄聯盟更新 全新英雄登場！</h2>
+                    <img src="/img/news/<%- news[1].news_img %>" alt="" />
+                    <h2><%- news[1].news_title %></h2>
                     <p>
-                      進入血脈賁張的現代游擊革命世界。探索令人嘆為觀止的景觀、直覺式的槍戰、多元的遊戲體驗與更多精彩內容——現在正是加入戰鬥的最好時機。
+                      <%- news[1].content %>
                     </p>
                   </div>
                 </a>
                 <br /><br /><br /><br /><br /><br />
                 <a href="">
                   <div class="newsbox">
-                    <img src="/img/index/LOL.jpg" alt="" />
-                    <h2>03/26 英雄聯盟更新 全新英雄登場！</h2>
+                    <img src="/img/news/<%- news[3].news_img %>" alt="" />
+                    <h2><%- news[3].news_title %></h2>
                     <p>
-                      進入血脈賁張的現代游擊革命世界。探索令人嘆為觀止的景觀、直覺式的槍戰、多元的遊戲體驗與更多精彩內容——現在正是加入戰鬥的最好時機。
+                      <%- news[3].content %>
                     </p>
                   </div>
                 </a>
               </div>
             </div>
             <div class="newsbut">
-              <a href="">查看更多</a>
+              <a href="/news/latest">查看更多</a>
             </div>
           </div>
           <div class="renewAll" id="renewAll">
             <div class="renewindex">
               <div class="renewpic">
-                <img src="/img/index/LOL.jpg" alt="" />
+                <img src="/img/news/<%- gameUpdate[0].news_img %>" alt="" />
               </div>
               <div class="renewtext">
-                <h2>13.7版本更新公告</h2>
+                <h2><%- gameUpdate[0].news_title %></h2>
                 <p>
-                  在13.8版本，一批聯盟精靈和「聯萌英雄
-                  墨菲特」將化身機甲特工！趕快進入駕駛艙，操縱鐵金剛拯救世界吧！覺得火箭飛拳太耗燃料，想用比較環保的投石攻擊？沒問題！「聯萌英雄
-                  墨菲特」也會在這個版本於商店登場！
-                  除了各種新的機甲主題風格裝飾以外，我們還重製了牛年特戰隊，並大幅削弱了近期人氣爆發的駭客和路西恩刷角流。
+                  <%- gameUpdate[0].content %>
                 </p>
                 <a href="">查看全文</a>
               </div>
@@ -356,81 +328,80 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 
             <div class="renewindex mg-top">
               <div class="renewpic">
-                <img src="/img/index/PUBG.jpg" alt="" />
+                <img src="/img/news/<%- gameUpdate[1].news_img %>" alt="" />
               </div>
               <div class="renewtext">
-                <h2>13.7版本更新公告</h2>
+                <h2><%- gameUpdate[1].news_title %></h2>
                 <p>
-                  在13.8版本，一批聯盟精靈和「聯萌英雄
-                  墨菲特」將化身機甲特工！趕快進入駕駛艙，操縱鐵金剛拯救世界吧！覺得火箭飛拳太耗燃料，想用比較環保的投石攻擊？沒問題！「聯萌英雄
-                  墨菲特」也會在這個版本於商店登場！
-                  除了各種新的機甲主題風格裝飾以外，我們還重製了牛年特戰隊，並大幅削弱了近期人氣爆發的駭客和路西恩刷角流。
+                  <%- gameUpdate[1].content %>
                 </p>
                 <a href="">查看全文</a>
               </div>
             </div>
             <div class="renewindex mg-top">
               <div class="renewpic">
-                <img src="/img/index/PUBG.jpg" alt="" />
+                <img src="/img/news/<%- gameUpdate[2].news_img %>" alt="" />
               </div>
               <div class="renewtext">
-                <h2>13.7版本更新公告</h2>
+                <h2><%- gameUpdate[2].news_title %></h2>
                 <p>
-                  在13.8版本，一批聯盟精靈和「聯萌英雄
-                  墨菲特」將化身機甲特工！趕快進入駕駛艙，操縱鐵金剛拯救世界吧！覺得火箭飛拳太耗燃料，想用比較環保的投石攻擊？沒問題！「聯萌英雄
-                  墨菲特」也會在這個版本於商店登場！
-                  除了各種新的機甲主題風格裝飾以外，我們還重製了牛年特戰隊，並大幅削弱了近期人氣爆發的駭客和路西恩刷角流。
+                  <%- gameUpdate[2].content %>
                 </p>
                 <a href="">查看全文</a>
               </div>
+            </div>
+            <div class="newsbut">
+              <a href="/news/games_updates">查看更多</a>
             </div>
           </div>
           <div class="discountAll" id="discountAll">
             <div class="discountindex">
               <div class="discountpic">
-                <img src="/img/index/LOL.jpg" alt="" />
+                <img src="/img/news/<%- promotion[0].news_img %>" alt="" />
               </div>
               <div class="discounttext">
-                <h2>13.7版本更新公告</h2>
+                <h2><%- promotion[0].news_title %></h2>
                 <p>
-                  在13.8版本，一批聯盟精靈和「聯萌英雄
-                  墨菲特」將化身機甲特工！趕快進入駕駛艙，操縱鐵金剛拯救世界吧！覺得火箭飛拳太耗燃料，想用比較環保的投石攻擊？沒問題！「聯萌英雄
-                  墨菲特」也會在這個版本於商店登場！
-                  除了各種新的機甲主題風格裝飾以外，我們還重製了牛年特戰隊，並大幅削弱了近期人氣爆發的駭客和路西恩刷角流。
+                  <%- promotion[0].content %>
+                </p>
+                <p>
+                  <%- promotion[0].dateTime %>
                 </p>
                 <a href="">查看全文</a>
               </div>
             </div>
-
-            <div class="renewindex mg-top">
-              <div class="renewpic">
-                <img src="/img/index/PUBG.jpg" alt="" />
+            <div class="discountindex mg-top">
+              <div class="discountpic">
+                <img src="/img/news/<%- promotion[1].news_img %>" alt="" />
               </div>
-              <div class="renewtext">
-                <h2>13.7版本更新公告</h2>
+              <div class="discounttext">
+                <h2><%- promotion[1].news_title %></h2>
                 <p>
-                  在13.8版本，一批聯盟精靈和「聯萌英雄
-                  墨菲特」將化身機甲特工！趕快進入駕駛艙，操縱鐵金剛拯救世界吧！覺得火箭飛拳太耗燃料，想用比較環保的投石攻擊？沒問題！「聯萌英雄
-                  墨菲特」也會在這個版本於商店登場！
-                  除了各種新的機甲主題風格裝飾以外，我們還重製了牛年特戰隊，並大幅削弱了近期人氣爆發的駭客和路西恩刷角流。
+                  <%- promotion[1].content %>
+                </p>
+                <p>
+                  <%- promotion[1].dateTime %>
                 </p>
                 <a href="">查看全文</a>
               </div>
             </div>
-            <div class="renewindex mg-top">
-              <div class="renewpic">
-                <img src="/img/index/PUBG.jpg" alt="" />
+            <div class="discountindex mg-top">
+              <div class="discountpic">
+                <img src="/img/news/<%- promotion[2].news_img %>" alt="" />
               </div>
-              <div class="renewtext">
-                <h2>13.7版本更新公告</h2>
+              <div class="discounttext">
+                <h2><%- promotion[2].news_title %></h2>
                 <p>
-                  在13.8版本，一批聯盟精靈和「聯萌英雄
-                  墨菲特」將化身機甲特工！趕快進入駕駛艙，操縱鐵金剛拯救世界吧！覺得火箭飛拳太耗燃料，想用比較環保的投石攻擊？沒問題！「聯萌英雄
-                  墨菲特」也會在這個版本於商店登場！
-                  除了各種新的機甲主題風格裝飾以外，我們還重製了牛年特戰隊，並大幅削弱了近期人氣爆發的駭客和路西恩刷角流。
+                  <%- promotion[2].content %>
+                </p>
+                <p>
+                  <%- promotion[2].dateTime %>
                 </p>
                 <a href="">查看全文</a>
               </div>
+            </div>
+            <div class="newsbut">
+              <a href="/news/products_promotions">查看更多</a>
             </div>
           </div>
           <div class="productAll" id="productAll">
@@ -446,11 +417,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
     <script src="/app/app.js"></script>
 
     <!-- slick輪播圖 -->
-    <script
-      src="./kits/slick/slick/slick.js"
-      type="text/javascript"
-      charset="utf-8"
-    ></script>
+    <script src="./kits/slick/slick/slick.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
       $(".center").slick({
         centerMode: true,
@@ -518,5 +485,6 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
         thumbnails.mount();
       });
     </script>
-  </body>
+</body>
+
 </html>

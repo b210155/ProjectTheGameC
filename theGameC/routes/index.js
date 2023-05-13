@@ -1,15 +1,40 @@
 const express = require("express");
 const page = express.Router();
-const path = require("path");
+const axios = require("axios");
 
-page.get("/", (req, res) => {
-  // 確定登入以後session有存入到首頁
-  if (req.session) {
-    console.log(req.session.userId);
-    console.log(req.session.userName);
-    console.log(req.session.email);
-  }
-  res.render("index");
+const index_select = require('./index_CRUD/index_select')
+
+
+page.get("/", async (req, res) => {
+  //線上遊戲
+  let games = await axios.get(
+    `http://localhost:80/getGames`
+  );
+  //新聞
+  let News = await axios.get(
+    `http://localhost:80/getNews`
+  );
+  //遊戲更新
+  let GameUpdate = await axios.get(
+    `http://localhost:80/getGameUpdate`
+  );
+  let promotion = await axios.get(
+    `http://localhost:80/getpromotion`
+  );
+  let products = await axios.get(
+    `http://localhost:80/getproducts`
+  );
+
+  res.render("index", {
+    gameimg: games.data,
+    news: News.data,
+    gameUpdate: GameUpdate.data,
+    promotion: promotion.data,
+    products:products.data,
+  });
+
 });
+
+page.use("/", index_select)
 
 module.exports = page;

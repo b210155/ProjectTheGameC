@@ -59,6 +59,7 @@ const mailPage = require("./routes/mail"); // 客服信箱頁
 const qaPage = require("./routes/qa"); // 客服信箱頁
 const rulePage = require("./routes/rule"); // 客服信箱頁
 const onlogin = require("./routes/onlogin"); // 已登入的會員頁面
+const aboutme = require("./routes/about"); //關於
 
 /*--- 導入 CRUD for 全體 路由 ---*/
 // 這與專屬某網頁的CRUD不同，這裡主要放給全體路由都能做使用的CRUD
@@ -83,6 +84,7 @@ app.use("/mail", mailPage);
 app.use("/qa", qaPage);
 app.use("/rule/", rulePage);
 app.use("/onlogin", onlogin);
+app.use("/About", aboutme);
 
 /*--- CRUD for All 路由 ---*/
 // ex. 想看 user6 的資料就是

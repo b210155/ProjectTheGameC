@@ -89,5 +89,37 @@ $(document).ready(function () {
         $('#discountButs').removeClass("butfocus");
     });
 
+    //設定倒數計時
+    var targetDate = new Date("2023-06-10T00:00:00Z");
+
+    function updateCountdown() {
+        // 計算剩餘時間
+        var timeDiff = targetDate - new Date();
+        var seconds = Math.floor(timeDiff / 1000);
+        var minutes = Math.floor(seconds / 60);
+        var hours = Math.floor(minutes / 60);
+        var days = Math.floor(hours / 24);
+
+        function padZero(num) {
+            // 如果是個位數字則補0
+            if (num < 10) {
+                return '0' + num;
+            } else {
+                return num;
+            }
+        }
+
+        // 更新倒數計時器顯示
+        $('.timebox1 .days').text(padZero(days));
+        $('.timebox1 .hours').text(padZero(hours % 24));
+        $('.timebox1 .minutes').text(padZero(minutes % 60));
+        $('.timebox1 .seconds').text(padZero(seconds % 60));
+    }
+
+    // 初始呼叫一次
+    updateCountdown();
+
+    // 每秒更新一次
+    setInterval(updateCountdown, 1000);
 });
 
