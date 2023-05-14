@@ -54,7 +54,7 @@ const loginPage = require("./routes/login"); // 登入頁
 const gamePage = require("./routes/games"); // 遊戲大頁
 const walletPage = require("./routes/wallet"); // 錢包頁
 const newsPage = require("./routes/news"); // 新聞頁
-const shoppingCartPage = require("./routes/products"); // 購物車頁
+const productPage = require("./routes/products"); // 商店頁(包括購物車頁)
 const mailPage = require("./routes/mail"); // 客服信箱頁
 const qaPage = require("./routes/qa"); // 客服信箱頁
 const rulePage = require("./routes/rule"); // 客服信箱頁
@@ -77,7 +77,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", indexPage);
 app.use("/wallet/", walletPage);
 app.use("/news/", newsPage);
-app.use("/products/", shoppingCartPage);
+app.use("/products/", productPage);
 app.use("/login", loginPage);
 app.use("/games", gamePage);
 app.use("/mail", mailPage);
