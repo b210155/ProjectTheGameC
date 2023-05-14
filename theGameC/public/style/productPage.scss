@@ -89,6 +89,9 @@
         }
       }
       .s1btnDiv {
+        span {
+          color: white;
+        }
         button {
           background-color: #281004;
           border: 1px solid #131313;
@@ -228,6 +231,9 @@
         }
       }
       .s1btnDiv {
+        span {
+          color: rgb(61, 61, 61);
+        }
         button {
           background-color: #281004;
           border: 1px solid #131313;
@@ -362,6 +368,9 @@
         }
       }
       .s1btnDiv {
+        span {
+          color: white;
+        }
         button {
           background-color: #131313;
           border: 1px solid #131313;
@@ -560,6 +569,10 @@
       justify-content: center;
       align-items: center;
       gap: 25px;
+      span {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
       button {
         background-color: #131313;
         border: 1px solid #131313;
