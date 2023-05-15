@@ -619,6 +619,7 @@
   width: 90%;
   margin: 30px auto 60px auto;
   padding: 10px;
+  position: relative;
   h2 {
     color: white;
     margin-bottom: 20px;
@@ -856,11 +857,11 @@
   pointer-events: none;
 }
 .alreadyComment::after {
-  content: "已發表過評論，您可以對評論進行修改或刪除";
+  content: "已發表評論，您可以對評論進行修改或刪除";
   font-size: 1.75rem;
   color: #ffffff;
   background-color: rgba(0, 0, 0, 0.3);
-  padding: 15px 40px;
+  padding: 15px 35px;
   border-radius: 10px;
   position: absolute;
   top: 50%;
