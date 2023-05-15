@@ -294,11 +294,13 @@
   font-size: 20px;
 }
 .thefindcontent button {
-  width: 80px;
+  width: 90px;
   background-color: #0057a8;
   color: aliceblue;
   font-weight: bolder;
   padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   border-radius: 10px;
   font-size: 20px;
   margin-left: 10px;
@@ -363,7 +365,10 @@
 margin-right: 8px;
 text-align: justify;
 }
-
+.result-item a p span{
+  font-size: 16px;
+  font-weight: none;
+}
 .result-p {
   /* border: 1px solid yellow; */
   border-radius: 5px;

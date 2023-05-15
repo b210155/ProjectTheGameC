@@ -403,30 +403,42 @@ footer div.footer-s2 p {
   height: 370px;
   -o-object-fit: fill;
   object-fit: fill;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
+  /* filter: blur(7px); */
 }
 
-.section1 .s1container img {
+.section1 .s1container video {
   width: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  /* filter: blur(7px); */
 }
 
 .section1 div.video {
-  width: 85%;
-  height: 250px;
+  width: 90%;
+  height: 380px;
   position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 25%;
+  left: 5%;
+  overflow: hidden;
+  /* transform: translate(-50%, -50%); */
   z-index: 55;
 }
 
 .section1 div.video img {
   width: 100%;
+}
+.video video{
+  width: 100%;
+  object-position: center;
+  /* position: absolute; */
+  /* top: 30px; */
+}
+.video{
+  margin-top: 80px;
 }
 
 /* ------- */
@@ -952,11 +964,13 @@ width: 250px;
   font-size: 20px;
 }
 .thefindcontent button {
-  width: 80px;
+  width: 90px;
   background-color: #0057a8;
   color: aliceblue;
   font-weight: bolder;
   padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   border-radius: 10px;
   font-size: 20px;
   margin-left: 10px;
