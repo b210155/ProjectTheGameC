@@ -496,7 +496,7 @@ footer div.footer-s2 p {
 .image-container {
   /* border: 1px solid orangered; */
   /* width: 60%; */
-  width: 60%;
+  width: 50%;
   /* max-width: 700px; */
   display: flex;
   flex-wrap: wrap;
@@ -746,7 +746,11 @@ h2 {
 .splide__slide.is-active {
   opacity: 1;
 }
-
+/* 隱藏本來輪播圖左右兩側的箭頭按鈕 */
+.splide__arrow {
+  /* border: 1px solid green; */
+  display: none;
+  }
 .splide__slide img {
   /* border: 1px solid red; */
   width: 100%;
@@ -816,15 +820,19 @@ h2 {
 
 .image-box {
   position: relative;
-  height: 300px;
-  width: 300px;
+  /* height: 300px; */
+  /* width: 300px; */
+  height: 250px;
+  width: 250px;
   overflow: hidden;
   /* border: 1px solid green; */
 }
 
 .image-box img {
-  height: 300px;
-  width: 300px;
+  /* height: 300px; */
+  /* width: 300px; */
+  height: 250px;
+width: 250px;
 }
 
 .hover-image {
@@ -886,18 +894,18 @@ h2 {
   opacity: 0.8;
 }
 
+
+
 /* -----------------------測試搜索欄----------------------- */
 .overlay {
-  position: fixed;
+  position:absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height:470%;
   background-color: rgba(0, 0, 0, 0.8);
   display: none;
   z-index: 9999;
-  /* display:flex ; */
-  /* flex-direction: column; */
   justify-content: center;
 }
 
@@ -944,11 +952,11 @@ h2 {
   font-size: 20px;
 }
 .thefindcontent button {
-  width: 100px;
+  width: 80px;
   background-color: #0057a8;
   color: aliceblue;
   font-weight: bolder;
-  padding: 15px;
+  padding: 10px;
   border-radius: 10px;
   font-size: 20px;
   margin-left: 10px;
@@ -957,18 +965,20 @@ h2 {
 }
 
 .thecococ {
-  border: 1px solid pink;
+  /* border: 1px solid pink; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 /* 設定如果收尋到相關遊戲的話出現的div樣式 */
 .result-item {
-  border: 1px solid black;
+  /* border: 8px solid yellow; */
   border-radius: 5px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   background-color: #e7e7e7;
   display: flex;
   width: 800px;
@@ -1009,19 +1019,140 @@ h2 {
 }
 
 .result-p {
-  border: 1px solid black;
+  /* border: 1px solid yellow; */
   border-radius: 5px;
   padding: 20px;
   margin-top: 50px;
   margin-bottom: 50px;
-  background-color: #e7e7e7;
+  /* background-color: #e7e7e7; */
+  color: #e7e7e7;
+  font-size: 20px;
   display: flex;
-  width: 300px;
+  width: 200px;
   justify-content: center;
   align-items: center;
 }
-.result-p p {
-  color: rgb(175, 66, 66);
-  font-weight: bolder;
-  font-size: 20px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,7 +5,7 @@ const config = require("../CRUD/config"); // 引用 config
 
 //中間區塊要抓遊戲種類圖片 資料庫：games
 page.get('/game_select', (req, res) => {
-  var sql = "SELECT game_type , image ,game_name FROM games;";
+  var sql = "SELECT game_type , image ,game_name,age_rating FROM games;";
   config.query(sql, function (err, results, fields) {
     if (err) {
       res.status(500).json({error:'selec錯誤',details:err});
