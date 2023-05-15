@@ -4,6 +4,8 @@ const axios = require("axios");
 
 const product_CRUD_select = require("./product_CRUD/p_select");
 const product_CRUD_insert = require("./product_CRUD/p_insert");
+const product_CRUD_delete = require("./product_CRUD/p_delete");
+const product_CRUD_update = require("./product_CRUD/p_update");
 
 /* 購物車頁 */
 page.get("/shopping_cart", (req, res) => {
@@ -16,29 +18,35 @@ page.get("/product_ID/:product_id", async (req, res) => {
   let productSelect = await axios.get(
     `http://localhost:80/products/api/productID/${req.params.product_id}`
   );
-  // 類型 Icon
+  // 類型 Icon、CSS背景、你可能喜歡 SELECT 路徑
   var typeIcon = "";
   var typeCss = "";
+  var typeName = ""; // 你可能會喜歡 SELECT 路徑
   switch (productSelect.data.product_type) {
     case "動作":
       typeIcon = "/img/Products/ProductType/typeIAction.png";
       typeCss = "ProductPageBgAction";
+      typeName = productSelect.data.product_type;
       break;
     case "冒險":
       typeIcon = "/img/Products/ProductType/typeIAVG.png";
       typeCss = "ProductPageBgAVG";
+      typeName = productSelect.data.product_type;
       break;
     case "模擬":
       typeIcon = "/img/Products/ProductType/typeISLG.png";
       typeCss = "ProductPageBgSLG";
+      typeName = productSelect.data.product_type;
       break;
     case "策略":
       typeIcon = "/img/Products/ProductType/typeIStra.png";
       typeCss = "ProductPageBgStrategy";
+      typeName = productSelect.data.product_type;
       break;
     case "運動與競技":
       typeIcon = "/img/Products/ProductType/typeICom.png";
       typeCss = "ProductPageBgEsport";
+      typeName = productSelect.data.product_type;
       break;
   }
   // 年齡限制
@@ -58,13 +66,25 @@ page.get("/product_ID/:product_id", async (req, res) => {
       break;
   }
 
-  /* 商品評分 */
+  /* 商品評分 - 平均 */
   let productRatingSelect = await axios.get(
     `http://localhost/products/api/productID/${req.params.product_id}/rating`
   );
   let productRating = productRatingSelect.data.average_rating
     ? productRatingSelect.data.average_rating.toFixed(1)
     : "N";
+
+  /* 用戶 - 商品評論 */
+  let user_productReview = await axios.get(
+    `http://localhost/products/api/productID/${req.params.product_id}/userID/${res.locals.LoginUserID}/rating`
+  );
+  // console.log(user_productReview);
+
+  /* 你可能會喜歡 */
+  let user_mayLike = await axios.get(
+    `http://localhost/products/api/product_type/${typeName}`
+  );
+  console.log(user_mayLike.data);
 
   /* 判斷是否登入 */
   if (res.locals.LoginUserID) {
@@ -76,6 +96,8 @@ page.get("/product_ID/:product_id", async (req, res) => {
       productData: productSelect.data,
       productRating: productRating,
       login_user_id: res.locals.LoginUserID,
+      u_p_review: user_productReview.data,
+      userLike: user_mayLike.data,
     });
   } else {
     // 未登入
@@ -86,11 +108,15 @@ page.get("/product_ID/:product_id", async (req, res) => {
       productData: productSelect.data,
       productRating: productRating,
       login_user_id: res.locals.LoginUserID,
+      u_p_review: user_productReview.data,
+      userLike: user_mayLike.data,
     });
   }
 });
 
 page.use("/", product_CRUD_select);
 page.use("/", product_CRUD_insert);
+page.use("/", product_CRUD_delete);
+page.use("/", product_CRUD_update);
 
 module.exports = page;

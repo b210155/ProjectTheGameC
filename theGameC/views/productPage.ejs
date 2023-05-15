@@ -43,7 +43,7 @@
               <p>年齡限制： <span><%- ageRating%></span></p>
             </div>
             <div>
-              <p>評分：<span>5</span></p>
+              <p>評分：<span><%- productRating %></span></p>
               <p>購買人數：<span><%- productData.buy_count%></span></p>
             </div>
             <div class="s1btnDiv">
@@ -56,10 +56,9 @@
         <!-- s2 評論 -->
         <section class="section2">
           <h2>發表評論</h2>
-
           <% if (login_user_id){%>
           <!-- 已登入 -->
-          <form id="formReview" class="commitLogin">
+          <form id="formReview" class="commitLogin <%- u_p_review?"alreadyComment":"" %>">
             <input
               id="productID"
               type="hidden"
@@ -70,7 +69,11 @@
               <div>
                 <span>評分：</span
                 ><span class="star-rating">
-                  <input id="star1" type="radio" name="rating" value="1" />
+                  <input
+                    id="star1"
+                    type="radio"
+                    name="rating"
+                    value="1" />
                   <label for="star1" title="1 star" class="star"></label>
                   <input id="star2" type="radio" name="rating" value="2" />
                   <label for="star2" title="2 stars" class="star"></label>
@@ -84,7 +87,12 @@
               </div>
               <div>
                 <span>您的評分：</span> <br />
-                <div><span id="yourRating">?</span> <span>/5</span></div>
+                <div>
+                  <span id="yourRating"
+                    ><%- u_p_review?u_p_review.rating:"?" %></span
+                  >
+                  <span>/5</span>
+                </div>
               </div>
               <div>
                 <span>當前評分：</span><br />
@@ -96,10 +104,14 @@
             </div>
             <div class="s2right">
               <p>撰寫評論</p>
-              <textarea name="comment" id="" cols="30" rows="10"></textarea>
+              <textarea name="comment" id="" cols="30" rows="10"><%- u_p_review?u_p_review.comment:"" %></textarea>
               <div><button>張貼</button></div>
             </div>
           </form>
+          <!-- 評論修改、刪除 -->
+          <div class="Comment_edit_deleteButton">
+            <%- u_p_review ? '<button id="commentEdit" type="button">修改</button> <button id="commentDelete" type="button">刪除</button>' : null %>
+          </div> 
           <% } else {%>
           <!-- 未登入 -->
           <div class="commitNotLogin">
@@ -112,54 +124,59 @@
         </section>
 
         <!-- s3 推薦商品 -->
+
+          
+      
         <section class="section3">
           <h2>或許您也會喜歡</h2>
           <div class="recommendedProducts">
             <!-- 單個商品 -->
+            <% userLike.map(function(v,i){%>
             <div class="recomProduct">
               <div class="recPImgDiv">
-                <img src="/img/Products/simulation/Cities.jpg" alt="" />
+                <img src="<%-`/img/Products/${v.image}` %>" alt="" />
               </div>
               <div class="recPInfo">
                 <div class="recPtitle">
-                  <h3>CSO 絕對武力</h3>
-                  <div><span id="recPtype">射擊</span></div>
+                  <h3><%- v.product_name %></h3>
+                  <div><span id="recPtype"><%- v.product_type %></span></div>
                 </div>
                 <div class="recPTextLimit">
                   <p>
-                    《極地戰嚎5》是一款開放世界的第一人稱動作遊戲，玩家需要與異教勢力作戰，並自由探索世界、狩獵、駕駛車輛。<br />故事背景主要是以美國蒙大拿州當中一個名為希望郡的小鎮，受到末日教派的邪教團體紮根影響，下至人民日常生活用品製造、上至警方與政府單位，都已受其黨羽深度滲透，玩家扮演的則是一個小小的警察，隻身一人四處培植反抗勢力，以期有朝一日能絕地反攻的各種日常生活。
+                    <%- v.description %>
                   </p>
                 </div>
               </div>
               <div class="recPgoPage"><a href="/">前往頁面</a></div>
             </div>
-            <!-- 單個商品 -->
-            <div class="recomProduct">
-              <div class="recPImgDiv">
-                <img src="/img/Products/simulation/Cities.jpg" alt="" />
-              </div>
-              <div class="recPInfo">
-                <div class="recPtitle">
-                  <h3>CSO 絕對武力</h3>
-                  <div><span id="recPtype">射擊</span></div>
-                </div>
-                <div class="recPTextLimit">
-                  <p>
-                    Counter-Strike 是一款經典的第一人
-                    稱射擊遊戲，玩家需要根據任務目標
-                    進行射擊、燒毀物品、拆除炸彈等各
-                    種戰鬥行動。遊戲以恐怖分子和反恐
-                    精英兩方對戰為主題，具有深度和高
-                    度的槍械操作性和社交性的遊戲。
-                  </p>
-                </div>
-              </div>
-              <div class="recPgoPage"><a href="/">前往頁面</a></div>
-            </div>
+            <% }) %>
           </div>
         </section>
       </div>
     </div>
+
+    <!-- 評論修改表單 -->
+    <dialog class="commentEditDialog">
+      <form id="commentEditForm">
+        <div class="editDialogLeft">
+          <p>修改評分：</p>
+          <input name="yourRating" type="hidden" value="<%- u_p_review.rating%>">
+          <select id="editRating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <p class="editRatingBig">5</p>
+        </div>
+        <div class="editDialogRight">  
+          <p>修改評論：</p>
+          <textarea name="editComment" id="" cols="30" rows="10"><%- u_p_review.comment%></textarea>
+          <div><button id="closeEditDialog" type="button">取消修改</button><button>確認修改</button></div>
+        </div>
+      </form>
+    </dialog>
 
     <!-- footer -->
     <%- include('share/footer')%>
@@ -189,34 +206,92 @@
       //   });
       // }
 
+
+      /* dialog rating */
+      $("#editRating").val($('input[name="yourRating"]').val())
+      $(".editRatingBig").html($("#editRating").val());
+      // 大字
+      $("#editRating").on("click", function () {
+        var x = $("#editRating").val();
+        $(".editRatingBig").html(x);
+      });
+      $("#commentEdit").on("click",function(){
+        document.querySelector("dialog").showModal();
+      })
+      $("#closeEditDialog").on("click",function(){
+        document.querySelector("dialog").close();
+      })
+      
+    
+      
+
       ////////////////////////////////////////////////////////////////
       ////////////////////////////////////////////////////////////////
-      /* 上傳評論 */
+      
       $(function () {
         const productId = $("#productID").val();
         const userId = $("#userID").val();
-
+        /* 上傳評論 */
         $("#formReview").on("submit", function (e) {
           e.preventDefault();
-
-          $.ajax({
+          if ($("input[name=rating]:checked").val() == null){
+            alert("請先選擇評分。")
+          } else {
+            $.ajax({
             url: `http://localhost:80/products/api/insertPR/PID/${productId}`,
             type: "POST",
             data: {
               product_id: productId,
               user_id: userId,
               rating: $("input[name=rating]:checked").val(),
-              comment: $("textarea[name=comment]").text(),
+              comment: $("textarea[name=comment]").val(),
             },
           })
             .done((data) => {
-              alert(`感謝您的支持！`);
+              alert(`評論已經發布囉！`);
+              $("#averageRating").text(data.newAverageRating);
+              location.reload();
             })
             .fail((jqXHR, textStatus, errorThrown) => {
               console.error("Error:", textStatus, errorThrown);
-              alert("請稍後重試。");
-            });
+              alert("系統出了問題請稍後重試。");
+            }); 
+          }
         });
+
+         /* 評論刪除 */
+         $("#commentDelete").on("click", function(e){
+          e.preventDefault();
+          $.ajax({
+            url: `http://localhost:80/products/api/DeletePR/PID/${productId}`,
+            type: "DELETE",
+            data: {
+              product_id: productId,
+              user_id: userId,
+            },
+          }).done((data)=>{
+            alert("已將評論刪除！")
+            location.reload();
+          })
+         })
+
+         /* 修改評論 */
+         $("#commentEditForm").on("submit",function(e){
+          e.preventDefault();
+          $.ajax({
+            url: `http://localhost:80/products/api/updatePR/PID/${productId}`,
+            type: "PUT",
+            data: {
+              product_id: productId,
+              user_id: userId,
+              rating:$("#editRating").val(),
+              comment:$("textarea[name='editComment']").val()
+            },
+          }).done((data)=>{
+            alert("評論已更新！")
+            location.reload();
+          })
+         })
       });
     </script>
   </body>

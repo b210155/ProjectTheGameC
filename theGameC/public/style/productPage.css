@@ -126,6 +126,26 @@
 .ProductPageBgAVG .section2 .commitLogin .s2right div button:hover {
   background-color: rgb(172, 172, 172);
 }
+.ProductPageBgAVG .section2 .Comment_edit_deleteButton {
+  margin: 10px 0;
+}
+.ProductPageBgAVG .section2 .Comment_edit_deleteButton button {
+  background-color: #281004;
+  border: 1px solid #131313;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 10px 17px;
+  color: white;
+  transition: 0.15s;
+  cursor: pointer;
+}
+.ProductPageBgAVG .section2 .Comment_edit_deleteButton button:hover {
+  background-color: #000000;
+  border: 1px solid rgb(196, 196, 196);
+  color: rgb(176, 176, 176);
+}
 .ProductPageBgAVG .section3 {
   background-color: #5a3826;
 }
@@ -297,8 +317,8 @@
 .ProductPageBgAction .section1 .s1right .s1btnDiv button,
 .ProductPageBgEsport .section1 .s1right .s1btnDiv button,
 .ProductPageBgStrategy .section1 .s1right .s1btnDiv button {
-  background-color: #131313;
-  border: 1px solid #131313;
+  background-color: #0e0e0e;
+  border: 1px solid #0e0e0e;
 }
 .ProductPageBgAction .section1 .s1right .s1btnDiv button:hover,
 .ProductPageBgEsport .section1 .s1right .s1btnDiv button:hover,
@@ -555,6 +575,9 @@
 .section2 .commitNotLogin div a:hover {
   background-color: rgb(172, 172, 172);
 }
+.section2 .commitNotLogin div a:visited {
+  color: inherit;
+}
 .section2 .commitLogin {
   background-color: #3b3b3b;
   height: 400px;
@@ -618,6 +641,26 @@
 }
 .section2 .commitLogin .s2right div button:hover {
   background-color: rgb(172, 172, 172);
+}
+.section2 .Comment_edit_deleteButton {
+  margin: 10px 0;
+}
+.section2 .Comment_edit_deleteButton button {
+  background-color: #0e0e0e;
+  border: 1px solid #0e0e0e;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 10px 17px;
+  color: white;
+  transition: 0.15s;
+  cursor: pointer;
+}
+.section2 .Comment_edit_deleteButton button:hover {
+  background-color: #000000;
+  border: 1px solid rgb(196, 196, 196);
+  color: rgb(176, 176, 176);
 }
 
 .section3 {
@@ -718,6 +761,102 @@
 .section3 .recommendedProducts .recomProduct .recPgoPage a:hover {
   background-color: #7f7f7f;
   color: rgb(0, 0, 0);
+}
+
+/* 已發表過評論 */
+.alreadyComment * {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  filter: opacity(0.6);
+  pointer-events: none;
+}
+
+.alreadyComment::after {
+  content: "已發表過評論，您可以對評論進行修改或刪除";
+  font-size: 1.75rem;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 15px 40px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* editComment dialog */
+.commentEditDialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 35%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: rgb(104, 104, 104);
+  width: 40%;
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 7px black;
+}
+.commentEditDialog #commentEditForm {
+  display: flex;
+  gap: 20px;
+}
+.commentEditDialog #commentEditForm p {
+  color: white;
+  font-size: 1.15rem;
+  margin: 10px 0;
+}
+.commentEditDialog #commentEditForm .editDialogLeft {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+.commentEditDialog #commentEditForm .editDialogLeft select {
+  width: 100%;
+  font-size: 1.25rem;
+  padding: 2.5px;
+}
+.commentEditDialog #commentEditForm .editDialogLeft .editRatingBig {
+  margin-top: auto;
+  margin-bottom: 55px;
+  text-align: center;
+  font-size: 4.6rem;
+}
+.commentEditDialog #commentEditForm .editDialogRight {
+  flex: 8;
+}
+.commentEditDialog #commentEditForm .editDialogRight textarea {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 1.5rem;
+  border-radius: 2.5px;
+  resize: none;
+}
+.commentEditDialog #commentEditForm .editDialogRight div {
+  width: 100%;
+  padding: 0 5px;
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+}
+.commentEditDialog #commentEditForm .editDialogRight div button {
+  margin-top: 7.5px;
+  padding: 10px 15px;
+  font-size: 1.05rem;
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: #000000;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.commentEditDialog #commentEditForm .editDialogRight div button:hover {
+  border: 1px solid rgb(170, 170, 170);
+  background-color: #000000;
+  color: rgb(122, 122, 122);
 }
 
 .star-rating input[type=radio] {

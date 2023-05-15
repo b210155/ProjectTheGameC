@@ -35,17 +35,37 @@ page.get("/api/productID/:product_id/rating", (req, res) => {
 });
 
 /* 玩家 - 商品 評論 */
-page.get("/api/productID/:product_id/user_id/:user_id", (req, res) => {
+page.get("/api/productID/:product_id/userID/:user_id/rating", (req, res) => {
   var sql =
-    "SELECT pr.*, u.nickname, u.username FROM product_reviews pr JOIN users u ON pr.user_id = u.user_id WHERE pr.user_id = ? AND pr.product_id = ?  ";
+    "SELECT pr.*, u.nickname, u.username FROM product_reviews pr JOIN users u ON pr.user_id = u.user_id WHERE pr.user_id = ? AND pr.product_id = ? ;";
   config.query(
     sql,
     [req.params.user_id, req.params.product_id], // 名稱照 /: 打
     function (err, results, fields) {
       if (err) {
-        res.send("Game_coin 出錯：", err);
+        res.send("出錯：", err);
       } else {
-        res.send(results);
+        res.send(results[0]);
+      }
+    }
+  );
+});
+
+///////////////////////////
+///////////////////////////
+/* 或許您也會喜歡 - products.sql */
+// 依照遊戲類型
+page.get("/api/product_type/:product_type", (req, res) => {
+  var sql =
+    "SELECT * FROM products WHERE product_type = ? ORDER BY RAND() LIMIT 3;";
+  config.query(
+    sql,
+    [req.params.product_type], // 名稱照 /: 打
+    function (err, results, fields) {
+      if (err) {
+        res.send("出錯：", err);
+      } else {
+        res.send(JSON.stringify(results));
       }
     }
   );

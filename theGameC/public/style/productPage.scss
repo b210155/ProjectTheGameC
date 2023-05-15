@@ -150,6 +150,26 @@
         }
       }
     }
+    .Comment_edit_deleteButton {
+      margin: 10px 0;
+      button {
+        background-color: #281004;
+        border: 1px solid #131313;
+        border-radius: 10px;
+        color: white;
+        font-size: 1.25rem;
+        font-weight: 600;
+        padding: 10px 17px;
+        color: white;
+        transition: 0.15s;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #000000;
+        border: 1px solid rgb(196, 196, 196);
+        color: rgb(176, 176, 176);
+      }
+    }
   }
 
   // s3 適合您的商品
@@ -372,8 +392,8 @@
           color: white;
         }
         button {
-          background-color: #131313;
-          border: 1px solid #131313;
+          background-color: #0e0e0e;
+          border: 1px solid #0e0e0e;
         }
         button:hover {
           background-color: #000000;
@@ -631,6 +651,9 @@
       a:hover {
         background-color: rgb(172, 172, 172);
       }
+      a:visited {
+        color: inherit;
+      }
     }
   }
 
@@ -698,6 +721,27 @@
           background-color: rgb(172, 172, 172);
         }
       }
+    }
+  }
+
+  .Comment_edit_deleteButton {
+    margin: 10px 0;
+    button {
+      background-color: #0e0e0e;
+      border: 1px solid #0e0e0e;
+      border-radius: 10px;
+      color: white;
+      font-size: 1.25rem;
+      font-weight: 600;
+      padding: 10px 17px;
+      color: white;
+      transition: 0.15s;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #000000;
+      border: 1px solid rgb(196, 196, 196);
+      color: rgb(176, 176, 176);
     }
   }
 }
@@ -805,6 +849,98 @@
   }
 }
 
+/* 已發表過評論 */
+.alreadyComment * {
+  user-select: none;
+  filter: opacity(0.6);
+  pointer-events: none;
+}
+.alreadyComment::after {
+  content: "已發表過評論，您可以對評論進行修改或刪除";
+  font-size: 1.75rem;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 15px 40px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* editComment dialog */
+.commentEditDialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 35%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: rgba(104, 104, 104, 1);
+  width: 40%;
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 7px black;
+  #commentEditForm {
+    display: flex;
+    gap: 20px;
+    p {
+      color: white;
+      font-size: 1.15rem;
+      margin: 10px 0;
+    }
+    .editDialogLeft {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      select {
+        width: 100%;
+        font-size: 1.25rem;
+        padding: 2.5px;
+      }
+      .editRatingBig {
+        margin-top: auto;
+        margin-bottom: 55px;
+        text-align: center;
+        font-size: 4.6rem;
+      }
+    }
+    .editDialogRight {
+      flex: 8;
+      textarea {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 1.5rem;
+        border-radius: 2.5px;
+        resize: none;
+      }
+      div {
+        width: 100%;
+        padding: 0 5px;
+        display: flex;
+        justify-content: end;
+        gap: 20px;
+        button {
+          margin-top: 7.5px;
+          padding: 10px 15px;
+          font-size: 1.05rem;
+          border-radius: 5px;
+          border: 1px solid white;
+          background-color: #000000;
+          color: #ffffff;
+          font-weight: 600;
+          cursor: pointer;
+        }
+        button:hover {
+          border: 1px solid rgb(170, 170, 170);
+          background-color: #000000;
+          color: rgb(122, 122, 122);
+        }
+      }
+    }
+  }
+}
 ////////////////////////////
 ////////////////////////////
 ////////////////////////////
