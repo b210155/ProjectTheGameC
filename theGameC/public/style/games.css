@@ -496,7 +496,7 @@ footer div.footer-s2 p {
 .image-container {
   /* border: 1px solid orangered; */
   /* width: 60%; */
-  width: 60%;
+  width: 50%;
   /* max-width: 700px; */
   display: flex;
   flex-wrap: wrap;
@@ -746,7 +746,11 @@ h2 {
 .splide__slide.is-active {
   opacity: 1;
 }
-
+/* 隱藏本來輪播圖左右兩側的箭頭按鈕 */
+.splide__arrow {
+  /* border: 1px solid green; */
+  display: none;
+  }
 .splide__slide img {
   /* border: 1px solid red; */
   width: 100%;
@@ -816,15 +820,19 @@ h2 {
 
 .image-box {
   position: relative;
-  height: 300px;
-  width: 300px;
+  /* height: 300px; */
+  /* width: 300px; */
+  height: 250px;
+  width: 250px;
   overflow: hidden;
   /* border: 1px solid green; */
 }
 
 .image-box img {
-  height: 300px;
-  width: 300px;
+  /* height: 300px; */
+  /* width: 300px; */
+  height: 250px;
+width: 250px;
 }
 
 .hover-image {
