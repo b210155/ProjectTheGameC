@@ -91,6 +91,7 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -105,17 +106,21 @@ nav,
 section {
   display: block;
 }
+
 body {
   line-height: 1;
 }
+
 ol,
 ul {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -123,6 +128,7 @@ q:after {
   content: "";
   content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -138,6 +144,7 @@ body {
   overflow-x: hidden;
   width: 100%;
 }
+
 /* header */
 /* header {
     background-color: #1c3d5c;
@@ -361,9 +368,11 @@ footer div.footer-s2 p {
   margin: auto;
   margin-top: 50px;
 }
+
 .topbox span {
   color: #1c3d5c;
 }
+
 .topbox a {
   text-decoration: none;
 }
@@ -373,6 +382,7 @@ footer div.footer-s2 p {
   /* border: 1px solid black; */
   position: relative;
 }
+
 .textbox svg {
   /* border: 1px solid rebeccapurple; */
   margin-left: 3px;
@@ -387,6 +397,7 @@ footer div.footer-s2 p {
   width: 60%;
   margin: auto;
 }
+
 .topic h1 {
   text-align: center;
   color: #1c3d5c;
@@ -407,10 +418,12 @@ footer div.footer-s2 p {
   margin-left: auto;
   margin-right: auto;
 }
+
 .choose h3 {
   color: #1c3d5c;
   margin-bottom: 10px;
 }
+
 .choose select {
   border: 1px solid #1c3d5c;
   width: 100%;
@@ -426,10 +439,12 @@ footer div.footer-s2 p {
   margin-left: auto;
   margin-right: auto;
 }
+
 .subject h3 {
   color: #1c3d5c;
   margin-bottom: 10px;
 }
+
 .subject input {
   border: 1px solid #1c3d5c;
   width: 100%;
@@ -445,10 +460,12 @@ footer div.footer-s2 p {
   margin-left: auto;
   margin-right: auto;
 }
+
 .directions h3 {
   color: #1c3d5c;
   margin-bottom: 10px;
 }
+
 .directions input {
   border: 1px solid #1c3d5c;
   width: 100%;
@@ -465,28 +482,40 @@ footer div.footer-s2 p {
   margin-left: auto;
   margin-right: auto;
 }
+
 .addfile img {
-  /* border: 1px solid orange; */
-  width: 300px;
-  /* height: auto;  */
-  width: 200px;
+  width: 100%;
 }
+
 .addfile h3 {
   margin-bottom: 10px;
   color: #1c3d5c;
 }
+
 .thefilebox {
   width: 100%;
-  height: 400px;
+  height: auto;
   border: 0.5px dashed #9b9b9b;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .thefilebox input {
   /* border: 1px solid red; */
-  margin: auto;
+  margin: 10%;
 }
+.addfile button{
+  padding: 5px 10px;
+  background-color: #0071db;
+  color: white;
+  border: none;
+  letter-spacing: .2rem;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
 
 /* 加上這行可以隱藏為選擇檔案的文字 */
 /* input[type="file"]{ */
@@ -503,6 +532,7 @@ footer div.footer-s2 p {
   margin-right: auto;
   display: flex;
 }
+
 .btn input {
   width: 18%;
   height: 45px;

@@ -17,15 +17,12 @@ page.get("/", async (req, res) => {
   let usersSelect = await axios.get(
     `http://localhost:80/login/last_id`
   );
-  var a = req.session.userName
-  console.log(req.session.userName);
 
   // 檢查 a 是否存在
-  if (a) {
+  if (req.session.userName) {
     // 如果 a 存在，則進行頁面跳轉
     res.render("onlogin", {
       sessionName: req.session.userName,
-      a: a,
     })
     return;
   }
