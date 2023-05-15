@@ -104,12 +104,7 @@
       <script src="https://code.jquery.com/jquery-3.6.4.js"
         integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
       <script>
-        // $('#fileinput').change(function () {
-        //   var file = $(this)[0].files[0];
-        //   var fileName = file.name;
-        //   console.log(fileName);
-        // });
-
+        //圖片預覽，有圖片以後將input隱藏，並新增一個刪除button
         function selectimg() {
           var fileInput = document.getElementById('fileinput');
           var previewDiv = document.getElementById('theimg');
@@ -144,7 +139,7 @@
         }
       </script>
       <script>
-
+        //將回函傳送輸入進資料庫
         $("#reply_form").on("submit", function () {
           // const userId = $("#user_id").val();
           event.preventDefault();
@@ -160,7 +155,7 @@
             },
           }).done(function (data) {
             console.log(data);
-            if (data='success') {
+            if (data = 'success') {
               alert("感謝你寶貴的意見!!")
               location.reload();
             } else {

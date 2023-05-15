@@ -4,6 +4,7 @@ const path = require("path");
 
 var config = require("./CRUD/config");
 
+//抓到session值，丟到mail.ejs
 page.get("/", (req, res) => {
   // 確定登入以後session有存入到首頁
   if (req.session) {
@@ -15,7 +16,7 @@ page.get("/", (req, res) => {
 });
 
 
-
+//接收到回函內容輸入sql
 page.post("/get_reply", function (req, res) {
   var sql =
     "INSERT INTO service_reply (user_id,category, Subject, illustrate, reply_pic) VALUES (?,?,?,?,?);";
