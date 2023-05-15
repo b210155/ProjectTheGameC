@@ -236,3 +236,145 @@
   background-color: #9b9b9b;
   color: rgb(255, 255, 255);
 }/*# sourceMappingURL=news.css.map */
+
+
+/* -----------------------搜索欄----------------------- */
+.overlay {
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height:600%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  z-index: 9999;
+  justify-content: center;
+}
+
+.close-btn {
+  /* border: 1px solid blue; */
+  position: absolute;
+  top: 0;
+  right: 20px;
+  color: white;
+  font-size: 60px;
+  cursor: pointer;
+}
+
+.thefindcontent {
+  /* border: 1px solid yellow; */
+  text-align: center;
+  margin-top: 100px;
+  text-align: center;
+  /* background-color: darkgray; */
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.thefindcontent img {
+  width: 30px;
+  height: 30px;
+  /* margin-top: 20px; */
+}
+
+.thefindcontent input {
+  width: 300px;
+  margin-left: 10px;
+  border-bottom: 1px solid #fff;
+  background-color: yellow;
+}
+
+.thefindcontent input[type="text"] {
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 20px;
+}
+.thefindcontent button {
+  width: 80px;
+  background-color: #0057a8;
+  color: aliceblue;
+  font-weight: bolder;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-left: 10px;
+  box-shadow: none;
+  /* margin-bottom: 20px; */
+}
+
+.thecococ {
+  /* border: 1px solid pink; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* 設定如果收尋到相關遊戲的話出現的div樣式 */
+.result-item {
+  /* border: 8px solid yellow; */
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #e7e7e7;
+  display: flex;
+  width: 850px;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.result-item a {
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+
+}
+
+.result-item a img {
+  width: 250px;
+  height: 150px;
+  margin-bottom: 5px;
+  /* border: 2px solid gray; */
+  object-fit: contain;
+}
+
+.result-item a p {
+  /* margin: 0; */
+  width: 250px;
+  color: black;
+  font-weight: bolder;
+  /* border: 2px solid gray; */
+  /* text-align: center; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  font-size: 18px;
+  text-align: center;
+  margin-left: 8px;
+margin-right: 8px;
+text-align: justify;
+}
+
+.result-p {
+  /* border: 1px solid yellow; */
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  /* background-color: #e7e7e7; */
+  color: #e7e7e7;
+  font-size: 18px;
+  display: flex;
+  width: 200px;
+  justify-content: center;
+  align-items: center;
+}
