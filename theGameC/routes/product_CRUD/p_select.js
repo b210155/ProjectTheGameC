@@ -34,6 +34,22 @@ page.get("/api/productID/:product_id/rating", (req, res) => {
   );
 });
 
+/* 有多少款商品 products.sql */
+
+page.get("/api/products_amount", (req, res) => {
+  var sql = "SELECT COUNT(*) AS amount FROM products;";
+  config.query(
+    sql, // 名稱照 /: 打
+    function (err, results, fields) {
+      if (err) {
+        res.send("出錯：", err);
+      } else {
+        res.send(results[0]);
+      }
+    }
+  );
+});
+
 /* 玩家 - 商品 評論 */
 page.get("/api/productID/:product_id/userID/:user_id/rating", (req, res) => {
   var sql =
@@ -66,6 +82,39 @@ page.get("/api/product_type/:product_type", (req, res) => {
         res.send("出錯：", err);
       } else {
         res.send(JSON.stringify(results));
+      }
+    }
+  );
+});
+
+/* 選擇購物車 shopping_carts.spl */
+page.get("/api/join_SC/:product_id/:user_id", (req, res) => {
+  var sql =
+    "SELECT * FROM shopping_carts WHERE user_id = ? AND product_id = ?;";
+  config.query(
+    sql,
+    [req.params.user_id, req.params.product_id], // 名稱照 /: 打
+    function (err, results, fields) {
+      if (err) {
+        res.send("出錯：", err);
+      } else {
+        res.send(JSON.stringify(results[0]));
+      }
+    }
+  );
+});
+
+/* 選擇 用戶 - 商品表 user_products.spl */
+page.get("/api/user_products/:product_id/:user_id", (req, res) => {
+  var sql = "SELECT * FROM user_products WHERE user_id = ? AND product_id = ?;";
+  config.query(
+    sql,
+    [req.params.user_id, req.params.product_id], // 名稱照 /: 打
+    function (err, results, fields) {
+      if (err) {
+        res.send("出錯：", err);
+      } else {
+        res.send(JSON.stringify(results[0]));
       }
     }
   );

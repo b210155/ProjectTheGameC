@@ -207,14 +207,18 @@
 .ProductPageBgSLG .section1 .s1right .s1btnDiv span {
   color: rgb(61, 61, 61);
 }
+.ProductPageBgSLG .section1 .s1right .s1btnDiv div {
+  color: rgb(61, 61, 61);
+}
 .ProductPageBgSLG .section1 .s1right .s1btnDiv button {
-  background-color: #281004;
+  background-color: #ffffff;
   border: 1px solid #131313;
+  color: black;
 }
 .ProductPageBgSLG .section1 .s1right .s1btnDiv button:hover {
-  background-color: #000000;
-  border: 1px solid rgb(196, 196, 196);
-  color: rgb(176, 176, 176);
+  border: 1px solid rgb(0, 0, 0);
+  background-color: rgb(218, 218, 218);
+  color: rgb(0, 0, 0);
 }
 .ProductPageBgSLG .section2 {
   background-color: #eaffff;
@@ -269,12 +273,12 @@
   color: rgb(61, 61, 61);
 }
 .ProductPageBgSLG .section3 .recommendedProducts .recomProduct .recPgoPage a {
-  background-color: #281004;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
 }
 .ProductPageBgSLG .section3 .recommendedProducts .recomProduct .recPgoPage a:hover {
-  background-color: black;
-  color: rgb(158, 158, 158);
+  background-color: rgb(218, 218, 218);
+  color: rgb(0, 0, 0);
 }
 
 .ProductPageBgAction .ProductPage,
@@ -460,6 +464,7 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  opacity: 0.9;
 }
 .section1 .s1left {
   width: 64%;
@@ -519,6 +524,13 @@
 .section1 .s1right .s1btnDiv span {
   font-size: 1.5rem;
   font-weight: 600;
+}
+.section1 .s1right .s1btnDiv div {
+  color: rgb(182, 182, 182);
+  font-size: 1.3rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .section1 .s1right .s1btnDiv button {
   background-color: #131313;

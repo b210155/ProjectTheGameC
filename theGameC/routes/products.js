@@ -74,43 +74,63 @@ page.get("/product_ID/:product_id", async (req, res) => {
     ? productRatingSelect.data.average_rating.toFixed(1)
     : "N";
 
+  /* 商品共有多少 */
+  let productAmount = await axios.get(
+    "http://localhost/products/api/products_amount"
+  );
+
   /* 用戶 - 商品評論 */
   let user_productReview = await axios.get(
     `http://localhost/products/api/productID/${req.params.product_id}/userID/${res.locals.LoginUserID}/rating`
   );
-  // console.log(user_productReview);
 
   /* 你可能會喜歡 */
   let user_mayLike = await axios.get(
     `http://localhost/products/api/product_type/${typeName}`
   );
-  console.log(user_mayLike.data);
 
-  /* 判斷是否登入 */
-  if (res.locals.LoginUserID) {
-    // 已登入
-    res.render("productPage", {
-      typeIcon: typeIcon,
-      typeCss: typeCss,
-      ageRating: ageRating,
-      productData: productSelect.data,
-      productRating: productRating,
-      login_user_id: res.locals.LoginUserID,
-      u_p_review: user_productReview.data,
-      userLike: user_mayLike.data,
-    });
+  /* 是否加入購物車 */
+  let inShoppingCart = await axios.get(
+    `http://localhost/products/api/join_SC/${req.params.product_id}/${res.locals.LoginUserID}`
+  );
+
+  /* 是否已購買 */
+  let userHaveProduct = await axios.get(
+    ` http://localhost/products/api/user_products/${req.params.product_id}/${res.locals.LoginUserID}`
+  );
+
+  if (req.params.product_id <= productAmount.data.amount) {
+    /* 判斷是否登入 */
+    if (res.locals.LoginUserID) {
+      // 已登入
+      res.render("productPage", {
+        typeIcon: typeIcon,
+        typeCss: typeCss,
+        ageRating: ageRating,
+        productData: productSelect.data,
+        productRating: productRating,
+        login_user_id: res.locals.LoginUserID,
+        u_p_review: user_productReview.data,
+        userLike: user_mayLike.data,
+        inshoppingCart: inShoppingCart.data,
+        uProduct: userHaveProduct.data,
+      });
+    } else {
+      // 未登入
+      res.render("productPage", {
+        typeIcon: typeIcon,
+        typeCss: typeCss,
+        ageRating: ageRating,
+        productData: productSelect.data,
+        productRating: productRating,
+        login_user_id: res.locals.LoginUserID,
+        u_p_review: user_productReview.data,
+        userLike: user_mayLike.data,
+        inshoppingCart: inShoppingCart.data,
+      });
+    }
   } else {
-    // 未登入
-    res.render("productPage", {
-      typeIcon: typeIcon,
-      typeCss: typeCss,
-      ageRating: ageRating,
-      productData: productSelect.data,
-      productRating: productRating,
-      login_user_id: res.locals.LoginUserID,
-      u_p_review: user_productReview.data,
-      userLike: user_mayLike.data,
-    });
+    res.render("404");
   }
 });
 

@@ -47,8 +47,19 @@
               <p>購買人數：<span><%- productData.buy_count%></span></p>
             </div>
             <div class="s1btnDiv">
-              <span>價格：NT$ <span><%- productData.price %></span></span>
-              <button>加入購物車</button>
+              <span>價格：NT$ <span id="productCost"><%- productData.price %></span></span>
+              <% if(login_user_id){ %> 
+                <% if(uProduct){%>
+                  <div>已購買</div>
+                  <%  } else {%>
+                  <%- inshoppingCart?"<div>已加入購物車</div>":"<button id='joinShoppingCart' type='button'>加入購物車</button>" %> 
+                  <% }   %> 
+                <% } else {%>
+                <button id='notLogin' type='button'>登入才可購買</button>
+                <% } %> 
+            
+
+             
             </div>
           </div>
         </section>
@@ -124,9 +135,6 @@
         </section>
 
         <!-- s3 推薦商品 -->
-
-          
-      
         <section class="section3">
           <h2>或許您也會喜歡</h2>
           <div class="recommendedProducts">
@@ -147,7 +155,7 @@
                   </p>
                 </div>
               </div>
-              <div class="recPgoPage"><a href="/">前往頁面</a></div>
+              <div class="recPgoPage"><a href="/products/product_ID/<%- v.product_id %>">前往頁面</a></div>
             </div>
             <% }) %>
           </div>
@@ -206,6 +214,17 @@
       //   });
       // }
 
+      /* 登入才可購買 */
+      $("#notLogin").on("click", function(){
+        var result = window.confirm("登入後才可以購買商品喔！\n是否要前往登入頁呢？");
+        if (result) {
+            // 轉至登入頁
+           window.location.href = "/login"; // 替換成您要導航的目標頁面的URL
+        } else {
+            // 拒絕跳頁
+        }
+      })
+      
 
       /* dialog rating */
       $("#editRating").val($('input[name="yourRating"]').val())
@@ -289,6 +308,23 @@
             },
           }).done((data)=>{
             alert("評論已更新！")
+            location.reload();
+          })
+         })
+
+         /* 加入購物車 */
+         $("#joinShoppingCart").on("click",function(e){
+          e.preventDefault();
+          $.ajax({
+            url: `http://localhost:80/products/api/insertSC/PID/${productId}`,
+            type: "POST",
+            data: {
+              product_id: productId,
+              user_id: userId,
+              price: parseInt($("#productCost").text())
+            },
+          }).done((data)=>{
+            alert("已將商品加入購物車！")
             location.reload();
           })
          })
