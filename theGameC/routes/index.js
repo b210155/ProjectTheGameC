@@ -24,6 +24,9 @@ page.get("/", async (req, res) => {
   let products = await axios.get(
     `http://localhost:80/getproducts`
   );
+  let newproduct = await axios.get(
+    `http://localhost:80/newproduct`
+  );
 
   res.render("index", {
     gameimg: games.data,
@@ -31,6 +34,7 @@ page.get("/", async (req, res) => {
     gameUpdate: GameUpdate.data,
     promotion: promotion.data,
     products:products.data,
+    newproduct:newproduct.data,
   });
 
 });

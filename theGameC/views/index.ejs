@@ -248,7 +248,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
           <div class="newsbar">
             <ul>
               <li id="newsbut">
-                <span id="newsButs" class="butfocus">新聞</span>
+                <span id="newsButs" class="butfocus">最新消息</span>
               </li>
               <li id="renewbut" class="newsbarhr">
                 <span id="renewButs">遊戲更新</span>
@@ -405,7 +405,54 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
             </div>
           </div>
           <div class="productAll" id="productAll">
-            <img src="/img/index/PUBGpeople.png" alt="" />
+            <div class="discountindex">
+              <div class="discountpic">
+                <img src="/img/news/<%- newproduct[0].news_img %>" alt="" />
+              </div>
+              <div class="discounttext">
+                <h2><%- newproduct[0].news_title %></h2>
+                <p>
+                  <%- newproduct[0].content %>
+                </p>
+                <p>
+                  <%- newproduct[0].dateTime %>
+                </p>
+                <a href="">查看全文</a>
+              </div>
+            </div>
+            <div class="discountindex mg-top">
+              <div class="discountpic">
+                <img src="/img/news/<%- newproduct[1].news_img %>" alt="" />
+              </div>
+              <div class="discounttext">
+                <h2><%- newproduct[1].news_title %></h2>
+                <p>
+                  <%- newproduct[1].content %>
+                </p>
+                <p>
+                  <%- newproduct[1].dateTime %>
+                </p>
+                <a href="">查看全文</a>
+              </div>
+            </div>
+            <div class="discountindex mg-top">
+              <div class="discountpic">
+                <img src="/img/news/<%- newproduct[2].news_img %>" alt="" />
+              </div>
+              <div class="discounttext">
+                <h2><%- newproduct[2].news_title %></h2>
+                <p>
+                  <%- newproduct[2].content %>
+                </p>
+                <p>
+                  <%- newproduct[2].dateTime %>
+                </p>
+                <a href="">查看全文</a>
+              </div>
+            </div>
+            <div class="newsbut">
+              <a href="/news/products_promotions">查看更多</a>
+            </div>
           </div>
         </div>
 

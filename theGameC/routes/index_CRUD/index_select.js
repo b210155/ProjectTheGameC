@@ -20,7 +20,7 @@ page.get("/getGames", (req, res) => {
 //抓取News的資料
 page.get("/getNews", (req, res) => {
   var sql =
-    "SELECT news_title, news_img, content FROM news WHERE news_type = '最新消息' ORDER BY RAND() LIMIT 4;";
+    "SELECT news_title, news_img, content FROM news WHERE news_type = '最新消息'  ORDER BY news_id DESC LIMIT 4;";
   config.query(
     sql,
     // 名稱照 /: 打
@@ -33,7 +33,7 @@ page.get("/getNews", (req, res) => {
 //取得遊戲更新資訊
 page.get("/getGameUpdate", (req, res) => {
   var sql =
-    "SELECT news_title, news_img, content FROM news WHERE news_type = '遊戲更新' LIMIT 3;";
+    "SELECT news_title, news_img, content FROM news WHERE news_type = '遊戲更新' ORDER BY news_id DESC LIMIT 3;";
   config.query(
     sql,
     // 名稱照 /: 打
@@ -46,7 +46,20 @@ page.get("/getGameUpdate", (req, res) => {
 //優惠活動
 page.get("/getpromotion", (req, res) => {
   var sql =
-    "SELECT news_title, news_img, content,dateTime FROM news WHERE news_type = '優惠活動'  ORDER BY RAND() LIMIT 3;";
+    "SELECT news_title, news_img, content,dateTime FROM news WHERE news_type = '優惠活動' ORDER BY news_id DESC LIMIT 3;";
+  config.query(
+    sql,
+    // 名稱照 /: 打
+    function (err, results, fields) {
+      // console.log(results[0]);
+      res.send(JSON.stringify(results));
+    }
+  );
+});
+//新品上架
+page.get("/newproduct", (req, res) => {
+  var sql =
+    "SELECT news_title, news_img, content,dateTime FROM news WHERE news_type = '新品上架' ORDER BY news_id DESC LIMIT 3;";
   config.query(
     sql,
     // 名稱照 /: 打
