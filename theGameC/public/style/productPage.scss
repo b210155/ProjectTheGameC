@@ -107,8 +107,30 @@
   // s2 評論
   .section2 {
     background-color: #5a3826;
-    h2 {
-      color: white;
+    .commentAreaBtnDiv {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      h2 {
+        color: white;
+      }
+      #commentAreaBtn {
+        background-color: #281004;
+        border: 1px solid rgba(49, 31, 12, 0.6);
+        border-radius: 6px;
+        padding: 10px 15px;
+        font-weight: 600;
+        color: white;
+        font-size: 1rem;
+        margin-left: auto;
+        transition: 0.15s;
+        cursor: pointer;
+      }
+      #commentAreaBtn:hover {
+        background-color: #000000;
+        border: 1px solid rgb(196, 196, 196);
+        color: rgb(176, 176, 176);
+      }
     }
 
     // 未登入
@@ -273,8 +295,30 @@
   // s2 評論
   .section2 {
     background-color: #eaffff;
-    h2 {
-      color: rgb(61, 61, 61);
+    .commentAreaBtnDiv {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      h2 {
+        color: rgb(61, 61, 61);
+      }
+      #commentAreaBtn {
+        background-color: #ffffff;
+        border: 1px solid #131313;
+        color: rgb(0, 0, 0);
+        border-radius: 6px;
+        padding: 10px 15px;
+        font-weight: 600;
+        font-size: 1rem;
+        margin-left: auto;
+        transition: 0.15s;
+        cursor: pointer;
+      }
+      #commentAreaBtn:hover {
+        border: 1px solid rgb(0, 0, 0);
+        background-color: rgb(218, 218, 218);
+        color: rgb(0, 0, 0);
+      }
     }
 
     // 未登入
@@ -314,6 +358,25 @@
             background-color: rgb(172, 172, 172);
           }
         }
+      }
+    }
+    .Comment_edit_deleteButton {
+      margin: 10px 0;
+      button {
+        background-color: white;
+        border: 1px solid #131313;
+        border-radius: 10px;
+        color: #000000;
+        font-size: 1.25rem;
+        font-weight: 600;
+        padding: 10px 17px;
+        transition: 0.15s;
+        cursor: pointer;
+      }
+      button:hover {
+        border: 1px solid rgb(0, 0, 0);
+        background-color: rgb(218, 218, 218);
+        color: rgb(0, 0, 0);
       }
     }
   }
@@ -502,7 +565,7 @@
   width: 75%;
   margin: 0 auto;
   // background-color: rgb(44, 44, 44);
-  margin: 20px auto;
+  margin: 35px auto;
   margin-bottom: 60px;
   box-shadow: 0 0 15px black;
   padding-top: 35px;
