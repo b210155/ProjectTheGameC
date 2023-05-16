@@ -1,4 +1,8 @@
 @charset "UTF-8";
+body {
+  padding-top: 20px;
+}
+
 .ProductPageBg::before {
   content: "";
   display: block;
@@ -495,9 +499,8 @@
 
 .ProductPage {
   width: 75%;
-  margin: 0 auto;
-  margin: 35px auto;
-  margin-bottom: 60px;
+  margin: 110px auto;
+  margin-bottom: 75px;
   box-shadow: 0 0 15px black;
   padding-top: 35px;
   padding-bottom: 75px;

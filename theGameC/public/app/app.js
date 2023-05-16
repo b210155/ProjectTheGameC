@@ -17,10 +17,10 @@ window.addEventListener("scroll", () => {
   if (currentScrollPosition <= 0) {
     header.classList.remove("header_hidden");
     // 當在網頁最上方時必顯示
-  } else if (currentScrollPosition > lastScrollPosition) {
+  } else if (currentScrollPosition > lastScrollPosition + 3) {
     header.classList.add("header_hidden");
     // scroll 觸發後的位置 > 原先位置，表示往下滾動，故隱藏 nav
-  } else if (currentScrollPosition < lastScrollPosition) {
+  } else if (currentScrollPosition < lastScrollPosition - 3) {
     header.classList.remove("header_hidden");
     // scroll 觸發後的位置 < 原先位置，表示往上滾動，故顯示 nav
   }

@@ -1,10 +1,17 @@
 @charset "UTF-8";
+body {
+  padding-top: 0;
+}
+
 .section {
   display: flex;
   height: 100%;
 }
 
 /* 左半部 */
+.section {
+  padding-top: 75px;
+}
 .section .sleft {
   padding: 85px 0;
   width: 25%;
@@ -142,6 +149,7 @@
 .section .s1right {
   padding: 60px 0;
   width: 75%;
+  min-height: 100vh;
 }
 .section .s1right div.s1rightSec {
   width: 90%;
