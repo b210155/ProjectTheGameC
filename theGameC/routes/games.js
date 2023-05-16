@@ -1,9 +1,11 @@
 const express = require("express");
 const page = express.Router();
-const path = require("path");
 const axios = require("axios");
 
 const game_CRUD_select = require("./game_CRUD/g_select ");
+const game_CRUD_insert = require("./game_CRUD/g_insert");
+const game_CRUD_delete = require("./game_CRUD/g_delete");
+const game_CRUD_update = require("./game_CRUD/g_update");
 
 page.get("/", async (req, res) => {
   try {
@@ -30,7 +32,8 @@ page.get("/", async (req, res) => {
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* 遊戲單頁 */
-page.get("/gamepage/:game_id", async (req, res) => {
+page.get("/game_ID/:game_id", async (req, res) => {
+  /* 遊戲 */
   let gameSelect = await axios.get(
     `http://localhost:80/games/api/gameID/${req.params.game_id}`
   );
@@ -72,18 +75,95 @@ page.get("/gamepage/:game_id", async (req, res) => {
       break;
   }
 
-  console.log(gameSelect.data.game_type);
-  res.render(
-    "gamepage", // 渲染 games.ejs
-    {
-      typeIcon: typeIcon,
-      typeCss: typeCss,
-      ageRating: ageRating,
-      gameData: gameSelect.data,
-    }
+  // 把 JSON 多張圖片字串轉為陣列
+  if (!gameSelect.data.image_paths) {
+    gameSelect.data.image_paths = null;
+  } else {
+    gameSelect.data.image_paths = JSON.parse(gameSelect.data.image_paths);
+  }
+
+  /* 遊戲評分 - 平均 */
+  let gameRatingSelect = await axios.get(
+    `http://localhost/games/api/gameID/${req.params.game_id}/rating`
   );
+  let gameRating = gameRatingSelect.data.average_rating
+    ? gameRatingSelect.data.average_rating.toFixed(1)
+    : "N";
+
+  /* 遊戲共有多少 */
+  let gameAmount = await axios.get("http://localhost/games/api/games_amount");
+
+  /* 用戶 - 遊戲評論 */
+  let user_gameReview = await axios.get(
+    `http://localhost/games/api/gameID/${req.params.game_id}/userID/${res.locals.LoginUserID}/rating`
+  );
+
+  /* 評論區 */
+  let gameComment = await axios.get(
+    `http://localhost/games/api/game_reviews/gameID/${req.params.game_id}`
+  );
+  // var gameCommentOrder;
+
+  // switch (req.query.sort) {
+  //   case "byCreated":
+  //     gameCommentOrder = gameComment.data.byCreated;
+  //     break;
+  //   case "byRating":
+  //     gameCommentOrder = gameComment.data.byRating;
+  //     break;
+  //   default:
+  //     gameCommentOrder = gameComment.data.byCreated;
+  //     break;
+  // }
+
+  // console.log("我要的", gameCommentOrder);
+
+  /* 你可能會喜歡 */
+  let user_mayLike = await axios.get(
+    `http://localhost/games/api/game_type/${typeName}`
+  );
+
+  /* 是否擁有遊戲 */
+  let userHaveGame = await axios.get(
+    `http://localhost/games/api/user_games/${req.params.game_id}/${res.locals.LoginUserID}`
+  );
+
+  if (req.params.game_id <= gameAmount.data.amount) {
+    if (res.locals.LoginUserID) {
+      res.render("gamepage", {
+        typeIcon: typeIcon,
+        typeCss: typeCss,
+        ageRating: ageRating,
+        gameRating: gameRating,
+        u_g_review: user_gameReview.data,
+        login_user_id: res.locals.LoginUserID,
+        userLike: user_mayLike.data,
+        uGame: userHaveGame.data,
+        gameData: gameSelect.data,
+        gComment: gameComment.data,
+      });
+    } else {
+      res.render("gamepage", {
+        typeIcon: typeIcon, // 不同種類 icon
+        typeCss: typeCss, // 不同總類 CSS
+        ageRating: ageRating, // 年齡分級
+        gameRating: gameRating, // 遊戲平均分數
+        u_g_review: user_gameReview.data,
+        login_user_id: res.locals.LoginUserID, // 登入 id
+        userLike: user_mayLike.data, // 用戶也許會喜歡的遊戲
+        uGame: userHaveGame.data, // 用戶是否已加入遊戲
+        gameData: gameSelect.data, // 遊戲
+        gComment: gameComment.data, // 遊戲討論區
+      });
+    }
+  } else {
+    res.render("404");
+  }
 });
 
 page.use("/", game_CRUD_select);
+page.use("/", game_CRUD_insert);
+page.use("/", game_CRUD_delete);
+page.use("/", game_CRUD_update);
 
 module.exports = page;

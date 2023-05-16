@@ -4,20 +4,15 @@ const page = express.Router();
 const config = require("../CRUD/config"); // 引用 config
 
 //////////////////////////////////////////////////////////////////////////////////
-///    商品單頁             ///////////////////////////////////////////////////////
+///    遊戲單頁             ///////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
-/* 插入玩家對商品的評論 product_reviews.sql */
-page.post("/api/insertPR/PID/:product_id", (req, res) => {
+/* 插入用戶對遊戲的評論 game_reviews.sql */
+page.post("/api/insertGR/GID/:game_id", (req, res) => {
   var sql =
-    "INSERT INTO product_reviews (product_id, user_id, rating, comment) VALUES (?, ?, ?, ?);";
+    "INSERT INTO game_reviews (game_id, user_id, rating, comment) VALUES (?, ?, ?, ?);";
   config.query(
     sql,
-    [
-      req.params.product_id,
-      req.body.user_id,
-      req.body.rating,
-      req.body.comment,
-    ],
+    [req.params.game_id, req.body.user_id, req.body.rating, req.body.comment],
     function (err, results, fields) {
       console.log(results[0]);
       res.send(JSON.stringify(results[0]));
@@ -25,13 +20,13 @@ page.post("/api/insertPR/PID/:product_id", (req, res) => {
   );
 });
 
-/* 商品加入購物車 */
-page.post("/api/insertSC/PID/:product_id", (req, res) => {
+/* 加入遊戲庫 user_games.sql */
+page.post("/api/insertUG/GID/:game_id", (req, res) => {
   var sql =
-    "INSERT INTO shopping_carts (user_id, product_id, price) VALUES (?, ?, ?);";
+    "INSERT INTO user_games (user_id, game_id, game_name, image) VALUES (?, ?, ?, ?);";
   config.query(
     sql,
-    [req.body.user_id, req.params.product_id, req.body.price],
+    [req.body.user_id, req.params.game_id, req.body.game_name, req.body.image],
     function (err, results, fields) {
       console.log(results[0]);
       res.send(JSON.stringify(results[0]));

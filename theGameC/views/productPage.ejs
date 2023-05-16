@@ -57,9 +57,6 @@
                 <% } else {%>
                 <button id='notLogin' type='button'>登入才可購買</button>
                 <% } %> 
-            
-
-             
             </div>
           </div>
         </section>
@@ -188,9 +185,9 @@
 
     <!-- 評論區 -->
     <dialog id="commentDialog">
+      <div class="closeCommentAreaDiv"><img id="closeCommentArea" src="/img/Products/tools/X.png" alt=""></div>
+      <h2>評論區</h2>
       <div class="commentArea">
-        <div class="closeCommentAreaDiv"><img id="closeCommentArea" src="/img/Products/tools/X.png" alt=""></div>
-        <h2>評論區</h2>
         <!-- 一則評論 -->
         <% if(pComment[0] == undefined){%>
           <div class="comment"><span class="noComment">當前還沒有人評論，歡迎您成為第一位評論者 ！</span></div>
@@ -293,7 +290,7 @@
      $("#commentAreaBtn").on("click",function(){
       var dialogComment = document.querySelector("dialog#commentDialog")
       dialogComment.showModal();
-      dialogComment.scrollTop = 0; // 讓留言區起始點在最上方
+      document.querySelector("div.commentArea").scrollTop = 0; // 讓留言區起始點在最上方
      })
      $("#closeCommentArea").on("click",function(){
         document.querySelector("dialog#commentDialog").close();

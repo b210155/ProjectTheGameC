@@ -3,7 +3,10 @@ const page = express.Router();
 
 const config = require("../CRUD/config"); // 引用 config
 
-/* 插入玩家對商品的評論 product_reviews.sql */
+//////////////////////////////////////////////////////////////////////////////////
+///    商品單頁             ///////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+/* 修改玩家對商品的評論 product_reviews.sql */
 page.put("/api/updatePR/PID/:product_id", (req, res) => {
   var sql =
     "UPDATE product_reviews SET rating = ?, comment = ? WHERE user_id = ? AND product_id = ?;";

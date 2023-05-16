@@ -94,7 +94,6 @@ page.get("/product_ID/:product_id", async (req, res) => {
   let productComment = await axios.get(
     `http://localhost/products/api/product_reviews/productID/${req.params.product_id}`
   );
-  console.log("fdsgdg", productComment.data);
 
   /* 你可能會喜歡 */
   let user_mayLike = await axios.get(
