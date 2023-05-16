@@ -66,7 +66,7 @@
 
         <!-- s2 評論 -->
         <section class="section2">
-          <h2>發表評論</h2>
+          <div class="commentAreaBtnDiv"><h2>發表評論</h2><span id="commentAreaBtn">查看評論區</span></div>
           <% if (login_user_id){%>
           <!-- 已登入 -->
           <form id="formReview" class="commitLogin <%- u_p_review?"alreadyComment":"" %>">
@@ -186,6 +186,53 @@
       </form>
     </dialog>
 
+    <!-- 評論區 -->
+    <dialog class="commentArea">
+      <div class="closeCommentAreaDiv"><img id="closeCommentArea" src="/img/Products/tools/X.png" alt=""></div>
+      <h2>評論區</h2>
+      <!-- 一則評論 -->
+      <% if(pComment[0] == undefined){%>
+        <div class="comment"><span class="noComment">當前還沒有人評論，歡迎您成為第一位評論者 ！</span></div>
+        <%} else {%>
+          <% pComment.map(function(v,i){ %>
+            <div class="comment">
+              <!-- 左邊 -->
+              <div class="cleft">
+                <div class="cleft_top">
+                  <div class="avatarDiv">
+                    <img src="<%- v.avatar %>" alt="" />
+                  </div>
+                  <div class="cl_t_text">
+                    <span class="nickname"><%- v.nickname?v.nickname:v.username %></span>
+                    <span class="postDate"><%- v.created_date %></span>
+                  </div>
+                </div>
+                <div class="cleft_bottom">
+                  <span>評分</span>
+                  <div>
+                    <span class="rating"><%- v.rating %></span>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <!-- 右邊 -->
+              <div class="cright">
+                <div>
+                  <p>評論</p>
+                  <div>
+                    <p><%- v.comment %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+      
+            <!-- <button>查看更多</button> -->
+          <% } %>
+
+ 
+    </dialog>
+    
     <!-- footer -->
     <%- include('share/footer')%>
     <script src="/app/app.js"></script>
@@ -235,14 +282,22 @@
         $(".editRatingBig").html(x);
       });
       $("#commentEdit").on("click",function(){
-        document.querySelector("dialog").showModal();
+        document.querySelector("dialog.commentEditDialog").showModal();
       })
       $("#closeEditDialog").on("click",function(){
-        document.querySelector("dialog").close();
+        document.querySelector("dialog.commentEditDialog").close();
       })
       
     
-      
+      /* 打開留言區 */
+     $("#commentAreaBtn").on("click",function(){
+      var dialogComment = document.querySelector("dialog.commentArea")
+      dialogComment.showModal();
+      dialogComment.scrollTop = 0; // 讓留言區起始點在最上方
+     })
+     $("#closeCommentArea").on("click",function(){
+        document.querySelector("dialog.commentArea").close();
+     })
 
       ////////////////////////////////////////////////////////////////
       ////////////////////////////////////////////////////////////////

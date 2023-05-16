@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="../public/style/comment.css" />
   </head>
   <body>
-    <section class="commentArea">
+    <!-- 評論區 -->
+    <dialog class="commentArea">
+      <div class="closeCommentAreaDiv">
+        <img id="closeCommentArea" src="/img/Products/tools/X.png" alt="" />
+      </div>
       <h2>評論區</h2>
       <!-- 一則評論 -->
       <div class="comment">
@@ -16,7 +20,7 @@
         <div class="left">
           <div class="left_top">
             <div class="avatarDiv">
-              <img src="../public/img/Games/AVA/2.jpg" alt="" />
+              <img src="/img/Games/AVA/2.jpg" alt="" />
             </div>
             <div class="l_t_text">
               <span class="nickname">穆斯林</span>
@@ -41,10 +45,7 @@
           </div>
         </div>
       </div>
-
-      <!-- 查看更多 -->
-
       <button>查看更多</button>
-    </section>
+    </dialog>
   </body>
 </html>

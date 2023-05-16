@@ -14,18 +14,42 @@ body {
   }
 }
 
-section.commentArea {
-  width: 60%;
+.commentArea {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // z-index: 9999;
+  width: 55%;
+  height: 90%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #2c2c2c;
-  padding: 30px;
+  padding: 15px;
   border-radius: 10px;
   border: 3px solid #e1e1e1;
+  overflow: auto;
+  .closeCommentAreaDiv {
+    width: 100%;
+    // display: flex;
+    // justify-content: end;
+    position: relative;
+    #closeCommentArea {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 25px;
+      height: 25px;
+      padding: 5px;
+      box-sizing: content-box;
+      cursor: pointer;
+    }
+  }
   h2 {
     color: white;
+    padding: 15px 0;
   }
   .comment {
     margin: 20px auto;
@@ -35,15 +59,20 @@ section.commentArea {
     border-radius: 5px;
     border: 3.5px solid #858585;
     display: flex;
+    .noComment {
+      color: white;
+      font-size: 1.2rem;
+      margin: 2px auto;
+    }
     hr {
       margin: 0 15px;
       opacity: 0.4;
     }
-    .left {
+    .cleft {
       display: flex;
       flex-direction: column;
       gap: 20px;
-      .left_top {
+      .cleft_top {
         display: flex;
         flex: 5;
         gap: 15px;
@@ -63,7 +92,7 @@ section.commentArea {
             height: auto;
           }
         }
-        .l_t_text {
+        .cl_t_text {
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -79,7 +108,7 @@ section.commentArea {
           }
         }
       }
-      .left_bottom {
+      .cleft_bottom {
         display: flex;
         flex-direction: column;
         flex: 5;
@@ -107,7 +136,7 @@ section.commentArea {
         }
       }
     }
-    .right {
+    .cright {
       flex: 5;
       div {
         display: flex;
@@ -123,7 +152,7 @@ section.commentArea {
           background-color: #373737;
           padding: 10px;
           p {
-            font-size: 0.9rem;
+            font-size: 1.05rem;
             letter-spacing: 1.5px;
             margin: 0;
           }

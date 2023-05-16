@@ -84,6 +84,12 @@ page.get("/product_ID/:product_id", async (req, res) => {
     `http://localhost/products/api/productID/${req.params.product_id}/userID/${res.locals.LoginUserID}/rating`
   );
 
+  /* 評論區 */
+  let productComment = await axios.get(
+    `http://localhost/products/api/product_reviews/productID/${req.params.product_id}`
+  );
+  console.log("fdsgdg", productComment.data);
+
   /* 你可能會喜歡 */
   let user_mayLike = await axios.get(
     `http://localhost/products/api/product_type/${typeName}`
@@ -114,6 +120,7 @@ page.get("/product_ID/:product_id", async (req, res) => {
         userLike: user_mayLike.data,
         inshoppingCart: inShoppingCart.data,
         uProduct: userHaveProduct.data,
+        pComment: productComment.data,
       });
     } else {
       // 未登入
@@ -127,6 +134,7 @@ page.get("/product_ID/:product_id", async (req, res) => {
         u_p_review: user_productReview.data,
         userLike: user_mayLike.data,
         inshoppingCart: inShoppingCart.data,
+        pComment: productComment.data,
       });
     }
   } else {
