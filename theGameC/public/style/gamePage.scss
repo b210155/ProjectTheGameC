@@ -14,9 +14,9 @@ body {
   z-index: -1;
 }
 
-// 五種類型背景
-.ProductPageBgAction {
-  background-image: url("../img/Products/ProductType/Shooting.jpg");
+// 三種類型背景
+.ProductPageBgShooting {
+  background-image: url("../img/Games/GameTypeBg/Shooting.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -27,32 +27,9 @@ body {
   .ProductPage {
     background-color: rgb(44, 44, 44);
   }
-}
-.ProductPageBgStrategy {
-  background-image: url("../img/Products/ProductType/strategy.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  position: relative;
-  z-index: 1;
-  .ProductPage {
-    background-color: rgb(44, 44, 44);
-  }
-}
-.ProductPageBgEsport {
-  background-image: url("../img/Products/ProductType/esport.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  position: relative;
-  z-index: 1;
 }
 .ProductPageBgAVG {
-  background-image: url("../img/Products/ProductType/avg.jpg");
+  background-image: url("../img/Games/GameTypeBg/avg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -236,8 +213,8 @@ body {
     }
   }
 }
-.ProductPageBgSLG {
-  background-image: url("../img/Products/ProductType/SLG.webp");
+.ProductPageBgCom {
+  background-image: url("../img/Games/GameTypeBg/Competitive.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -424,9 +401,7 @@ body {
   }
 }
 
-.ProductPageBgAction,
-.ProductPageBgEsport,
-.ProductPageBgStrategy {
+.ProductPageBgShooting {
   .ProductPage {
     background-color: rgb(44, 44, 44);
   }
@@ -602,10 +577,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 10px;
     .bigPicDiv {
       background-color: black;
       width: 100%;
-      height: 95%;
+      height: 80%;
       overflow: hidden;
       border-radius: 5px;
       box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
@@ -615,6 +591,27 @@ body {
       img {
         width: auto;
         height: 100%;
+      }
+    }
+    .PicBar {
+      background-color: #181818;
+      width: 100%;
+      height: 17.5%;
+      padding: 7.5px;
+      display: flex;
+      justify-content: space-around;
+      gap: 7.5px;
+      .smallPicDiv {
+        width: 20%;
+        height: auto;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        border-radius: 2px;
+        img {
+          width: 100%;
+          height: auto;
+        }
       }
     }
   }
