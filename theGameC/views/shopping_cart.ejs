@@ -14,12 +14,32 @@
     <%- include('share/header')%>
 
     <!-- section1 最上方影片 + 封面 -->
-    <section class="section1">
-      <div class="s1container"><img src="/img/wallet/bg.jpg" /></div>
-      <div class="video">
-        <img src="/img/shop/image 23.png" alt="" />
-      </div>
-    </section>
+    <!-- <section class="section1"> -->
+      <!-- <div class="s1container"><img src="/img/wallet/bg.jpg" /></div> -->
+      <!-- <div class="video"> -->
+        <!-- <img src="/img/shop/image 23.png" alt="" /> -->
+      <!-- </div> -->
+    <!-- </section> -->
+
+<!-- 設定step 123區 -->
+<div class="thestepbox">
+  <div id="thestep1">
+    <h3>step1</h3>
+    <p class="thestepcontent">請先確認已登入過會員</p>
+  </div>
+  <div id="thestep2">
+    <h3>step2</h3>
+    <p class="thestepcontent">選擇商品與數量</p>
+  </div>
+  <div id="thestep3">
+    <h3>step3</h3>
+    <p class="thestepcontent">填寫信用卡資訊<br>點選確認結帳</p>
+  </div>
+</div>
+
+
+
+
 
     <!-- section2 購物車 -->
     <section class="section2">
@@ -117,5 +137,51 @@
     <%- include('share/footer')%>
 
     <script src="/app/app.js"></script>
+
+    // ----------------以下為最上方step的設定---------------
+    // 取得所有的 <div> 元素
+      <script>
+    const stepDivs = document.querySelectorAll('.thestepbox > div');
+
+    // 為每個 <div> 元素添加滑鼠懸停事件監聽器
+    stepDivs.forEach((div) => {
+      div.addEventListener('mouseenter', () => {
+        const h3 = div.querySelector('h3');
+        const p = div.querySelector('.thestepcontent');
+
+        // 將 <h3> 元素往上滑動到 <div> 的最上方
+        h3.style.transform = 'translateY(-100%)';
+
+        // 顯示 <p> 元素在 <h3> 的正下方
+        p.style.display = 'block';
+        p.style.marginTop = '-12px';
+        p.style.transform = 'translateY(-60)';
+
+        // 增加 <div> 元素的高度
+        div.style.height = `${div.offsetHeight + 20}px`;
+      });
+
+      // 滑鼠離開時恢復原來的位置和樣式
+      div.addEventListener('mouseleave', () => {
+        const h3 = div.querySelector('h3');
+        const p = div.querySelector('.thestepcontent');
+
+        // 將 <h3> 元素恢復到原來的位置
+        h3.style.transform = 'none';
+
+        // 隱藏 <p> 元素
+        p.style.display = 'none';
+        p.style.marginTop = '0';
+        p.style.transform = 'none';
+
+        // 恢復 <div> 元素的原始高度
+        div.style.height = '';
+      });
+    });
+
+  </script>
+
+
+
   </body>
 </html>
