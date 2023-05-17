@@ -102,6 +102,21 @@
                     $(".Alltext").fadeOut(0);
                     $('.joinMe').fadeIn(800);
                 });
+
+                /******************/
+
+                //新增路徑為http://localhost/about?about=join，並做下列JQ語法，須配合header.ejs
+                document.addEventListener("DOMContentLoaded", function () {
+                    const urlParams = new URLSearchParams(window.location.search);
+                   const alertParam = urlParams.get("about");
+
+                 if (alertParam === "join") {
+                    $(".Alltext").css("display","none");
+                    $(".joinMe").css("display","block");
+                    $("#joinmeBut").css("background-color", "#1C3D5C");
+                    $("#aboutmeBut").css("background-color", "#0370d6");
+                   } 
+                 });
             </script>
 </body>
 

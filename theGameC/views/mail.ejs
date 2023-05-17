@@ -42,11 +42,11 @@
     </div>
     <!-- 主標 提交請求  結束標籤-->
 
+    <input style="display: block;" id="user_id" type="text" value="<%= userId%>">
     <!-- 填寫資料區塊的大容器 -->
     <div class="someinfo">
       <form method="post" id="reply_form">
         <!-- 第一個選擇類別框 -->
-        <input style="display: none;" id="user_id" type="text" value="<%= userId%>">
         <div class="choose">
           <h3>選擇請求類別</h3>
           <select id="selectInput">
@@ -139,29 +139,43 @@
         }
       </script>
       <script>
-        //將回函傳送輸入進資料庫
-        $("#reply_form").on("submit", function () {
-          // const userId = $("#user_id").val();
-          event.preventDefault();
-          $.ajax({
-            url: "/mail/get_reply",
-            type: "POST",
-            data: {
-              user_id: $("#user_id").val(),
-              category: $("#selectInput").val(),
-              Subject: $("#Subject").val(),
-              illustrate: $("#illustrate").val(),
-              reply_pic: "img/path/" + $("#fileinput").val().split("\\").pop(),
-            },
-          }).done(function (data) {
-            console.log(data);
-            if (data = 'success') {
-              alert("感謝你寶貴的意見!!")
-              location.reload();
-            } else {
-              alert("輸入檔案格式錯誤!")
-            }
-          })
+        //上傳表單內的圖片以及其內容，使用到兩個post，先做上傳圖片到自訂義資料夾，在做接收表單內容
+        $(document).ready(function () {
+          var formData = new FormData(); // 创建一个新的 FormData 对象
+
+          $("#reply_form").on("submit", function (event) {
+            event.preventDefault();
+
+            formData.append("fileinput", $("#fileinput")[0].files[0]);
+
+            $.ajax({
+              url: "/mail/upload", // 更新为文件上传的路由
+              type: "POST",
+              data: formData,
+              processData: false,
+              contentType: false,
+            }).done(function (data1) {
+              $.ajax({
+                url: "/mail/get_reply",
+                type: "POST",
+                data: {
+                  user_id: $("#user_id").val(),
+                  category: $("#selectInput").val(),
+                  Subject: $("#Subject").val(),
+                  illustrate: $("#illustrate").val(),
+                  reply_pic: data1,
+                },
+              }).done(function (data) {
+                console.log(data);
+                if (data = 'success') {
+                  alert("感謝你寶貴的意見!!")
+                  location.reload();
+                } else {
+                  alert("輸入檔案格式錯誤!")
+                }
+              })
+            });
+          });
         });
       </script>
 </body>

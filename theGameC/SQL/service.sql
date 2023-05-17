@@ -5,6 +5,6 @@ CREATE TABLE service_reply (
   category VARCHAR(10) NOT NULL, -- 回報類別
   Subject VARCHAR(15)  NOT NULL, -- 填入主旨
   illustrate VARCHAR(100)  NOT NULL, -- 說明欄位
-  reply_pic VARCHAR(40)  , -- 圖片的來源
+  reply_pic VARCHAR(100)  , -- 圖片的來源
   FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
