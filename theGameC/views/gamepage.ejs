@@ -318,7 +318,8 @@
         /* 加入遊戲庫 */
         $("#joinGame").on("click",function(e){
           e.preventDefault();
-          $.ajax({
+          if(parseInt("<%- ageLimit.user_age %>") >= parseInt("<%- ageLimit.age_rating %>")){
+            $.ajax({
             url: `http://localhost:80/games/api/insertUG/GID/${gameId}`,
             type: "POST",
             data: {
@@ -331,6 +332,9 @@
             alert("已將遊戲加入遊戲庫！")
             location.reload();
           })
+          } else {
+            alert("不好意思，該遊戲為「<%- ageRating %>」，根據法律規定，您的年齡還不能遊玩該遊戲。")
+          }
          })
 
         /* 上傳評論 */

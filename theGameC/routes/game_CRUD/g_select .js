@@ -158,4 +158,21 @@ page.get("/api/user_games/:game_id/:user_id", (req, res) => {
   );
 });
 
+/* 年齡限制 users.sql、games.sql */
+page.get("/api/game_ageLimit/:game_id/:user_id", (req, res) => {
+  var sql =
+    "SELECT TIMESTAMPDIFF(YEAR, users.birthday, CURDATE()) AS user_age, games.age_rating FROM users JOIN games ON users.user_id = ? AND games.game_id = ?;";
+  config.query(
+    sql,
+    [req.params.user_id, req.params.game_id], // 名稱照 /: 打
+    function (err, results, fields) {
+      if (err) {
+        res.send("出錯：", err);
+      } else {
+        res.send(JSON.stringify(results[0]));
+      }
+    }
+  );
+});
+
 module.exports = page;

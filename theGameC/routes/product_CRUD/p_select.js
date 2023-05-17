@@ -139,4 +139,21 @@ page.get("/api/user_products/:product_id/:user_id", (req, res) => {
   );
 });
 
+/* 年齡限制 users.sql、products.sql */
+page.get("/api/product_ageLimit/:product_id/:user_id", (req, res) => {
+  var sql =
+    "SELECT TIMESTAMPDIFF(YEAR, users.birthday, CURDATE()) AS user_age, products.age_rating FROM users JOIN products ON users.user_id = ? AND products.product_id = ?;";
+  config.query(
+    sql,
+    [req.params.user_id, req.params.product_id], // 名稱照 /: 打
+    function (err, results, fields) {
+      if (err) {
+        res.send("出錯：", err);
+      } else {
+        res.send(JSON.stringify(results[0]));
+      }
+    }
+  );
+});
+
 module.exports = page;
