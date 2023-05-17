@@ -96,7 +96,7 @@
   }
   closeAVADialog.addEventListener("click", () => {
     document.querySelector("#avatarDialog").close();
-    $("#avatarSimImg").attr("src", "");
+    $("#avatarSimImg").attr("src", "<%- userData.avatar %>");
     $("#imgSimUse").text("");
     $("input[name=avatar]").val("");
   });

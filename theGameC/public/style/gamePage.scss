@@ -15,19 +15,6 @@ body {
 }
 
 // 三種類型背景
-.ProductPageBgShooting {
-  background-image: url("../img/Games/GameTypeBg/Shooting.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  position: relative;
-  z-index: 1;
-  .ProductPage {
-    background-color: rgb(44, 44, 44);
-  }
-}
 .ProductPageBgAVG {
   background-image: url("../img/Games/GameTypeBg/avg.jpg");
   background-repeat: no-repeat;
@@ -49,6 +36,9 @@ body {
       .bigPicDiv {
         background-color: #180d07;
         box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
+      }
+      .PicBar {
+        background-color: #442b12;
       }
     }
     .s1right {
@@ -234,6 +224,9 @@ body {
         background-color: #b9d6e8;
         box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
       }
+      .PicBar {
+        background-color: #b9d6e8;
+      }
     }
     .s1right {
       h2 {
@@ -402,6 +395,14 @@ body {
 }
 
 .ProductPageBgShooting {
+  background-image: url("../img/Games/GameTypeBg/Shooting.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  position: relative;
+  z-index: 1;
   .ProductPage {
     background-color: rgb(44, 44, 44);
   }
@@ -411,7 +412,7 @@ body {
   .section1 {
     .s1left {
       .bigPicDiv {
-        background-color: black;
+        background-color: rgba(0, 0, 0, 0.5);
         box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
       }
     }
@@ -579,12 +580,12 @@ body {
     justify-content: center;
     gap: 10px;
     .bigPicDiv {
-      background-color: black;
+      background-color: rgb(0, 0, 0);
       width: 100%;
       height: 80%;
       overflow: hidden;
       border-radius: 5px;
-      box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
+      box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.4);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -609,6 +610,7 @@ body {
         display: flex;
         justify-content: center;
         border-radius: 2px;
+        background-color: rgba(0, 0, 0, 0.5);
         cursor: pointer;
         img {
           width: auto;
@@ -1061,16 +1063,96 @@ body {
   background-image: url("../img/reviews/Star.png");
 }
 
-// 背景切換
-.bgChangeDiv {
+// 切換遊戲
+
+.gameChangeDiv {
   position: fixed;
-  top: 250px;
-  right: 150px;
-  width: 100px;
-  height: 100px;
+  bottom: 50px;
+  right: 50px;
+  width: 150px;
+  // height: 100px;
   z-index: 5;
-  background-color: #442b12;
+  // background-color: #442b12;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  #changeGameBtn {
+    font-size: 1.35rem;
+    background-color: #000000;
+    border: 2px solid white;
+    padding: 10px 15px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  #gameChange {
+    display: none;
+    font-size: 1.25rem;
+    text-align: center;
+  }
 }
+
+/* 轉場特效 */
+// .noshow {
+//   display: none;
+// }
+// .showAction {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: 9999;
+//   background-color: rgba(0, 0, 0, 0.6);
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   img {
+//     display: none;
+//   }
+//   .showForShooting {
+//     display: block;
+//   }
+// }
+
+// .showAVG {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: 9999;
+//   background-color: rgba(152, 36, 36, 0.5);
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   img {
+//     display: none;
+//   }
+//   .showForAVG {
+//     display: block;
+//     transform: scaleX(-1);
+//   }
+// }
+
+// .showCom {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: 9999;
+//   background-color: rgba(152, 36, 36, 0.5);
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   img {
+//     display: none;
+//   }
+//   .showForCom {
+//     display: block;
+//     transform: scaleX(-1);
+//   }
+// }

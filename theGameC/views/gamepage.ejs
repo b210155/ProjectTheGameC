@@ -9,20 +9,31 @@
     <link rel="stylesheet" href="/style/gamePage.css" />
     <link rel="stylesheet" href="/style/comment.css" />
     <script type="text/javascript" src="/app/jquery.js"></script>
+    <style>
+    </style>
   </head>
   <body>
     <!-- header -->
     <%- include('share/header')%>
 
-    <!-- 背景切換 -->
-    <div class="bgChangeDiv">
-      <select name="bgChange" id="bgChange" value="<%= gameData.game_name %>">
-        <option value="#">-- 選擇遊戲 (<%= gameData.game_name %>)</option>
+    <!-- 切換遊戲 -->
+
+    <div class="gameChangeDiv">
+      <select name="gameChange" id="gameChange">
+        <option value="#">-- <%- gameData.game_name %></option>
       <% allGames.map(function(v){ %> 
-        <option value="/games/game_ID/<%- v.game_id %>"><%- v.game_name %></option>
+        <option value="/games/game_ID/<%- v.game_id %><%- v.game_type === "射擊遊戲" ? "?type=shooting" : (v.game_type === "冒險遊戲" ? "?type=avg" : (v.game_type === "競技遊戲" ? "?type=com" : "")); %>"><%- v.game_name %></option>
         <% }) %> 
       </select>
+      <button id="changeGameBtn">其他遊戲</button>
     </div>
+
+  <!-- 轉場圖 -->
+  <!-- <div id="show" class="noshow">
+    <img class="showForShooting" src="/img/Games/skull.svg" alt="">
+    <img class="showForAVG" src="/img/Games/dragon.svg" alt="">
+  </div> -->
+    
 
     <div id="pageBg" class="<%= typeCss %>">
       <div class="ProductPage">
@@ -276,7 +287,11 @@
 
       /* 點小圖換大圖 */
       function selectPic(x) {
-        $("#bigPic").attr("src", `/img/Games/${x}`);
+        $("#bigPic").css("opacity", 1) // 初始為 100% 可見度
+        .animate({ opacity: 0 }, 150, function() { // 淡出
+        $(this).attr("src", `/img/Games/${x}`) // 在淡出完後才換圖
+        .animate({ opacity: 1 }, 100); // 淡入
+    });
       }
 
       /* 登入才可加入遊戲 */
@@ -419,16 +434,44 @@
     //     type:"POST",
     //     data:{sort:selectedOption},
     //      })
-    //     });
-
-
-    /* 切換背景 */
-      $("select#bgChange").on("change",function(){
-        window.location = $("#bgChange").val()
-      })
-     
+    //     });  
 
       });
+
+
+
+      /* 切換遊戲 */
+      // 切換按鈕
+      var changeBtnBool = true;
+      $("#changeGameBtn").on("click",function(){
+        if (changeBtnBool == true) {
+        $("select#gameChange").css("display", "block");
+           changeBtnBool = false;
+        } else {
+        $("select#gameChange").css("display", "none");
+           changeBtnBool = true;
+        }
+      })
+      // 切換選單
+      $("select#gameChange").on("change",function(){
+        window.location = $("#gameChange").val()
+      })
+
+      /* 切換後的背景效果 (在準備完網頁前就要先做了) */
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   const urlParams = new URLSearchParams(window.location.search);
+      //   const changeGameParam = urlParams.get("type");
+
+      //   if (changeGameParam === "shooting") {
+      //     window.onload = function() {
+      //       $("#show").addClass("showAction").fadeOut(2200)
+      //   }
+      //   } else if(changeGameParam === "avg"){
+      //     window.onload = function() {
+      //       $("#show").addClass("showAVG").fadeOut(2000);
+      //   }
+      //   }
+      // });
     </script>
   </body>
 </html>
