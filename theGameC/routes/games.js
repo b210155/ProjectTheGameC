@@ -107,7 +107,7 @@ page.get("/game_ID/:game_id", async (req, res) => {
     `http://localhost/games/api/game_ageLimit/${req.params.game_id}/${res.locals.LoginUserID}`
   );
 
-  console.log(age_limit.data);
+  // console.log(age_limit.data);
 
   // var gameCommentOrder;
 
@@ -137,7 +137,7 @@ page.get("/game_ID/:game_id", async (req, res) => {
 
   /* 選取所有遊戲 */
   let allGames = await axios.get("http://localhost:80/games/game_select");
-  console.log("4564654654645", allGames.data);
+  // console.log("4564654654645", allGames.data);
   if (req.params.game_id <= gameAmount.data.amount) {
     if (res.locals.LoginUserID) {
       res.render("gamepage", {
