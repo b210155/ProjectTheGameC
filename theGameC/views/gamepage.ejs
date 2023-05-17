@@ -14,7 +14,16 @@
     <!-- header -->
     <%- include('share/header')%>
 
-    <div class="<%= typeCss %>">
+    <!-- 背景切換 -->
+    <div class="bgChangeDiv">
+      <select name="bgChange" id="bgChange" value="<%= typeCss %>">
+           <option value="ProductPageBgShooting">射擊背景</option>
+           <option value="ProductPageBgAVG">冒險背景</option>
+           <option value="ProductPageBgCom">競技背景</option>
+      </select>
+    </div>
+
+    <div id="pageBg" class="<%= typeCss %>">
       <div class="ProductPage">
         <p class="productNav">
           TheGameC > 線上遊戲 > <span><%- gameData.game_name %></span>
@@ -318,7 +327,8 @@
         /* 加入遊戲庫 */
         $("#joinGame").on("click",function(e){
           e.preventDefault();
-          $.ajax({
+          if(parseInt("<%- ageLimit.user_age %>") >= parseInt("<%- ageLimit.age_rating %>")){
+            $.ajax({
             url: `http://localhost:80/games/api/insertUG/GID/${gameId}`,
             type: "POST",
             data: {
@@ -331,6 +341,9 @@
             alert("已將遊戲加入遊戲庫！")
             location.reload();
           })
+          } else {
+            alert("不好意思，該遊戲為「<%- ageRating %>」，根據法律規定，您的年齡還不能遊玩該遊戲。")
+          }
          })
 
         /* 上傳評論 */
@@ -406,6 +419,16 @@
     //     data:{sort:selectedOption},
     //      })
     //     });
+
+
+    /* 切換背景 */
+      $("select#bgChange").on("change",function(){
+        $("div#pageBg").removeClass()
+        $("div#pageBg").addClass($("select#bgChange").val())
+
+      })
+     
+
       });
     </script>
   </body>

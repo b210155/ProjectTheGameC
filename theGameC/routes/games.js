@@ -14,7 +14,6 @@ page.get("/", async (req, res) => {
     const response2 = await axios.get(
       "http://localhost:80/games/game_select_bg"
     );
-
     res.render(
       "games", // 渲染 games.ejs
       { apple: response.data, cat: response2.data }
@@ -102,6 +101,14 @@ page.get("/game_ID/:game_id", async (req, res) => {
   let gameComment = await axios.get(
     `http://localhost/games/api/game_reviews/gameID/${req.params.game_id}`
   );
+
+  /* 年齡分級 */
+  let age_limit = await axios.get(
+    `http://localhost/games/api/game_ageLimit/${req.params.game_id}/${res.locals.LoginUserID}`
+  );
+
+  console.log(age_limit.data);
+
   // var gameCommentOrder;
 
   // switch (req.query.sort) {
@@ -141,6 +148,7 @@ page.get("/game_ID/:game_id", async (req, res) => {
         uGame: userHaveGame.data,
         gameData: gameSelect.data,
         gComment: gameComment.data,
+        ageLimit: age_limit.data,
       });
     } else {
       res.render("gamepage", {
@@ -154,6 +162,7 @@ page.get("/game_ID/:game_id", async (req, res) => {
         uGame: userHaveGame.data, // 用戶是否已加入遊戲
         gameData: gameSelect.data, // 遊戲
         gComment: gameComment.data, // 遊戲討論區
+        ageLimit: age_limit.data,
       });
     }
   } else {

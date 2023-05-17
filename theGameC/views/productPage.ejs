@@ -367,7 +367,8 @@
          /* 加入購物車 */
          $("#joinShoppingCart").on("click",function(e){
           e.preventDefault();
-          $.ajax({
+          if(parseInt("<%- ageLimit.user_age %>") >= parseInt("<%- ageLimit.age_rating %>")){
+            $.ajax({
             url: `http://localhost:80/products/api/insertSC/PID/${productId}`,
             type: "POST",
             data: {
@@ -379,6 +380,10 @@
             alert("已將商品加入購物車！")
             location.reload();
           })
+          } else {
+            alert("不好意思，該商品為「<%- ageRating %>」，根據法律規定，您的年齡還不能購買該商品。")
+          }
+          
          })
       });
     </script>

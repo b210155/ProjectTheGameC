@@ -72,7 +72,7 @@ page.get("/api/productID/:product_id/userID/:user_id/rating", (req, res) => {
 /* 評論區 - product_reviews.sql */
 page.get("/api/product_reviews/productID/:product_id", (req, res) => {
   var sql =
-    "SELECT pr.rating, pr.comment, DATE_FORMAT(pr.created_at, '%Y年%m月%d日') AS created_date, u.nickname, u.avatar, u.username FROM product_reviews pr JOIN users u ON pr.user_id = u.user_id WHERE pr.product_id = ?;";
+    "SELECT pr.rating, pr.comment, DATE_FORMAT(pr.created_at, '%Y年%m月%d日') AS created_date, u.nickname, u.avatar, u.username FROM product_reviews pr JOIN users u ON pr.user_id = u.user_id WHERE pr.product_id = ? ORDER BY pr.created_at DESC;";
   config.query(
     sql,
     [req.params.product_id], // 名稱照 /: 打
@@ -126,6 +126,23 @@ page.get("/api/join_SC/:product_id/:user_id", (req, res) => {
 /* 選擇 用戶 - 商品表 user_products.spl */
 page.get("/api/user_products/:product_id/:user_id", (req, res) => {
   var sql = "SELECT * FROM user_products WHERE user_id = ? AND product_id = ?;";
+  config.query(
+    sql,
+    [req.params.user_id, req.params.product_id], // 名稱照 /: 打
+    function (err, results, fields) {
+      if (err) {
+        res.send("出錯：", err);
+      } else {
+        res.send(JSON.stringify(results[0]));
+      }
+    }
+  );
+});
+
+/* 年齡限制 users.sql、products.sql */
+page.get("/api/product_ageLimit/:product_id/:user_id", (req, res) => {
+  var sql =
+    "SELECT TIMESTAMPDIFF(YEAR, users.birthday, CURDATE()) AS user_age, products.age_rating FROM users JOIN products ON users.user_id = ? AND products.product_id = ?;";
   config.query(
     sql,
     [req.params.user_id, req.params.product_id], // 名稱照 /: 打

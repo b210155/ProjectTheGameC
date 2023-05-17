@@ -110,6 +110,11 @@ page.get("/product_ID/:product_id", async (req, res) => {
     ` http://localhost/products/api/user_products/${req.params.product_id}/${res.locals.LoginUserID}`
   );
 
+  /* 年齡分級 */
+  let age_limit = await axios.get(
+    `http://localhost/products/api/product_ageLimit/${req.params.product_id}/${res.locals.LoginUserID}`
+  );
+
   if (req.params.product_id <= productAmount.data.amount) {
     /* 判斷是否登入 */
     if (res.locals.LoginUserID) {
@@ -126,6 +131,7 @@ page.get("/product_ID/:product_id", async (req, res) => {
         inshoppingCart: inShoppingCart.data,
         uProduct: userHaveProduct.data,
         pComment: productComment.data,
+        ageLimit: age_limit.data,
       });
     } else {
       // 未登入
@@ -140,6 +146,7 @@ page.get("/product_ID/:product_id", async (req, res) => {
         userLike: user_mayLike.data,
         inshoppingCart: inShoppingCart.data,
         pComment: productComment.data,
+        ageLimit: age_limit.data,
       });
     }
   } else {
