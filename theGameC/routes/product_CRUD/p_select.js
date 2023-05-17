@@ -72,7 +72,7 @@ page.get("/api/productID/:product_id/userID/:user_id/rating", (req, res) => {
 /* 評論區 - product_reviews.sql */
 page.get("/api/product_reviews/productID/:product_id", (req, res) => {
   var sql =
-    "SELECT pr.rating, pr.comment, DATE_FORMAT(pr.created_at, '%Y年%m月%d日') AS created_date, u.nickname, u.avatar, u.username FROM product_reviews pr JOIN users u ON pr.user_id = u.user_id WHERE pr.product_id = ?;";
+    "SELECT pr.rating, pr.comment, DATE_FORMAT(pr.created_at, '%Y年%m月%d日') AS created_date, u.nickname, u.avatar, u.username FROM product_reviews pr JOIN users u ON pr.user_id = u.user_id WHERE pr.product_id = ? ORDER BY pr.created_at DESC;";
   config.query(
     sql,
     [req.params.product_id], // 名稱照 /: 打

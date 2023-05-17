@@ -14,7 +14,6 @@ page.get("/", async (req, res) => {
     const response2 = await axios.get(
       "http://localhost:80/games/game_select_bg"
     );
-
     res.render(
       "games", // 渲染 games.ejs
       { apple: response.data, cat: response2.data }

@@ -5,7 +5,8 @@ const config = require("../CRUD/config"); // 引用 config
 
 //中間區塊要抓遊戲種類圖片 資料庫：games
 page.get("/game_select", (req, res) => {
-  var sql = "SELECT game_type , image ,game_name,age_rating FROM games;";
+  var sql =
+    "SELECT game_id, game_type , image ,game_name,age_rating FROM games;";
   config.query(sql, function (err, results, fields) {
     if (err) {
       res.status(500).json({ error: "selec錯誤", details: err });
@@ -101,7 +102,7 @@ page.get("/api/game_reviews/gameID/:game_id", (req, res) => {
   console.log(req.query.sort);
 
   var sql =
-    "SELECT gr.rating, gr.comment, DATE_FORMAT(gr.created_at, '%Y年%m月%d日') AS created_date, u.nickname, u.avatar, u.username FROM game_reviews gr JOIN users u ON gr.user_id = u.user_id WHERE gr.game_id = ? ORDER BY gr.created_at DESC;;";
+    "SELECT gr.rating, gr.comment, DATE_FORMAT(gr.created_at, '%Y年%m月%d日') AS created_date, u.nickname, u.avatar, u.username FROM game_reviews gr JOIN users u ON gr.user_id = u.user_id WHERE gr.game_id = ? ORDER BY gr.created_at DESC;";
   var sql2 =
     "SELECT gr.rating, gr.comment, DATE_FORMAT(gr.created_at, '%Y年%m月%d日') AS created_date, u.nickname, u.avatar, u.username FROM game_reviews gr JOIN users u ON gr.user_id = u.user_id WHERE gr.game_id = ? ORDER BY gr.rating DESC;";
 

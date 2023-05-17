@@ -14,7 +14,16 @@
     <!-- header -->
     <%- include('share/header')%>
 
-    <div class="<%= typeCss %>">
+    <!-- 背景切換 -->
+    <div class="bgChangeDiv">
+      <select name="bgChange" id="bgChange" value="<%= typeCss %>">
+           <option value="ProductPageBgShooting">射擊背景</option>
+           <option value="ProductPageBgAVG">冒險背景</option>
+           <option value="ProductPageBgCom">競技背景</option>
+      </select>
+    </div>
+
+    <div id="pageBg" class="<%= typeCss %>">
       <div class="ProductPage">
         <p class="productNav">
           TheGameC > 線上遊戲 > <span><%- gameData.game_name %></span>
@@ -410,6 +419,16 @@
     //     data:{sort:selectedOption},
     //      })
     //     });
+
+
+    /* 切換背景 */
+      $("select#bgChange").on("change",function(){
+        $("div#pageBg").removeClass()
+        $("div#pageBg").addClass($("select#bgChange").val())
+
+      })
+     
+
       });
     </script>
   </body>

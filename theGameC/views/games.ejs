@@ -74,7 +74,7 @@
         <!--  -->
 
         <% apple.forEach(function(item) { %>
-          <div class="image-box" data-gamestype="<%- item.game_type %>">
+          <div class="image-box" data-gamestype="<%- item.game_type %>" onclick="getGameUrl('<%- item.game_id %>')">
             <img src="/img/Games/<%- item.image %>" />
             <img class="hover-image" src="/img/Games/GameTypeBg/hoverimg.jpeg" alt="" />
           </div>
@@ -684,6 +684,10 @@
       }
     }
   });
+
+  function getGameUrl(x){
+    window.location = `/games/game_ID/${x}`
+  }
 </script>
 
 </html>
