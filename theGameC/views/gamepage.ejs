@@ -16,10 +16,11 @@
 
     <!-- 背景切換 -->
     <div class="bgChangeDiv">
-      <select name="bgChange" id="bgChange" value="<%= typeCss %>">
-           <option value="ProductPageBgShooting">射擊背景</option>
-           <option value="ProductPageBgAVG">冒險背景</option>
-           <option value="ProductPageBgCom">競技背景</option>
+      <select name="bgChange" id="bgChange" value="<%= gameData.game_name %>">
+        <option value="#">-- 選擇遊戲 (<%= gameData.game_name %>)</option>
+      <% allGames.map(function(v){ %> 
+        <option value="/games/game_ID/<%- v.game_id %>"><%- v.game_name %></option>
+        <% }) %> 
       </select>
     </div>
 
@@ -423,9 +424,7 @@
 
     /* 切換背景 */
       $("select#bgChange").on("change",function(){
-        $("div#pageBg").removeClass()
-        $("div#pageBg").addClass($("select#bgChange").val())
-
+        window.location = $("#bgChange").val()
       })
      
 

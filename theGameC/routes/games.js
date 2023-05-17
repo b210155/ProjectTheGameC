@@ -135,6 +135,9 @@ page.get("/game_ID/:game_id", async (req, res) => {
     `http://localhost/games/api/user_games/${req.params.game_id}/${res.locals.LoginUserID}`
   );
 
+  /* 選取所有遊戲 */
+  let allGames = await axios.get("http://localhost:80/games/game_select");
+  console.log("4564654654645", allGames.data);
   if (req.params.game_id <= gameAmount.data.amount) {
     if (res.locals.LoginUserID) {
       res.render("gamepage", {
@@ -149,6 +152,7 @@ page.get("/game_ID/:game_id", async (req, res) => {
         gameData: gameSelect.data,
         gComment: gameComment.data,
         ageLimit: age_limit.data,
+        allGames: allGames.data,
       });
     } else {
       res.render("gamepage", {
@@ -163,6 +167,7 @@ page.get("/game_ID/:game_id", async (req, res) => {
         gameData: gameSelect.data, // 遊戲
         gComment: gameComment.data, // 遊戲討論區
         ageLimit: age_limit.data,
+        allGames: allGames.data,
       });
     }
   } else {
