@@ -31,16 +31,16 @@ app.get("/:id", async (req, res) => {
   console.log("獲取的資料-lol：", mylolSkin.data);
 
   // 該使用者是否有該遊戲(撈到的資料是否是[]？)
-  if (userGame.data[0] == null || userGame.data[0] == undefined) {
-    res.render("GameStore", {
-      userGameData: userGame.data[0],
-    });
-  } else {
-    res.render("GameStore_users", {
-      userGameData: userGame.data[0],
-      userlolSkin: mylolSkin.data, // 陣列
-    });
-  }
+  // if (userGame.data[0] == null || userGame.data[0] == undefined) {
+  //   res.render("GameStore", {
+  //     userGameData: userGame.data[0],
+  //   });
+  // } else {
+  res.render("GameStore_users", {
+    userGameData: userGame.data[0],
+    userlolSkin: mylolSkin.data, // 陣列
+  });
+  // }
 });
 
 app.listen(90, () => {

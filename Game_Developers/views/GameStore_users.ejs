@@ -10,12 +10,30 @@
     <style>
       .already {
         filter: brightness(20%);
-
         pointer-events: none;
+      }
+
+      #treasure {
+        position: fixed;
+        width: 105px;
+        top: 35px;
+        right: 25px;
+        border: none;
+        box-shadow: none;
+        z-index: 5;
+        transform: scaleX(-1);
+        filter: brightness(80%);
+        transition: 0.15s;
+        cursor: pointer;
+      }
+      #treasure:hover {
+        filter: brightness(110%);
       }
     </style>
   </head>
   <body>
+    <img id="treasure" src="/img/treasure.png" alt="" />
+
     <section class="section1">
       <h1>專屬商店</h1>
       <hr />
@@ -189,6 +207,18 @@
       </form>
     </dialog>
 
+    <dialog class="dialog2">
+      <div>
+        <h2>您的造型</h2>
+        <div>
+          <% userlolSkin.map(function(v){%>
+          <p>擁有造型： <span><%- v.skin_name %></span></p>
+          <% }) %>
+        </div>
+        <button id="closeDialog2" type="button">關閉寶箱</button>
+      </div>
+    </dialog>
+
     <!-- 購買過的 skin ID -->
     <input
       id="userlolSkinID"
@@ -196,6 +226,14 @@
       value="<%= JSON.stringify(userlolSkin) %>"
     />
     <script>
+      /* 打開寶箱 */
+      $("#treasure").on("click", function () {
+        document.querySelector(".dialog2").showModal();
+      });
+      $("#closeDialog2").on("click", function () {
+        document.querySelector(".dialog2").close();
+      });
+
       /* 購買過的變黑 */
       let skinArr = JSON.parse($("#userlolSkinID").val());
       skinArr.map(function (ele, index) {

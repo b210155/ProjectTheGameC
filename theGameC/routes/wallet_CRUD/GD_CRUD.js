@@ -46,7 +46,7 @@ page.put("/api/game_coin_pay", (req, res) => {
 
 /* 撈取：英雄聯盟 lol - Select - skin_id by user_id */
 page.get("/api/lol_skins/:user_id", (req, res) => {
-  var sql = "SELECT skin_id FROM lol WHERE user_id = ?";
+  var sql = "SELECT * FROM lol WHERE user_id = ?";
   config.query(
     sql,
     [req.params.user_id], // 名稱照 /: 打

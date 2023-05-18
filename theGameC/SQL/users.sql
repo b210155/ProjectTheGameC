@@ -17,7 +17,7 @@ SELECT * FROM `users` WHERE 1;
 INSERT INTO users (username, password, email, phone, birthday, c_coin_balance)
 VALUES
 ('myuser1', 'password1', 'myuser1@example.com', '0912345678', '1990-01-01', 0),
-('myuser2', 'password2', 'myuser2@example.com', '0923456789', '1991-02-02', 0),
+('myuser2', 'password2', 'myuser2@example.com', '0923456789', '2009-02-02', 0),
 ('myuser3', 'password3', 'myuser3@example.com', '0934567890', '1992-03-03', 0),
 ('myuser4', 'password4', 'myuser4@example.com', '0945678901', '1993-04-04', 0),
 ('myuser5', 'password5', 'myuser5@example.com', '0956789012', '1994-05-05', 0),

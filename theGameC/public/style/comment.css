@@ -96,8 +96,8 @@ body p {
   border: 5px solid rgba(103, 103, 103, 0.5);
 }
 #commentDialog .commentArea .comment .cleft .cleft_top .avatarDiv img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
 }
 #commentDialog .commentArea .comment .cleft .cleft_top .cl_t_text {
   display: flex;
