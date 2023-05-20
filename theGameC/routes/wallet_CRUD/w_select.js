@@ -36,7 +36,8 @@ page.get("/exchange_data/:id", (req, res) => {
 /* 會員擁有遊戲資料 user_games */
 // 英雄聯盟 7
 page.get("/api/game_coin/:user_id", (req, res) => {
-  var sql = "SELECT * FROM user_games WHERE user_id = ? AND game_id = 7";
+  var sql =
+    "SELECT ug.*, u.username, u.nickname  FROM user_games ug JOIN users u ON ug.user_id = u.user_id WHERE ug.user_id = ? AND ug.game_id = 7";
   config.query(
     sql,
     [req.params.user_id], // 名稱照 /: 打

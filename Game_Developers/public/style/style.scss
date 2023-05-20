@@ -263,3 +263,52 @@ section {
     }
   }
 }
+
+.dialogLogin {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 22.5%;
+  height: 500px;
+  background-color: rgb(49, 49, 49);
+  overflow: hidden;
+  border: 2px solid rgb(29, 29, 29);
+  border-radius: 5px;
+  padding: 35px 25px;
+  form {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 35px;
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      label {
+        font-size: 1.35rem;
+        color: white;
+      }
+      input {
+        font-size: 1.35rem;
+        padding: 5px;
+      }
+    }
+    button {
+      padding: 10px 25px;
+      color: white;
+      background-color: black;
+      border-radius: 10px;
+      border: 2px solid white;
+      font-size: 1.15rem;
+      cursor: pointer;
+    }
+    button:hover {
+      color: rgb(128, 128, 128);
+      border: 2px solid rgb(128, 128, 128);
+    }
+  }
+}

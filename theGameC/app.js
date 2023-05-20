@@ -66,6 +66,7 @@ const aboutme = require("./routes/about"); //關於
 // 例如：SELECT users，這種的 table 是很多路由都有可能用到的
 // 就直接在這設給大家用，以免不同網頁就要製作一個
 const selectForAll = require("./routes/CRUD/select");
+const insertForAll = require("./routes/CRUD/insert");
 
 /*--- 中介 ---*/
 app.use(express.static("public"));
@@ -91,6 +92,7 @@ app.use("/About", aboutme);
 // http://localhost/user/user6
 // 原因看向 routes/CRUD/select.js
 app.use("/", selectForAll);
+app.use("/", insertForAll);
 
 /*--- 網頁 404 ---*/
 app.get("*", (req, res) => {

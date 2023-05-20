@@ -15,7 +15,7 @@
 
       #treasure {
         position: fixed;
-        width: 105px;
+        width: 90px;
         top: 35px;
         right: 25px;
         border: none;
@@ -40,7 +40,8 @@
       <p>限時特價大優惠！五件商品供您選擇</p>
       <!-- 當前點數 -->
       <span class="myCoinContent"
-        >您的可用點數有：<span class="myCoin"
+        >歡迎您 "<%- userGameData.nickname||userGameData.username %>"
+        ，您的可用點數有：<span class="myCoin"
           ><%= userGameData.coin_in_game %></span
         ></span
       >
@@ -222,7 +223,7 @@
     <!-- 購買過的 skin ID -->
     <input
       id="userlolSkinID"
-      type="text"
+      type="hidden"
       value="<%= JSON.stringify(userlolSkin) %>"
     />
     <script>

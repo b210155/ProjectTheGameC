@@ -354,8 +354,8 @@
         if (result) {
           switch (result.id) {
             case "useCredit":
-              document.querySelector("span.Cget").innerHTML = ntd;
-              document.querySelector("span.Ccost").innerHTML = ccoin;
+              document.querySelector("span.Cget").innerHTML = ccoin;
+              document.querySelector("span.Ccost").innerHTML = ntd;
               yourMethod.innerHTML = result
                 .closest(".methodDiv")
                 .querySelector(".method1 li").innerText;
@@ -368,8 +368,8 @@
               // 選擇離 result 最近的 li
               break;
             case "usePaypal":
-              document.querySelector("span.Cget").innerHTML = ntd;
-              document.querySelector("span.Ccost").innerHTML = ccoin;
+              document.querySelector("span.Cget").innerHTML = ccoin;
+              document.querySelector("span.Ccost").innerHTML = ntd;
               yourMethod.innerHTML = result
                 .closest(".methodDiv")
                 .querySelector(".method1 li").innerText;
@@ -382,8 +382,8 @@
               // 選擇離 result 最近的 li
               break;
             case "useGash":
-              document.querySelector("span.Cget").innerHTML = ntd;
-              document.querySelector("span.Ccost").innerHTML = ccoin;
+              document.querySelector("span.Cget").innerHTML = ccoin;
+              document.querySelector("span.Ccost").innerHTML = ntd;
               yourMethod.innerHTML = result
                 .closest(".methodDiv")
                 .querySelector(".method1 li").innerText;

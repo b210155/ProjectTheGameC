@@ -15,7 +15,11 @@
       <p>限時特價大優惠！五件商品供您選擇</p>
       <!-- 當前點數 -->
       <span class="myCoinContent"
-        >您尚未登入帳號：<a href="#" style="color: white">點我登入帳號</a></span
+        >您尚未登入帳號：<span
+          onclick="login()"
+          style="color: white; text-decoration: underline"
+          >點我登入帳號</span
+        ></span
       >
     </section>
 
@@ -168,8 +172,22 @@
       </form>
     </dialog>
 
+    <!-- 登入 -->
+    <dialog class="dialogLogin">
+      <form id="loginForm">
+        <div>
+          <label for="account">帳號：</label><input id="account" type="text" />
+          <br />
+          <label for="password">密碼：</label
+          ><input id="password" type="text" />
+        </div>
+        <button id="LoginOK" type="submit">登入帳號</button>
+        <button id="closeDialogLogin" type="button">取消登入</button>
+      </form>
+    </dialog>
+
     <script>
-      alert("如果要購買造型，請先登入帳號");
+      // alert("如果要購買造型，請先登入帳號");
 
       const skin = $("#inputSkin");
       const cost = $("#inputCost");
@@ -194,6 +212,45 @@
       $("#buyConfirm").on("click", function () {
         event.preventDefault();
         alert("請先登入帳號喔！");
+      });
+
+      // 登入 dialog
+      function login() {
+        document.querySelector(".dialogLogin").showModal();
+      }
+      $("#closeDialogLogin").on("click", function () {
+        document.querySelector(".dialogLogin").close();
+      });
+      // 登入
+      $(function () {
+        $("#loginForm").on("submit", function (e) {
+          event.preventDefault(e);
+          $.ajax({
+            url: "http://localhost:80/lol/login",
+            type: "POST",
+            data: {
+              username: $("input[id='account']").val(),
+              password: $("input[id='password']").val(),
+            },
+          }).done(function (data) {
+            console.log(data);
+            if (data.username == $("input[id='account']").val()) {
+              window.location.assign(`http://localhost:90/${data.user_id}`);
+            } else {
+              alert("您的帳號或密碼輸入有誤！");
+            }
+          });
+        });
+      });
+
+      // 用戶沒此沒遊戲
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const alertParam = urlParams.get("err");
+
+        if (alertParam === "noGame") {
+          alert("您目前並未擁有《英雄聯盟》，請先將其加入遊戲庫中。");
+        }
       });
     </script>
   </body>

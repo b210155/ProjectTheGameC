@@ -86,7 +86,10 @@
               <!-- 一個遊戲 -->
               <% if(userGame.games != []){ %>
               <%userGame.games.map(function(v,i){ %>
-              <div id="myGame">
+              <div
+                id="myGame"
+                onclick="goGamePage('<%- userGame.gameID[i] %>')"
+              >
                 <div id="myGameImgDiv">
                   <img src=<%=`/img/Games/${userGame.images[i]}` %> />
                 </div>
@@ -225,6 +228,11 @@
           });
         });
       });
+
+      // 轉入遊戲網頁
+      function goGamePage(x) {
+        window.location = `/games/game_ID/${x}`;
+      }
     </script>
   </body>
 </html>
