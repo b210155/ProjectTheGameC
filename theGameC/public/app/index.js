@@ -121,5 +121,19 @@ $(document).ready(function () {
 
     // 每秒更新一次
     setInterval(updateCountdown, 1000);
+
+
+
+//寫sec2的按鈕控制
+    document.querySelectorAll('.s_button')[1].onclick = () => {
+        let lists = document.querySelectorAll('.sec2_item');
+        document.querySelector('.sec2_slide').appendChild(lists[0])
+    }
+    document.querySelectorAll('.s_button')[0].onclick = () => {
+        let lists = document.querySelectorAll('.sec2_item');
+        document.querySelector('.sec2_slide').prepend(lists[lists.length - 1])
+    }
+
+    
 });
 

@@ -41,50 +41,13 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
         <div class="carousel">
           <h1>線上遊戲</h1>
           <section class="center slider" style="transition: 1s" data-aos="zoom-in">
-            <div>
-              <img src="/img/Games/<%- gameimg[0].image %>" />
-              <h1>《<%- gameimg[0].game_name %>》</h1>
-              <p><%- gameimg[0].game_type %></p>
-              <p></p>
-            </div>
-
-            <div>
-              <img src="/img/Games/<%- gameimg[1].image %>" />
-              <h1>《<%- gameimg[1].game_name %>》</h1>
-              <p><%- gameimg[1].game_type %></p>
-            </div>
-            <div>
-              <img src="/img/Games/<%- gameimg[2].image %>" />
-              <h1>《<%- gameimg[2].game_name %>》</h1>
-              <p><%- gameimg[2].game_type %></p>
-            </div>
-            <div>
-              <img src="/img/Games/<%- gameimg[3].image %>" />
-              <h1>《<%- gameimg[3].game_name %>》</h1>
-              <p><%- gameimg[3].game_type %></p>
-            </div>
-            <div>
-              <img src="/img/Games/<%- gameimg[4].image %>" />
-              <h1>《<%- gameimg[4].game_name %>》</h1>
-              <p><%- gameimg[4].game_type %></p>
-            </div>
-            <div>
-              <img src="/img/Games/<%- gameimg[5].image %>" />
-              <h1>《<%- gameimg[5].game_name %>》</h1>
-              <p><%- gameimg[5].game_type %></p>
-            </div>
-            <div>
-              <img src="/img/Games/<%- gameimg[6].image %>" />
-              <h1>《<%- gameimg[6].game_name %>》</h1>
-              <p><%- gameimg[6].game_type %></p>
-            </div>
-            <div>
-              <img src="/img/Games/<%- gameimg[7].image %>" />
-              <h1>《<%- gameimg[7].game_name %>》</h1>
-              <p><%- gameimg[7].game_type %></p>
-            </div>
-
-
+            <% for (let i = 0; i < gameimg.length; i++) { %>
+              <div>
+                <img src="/img/Games/<%- gameimg[i].image %>" />
+                <h1>《<%- gameimg[i].game_name %>》</h1>
+                <p><%- gameimg[i].game_type %></p>
+              </div>
+            <% } %>
 
           </section>
           <div class="carouselbut">
@@ -94,131 +57,36 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
       </div>
 
       <div class="section">
-        <div class="d1">
-          <div class="title">
-            <h1>熱門商品</h1>
+        <div class="container">
+          <div class="sec2_slide">
+            <% for (let i = 0; i < products.length; i++) { %>
+              <div class="sec2_item" style="background-image:url(/img/Products/<%=products[i].image%>);">
+                <div class="content">
+                  <div class="name">《<%= products[i].product_name %>》</div>
+                  <div class="des">
+                    <p>
+                      <%= products[i].product_type %>類遊戲
+                    </p>
+                    <p>
+                      <%- products[i].description %>
+                    </p>
+                    <p>
+                      NT$<%= products[i].price %>
+                    </p>
+                  </div>
+                  <a href="" class="shopButton"><i class="bi bi-cart2"></i></a>
+                  <a href="" class="shopButton"><i class="bi bi-shop-window"></i></a>
+                </div>
+              </div>
+            <% } %>
           </div>
-          <div class="botm">
-            <div class="pic">
-              <section id="main-carousel" class="splide"
-                aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
-                <div class="splide__track">
-                  <img class="alpha" src="/img/index/Comp.gif" alt="" />
-                  <ul class="splide__list">
-                    <li class="splide__slide bigpic">
-                      <img src="/img/Products/<%- products[0].image %>" alt="" />
-                    </li>
-                    <li class="splide__slide bigpic">
-                      <img src="/img/Products/<%- products[1].image %>" alt="" />
-                    </li>
-                    <li class="splide__slide bigpic">
-                      <img src="/img/Products/<%- products[2].image %>" alt="" />
-                    </li>
-                    <li class="splide__slide bigpic">
-                      <img src="/img/Products/<%- products[3].image %>" alt="" />
-                    </li>
-                    <li class="splide__slide bigpic">
-                      <img src="/img/Products/<%- products[4].image %>" alt="" />
-                    </li>
-                  </ul>
-                </div>
-              </section>
-              <section id="thumbnail-carousel" class="splide"
-                aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
-                <div class="splide__track">
-                  <ul class="splide__list">
-                    <li id="picimg1" class="splide__slide border smallpic">
-                      <img src="/img/Products/<%- products[0].image %>" alt="" />
-                    </li>
-                    <li id="picimg2" class="splide__slide border smallpic">
-                      <img src="/img/Products/<%- products[1].image %>" alt="" />
-                    </li>
-                    <li id="picimg3" class="splide__slide border smallpic">
-                      <img src="/img/Products/<%- products[2].image %>" alt="" />
-                    </li>
-                    <li id="picimg4" class="splide__slide border smallpic">
-                      <img src="/img/Products/<%- products[3].image %>" alt="" />
-                    </li>
-                    <li id="picimg5" class="splide__slide border smallpic">
-                      <img src="/img/Products/<%- products[4].image %>" alt="" />
-                    </li>
-                  </ul>
-                </div>
-              </section>
-            </div>
-            <div id="text1" class="text">
-              <h1>《<%= products[0].product_name %>》</h1>
-              <p>
-                <%= products[0].product_type %>類遊戲
-              </p>
-              <p>
-                <%- products[0].description %>
-              </p>
-              <p>
-                NT$<%= products[0].price %>
-              </p>
-              <a href=""><i class="bi bi-shop-window"></i></a>
-              <a href=""><i class="bi bi-cart2"></i></a>
-            </div>
-            <div id="text2" class="text">
-              <h1>《<%= products[1].product_name %>》</h1>
-              <p>
-                <%= products[1].product_type %>類遊戲
-              </p>
-              <p>
-                <%- products[1].description %>
-              </p>
-              <p>
-                NT$<%= products[1].price %>
-              </p>
-              <a href=""><i class="bi bi-shop-window"></i></a>
-              <a href=""><i class="bi bi-cart2"></i></a>
-            </div>
-            <div id="text3" class="text">
-              <h1>《<%= products[2].product_name %>》</h1>
-              <p>
-                <%= products[2].product_type %>類遊戲
-              </p>
-              <p>
-                <%- products[2].description %>
-              </p>
-              <p>
-                NT$<%= products[2].price %>
-              </p>
-              <a href=""><i class="bi bi-shop-window"></i></a>
-              <a href=""><i class="bi bi-cart2"></i></a>
-            </div>
-            <div id="text4" class="text">
-              <h1>《<%= products[3].product_name %>》</h1>
-              <p>
-                <%= products[3].product_type %>類遊戲
-              </p>
-              <p>
-                <%- products[3].description %>
-              </p>
-              <p>
-                NT$<%= products[3].price %>
-              </p>
-              <a href=""><i class="bi bi-shop-window"></i></a>
-              <a href=""><i class="bi bi-cart2"></i></a>
-            </div>
-            <div id="text5" class="text">
-              <h1>《<%= products[4].product_name %>》</h1>
-              <p>
-                <%= products[4].product_type %>類遊戲
-              </p>
-              <p>
-                <%- products[4].description %>
-              </p>
-              <p>
-                NT$<%= products[4].price %>
-              </p>
-              <a href=""><i class="bi bi-shop-window"></i></a>
-              <a href=""><i class="bi bi-cart2"></i></a>
-            </div>
+          <div class="buttons">
+            <button class="s_button">&lt;</button>
+            <button class="s_button">&gt;</button>
           </div>
         </div>
       </div>
+
       <div class="section">
         <div class="d2">
           <div class="timebox">
@@ -240,6 +108,8 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
           </div>
         </div>
       </div>
+
+
       <div class="section">
         <div class="d3">
           <br /><br /><br /><br /><br />
