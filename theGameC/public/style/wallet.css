@@ -181,7 +181,8 @@ body {
 }
 .section .s1right div.s1rightSec .s1Rdown .s1RDtitle p {
   color: #8d8d8d;
-  font-size: 1.1rem;
+  color: black;
+  font-size: 1.15rem;
   margin-top: 20px;
   padding: 0 10px 10px 10px;
   letter-spacing: 3px;
@@ -233,7 +234,7 @@ body {
   cursor: pointer;
 }
 .section .s1right div.s1rightSec .s1Rdown #Gamesdropdown p {
-  color: #8d8d8d;
+  color: black;
 }
 .section .s1right div.s1rightSec .s1Rdown #Gamesdropdown .GamesdropdownImg {
   filter: brightness(50%);
