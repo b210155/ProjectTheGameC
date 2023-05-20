@@ -17,14 +17,15 @@
 .slick-next {
   position: absolute;
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 150px;
+  width: 100px;
+  background-color: aqua;
   line-height: 0px;
   font-size: 0px;
   cursor: pointer;
   background: transparent;
-  color: transparent;
-  top: 50%;
+  /* color: transparent; */
+  top: 39%;
   transform: translate(0, -50%);
   padding: 0;
   border: none;
@@ -49,37 +50,40 @@
 .slick-prev:before,
 .slick-next:before {
   font-family: "slick";
-  font-size: 20px;
+  /* font-size: 50px; */
   line-height: 1;
+  padding: 20px 15px;
   color: white;
+  background-color: rgb(173, 173, 173);
   opacity: 0.75;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .slick-prev {
-  left: -25px;
+  left: 20%;
+  z-index: 1;
 }
 [dir=rtl] .slick-prev {
   left: auto;
-  right: -25px;
+  right: 100px;
 }
 .slick-prev:before {
-  content: "←";
+  content: "〈";
 }
 [dir=rtl] .slick-prev:before {
   content: "→";
 }
 
 .slick-next {
-  right: -25px;
+  right: 20%;
 }
 [dir=rtl] .slick-next {
-  left: -25px;
+  left: 46px;
   right: auto;
 }
 .slick-next:before {
-  content: "→";
+  content: "〉";
 }
 [dir=rtl] .slick-next:before {
   content: "←";
