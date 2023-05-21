@@ -18,13 +18,7 @@
   <!-- slick -->
   <link rel="stylesheet" href="/kits/slick/slick/slick.css" />
   <link rel="stylesheet" href="/kits/slick/slick/slick-theme.css" />
-  <!-- splide -->
-  <script src="
-https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
-"></script>
-  <link href="
-https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
-" rel="stylesheet" />
+
   <!-- fullPage.css -->
   <link rel="stylesheet" href="/kits/fullpage/fullpage.css" />
   <link rel="icon" href="/img/header/logoicon.ico" />
@@ -131,6 +125,8 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
               </li>
             </ul>
           </div>
+
+          
           <div class="newsAll" id="newsAll">
             <div class="newsindex" id="newsindex">
               <div class="newsleft">
@@ -182,146 +178,86 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
               <a href="/news/latest">查看更多</a>
             </div>
           </div>
-          <div class="renewAll" id="renewAll">
-            <div class="renewindex">
-              <div class="renewpic">
-                <img src="/img/news/<%- gameUpdate[0].news_img %>" alt="" />
-              </div>
-              <div class="renewtext">
-                <h2><%- gameUpdate[0].news_title %></h2>
-                <p>
-                  <%- gameUpdate[0].content %>
-                </p>
-                <a href="">查看全文</a>
-              </div>
-            </div>
 
-            <div class="renewindex mg-top">
-              <div class="renewpic">
-                <img src="/img/news/<%- gameUpdate[1].news_img %>" alt="" />
-              </div>
-              <div class="renewtext">
-                <h2><%- gameUpdate[1].news_title %></h2>
-                <p>
-                  <%- gameUpdate[1].content %>
-                </p>
-                <a href="">查看全文</a>
-              </div>
-            </div>
-            <div class="renewindex mg-top">
-              <div class="renewpic">
-                <img src="/img/news/<%- gameUpdate[2].news_img %>" alt="" />
-              </div>
-              <div class="renewtext">
-                <h2><%- gameUpdate[2].news_title %></h2>
-                <p>
-                  <%- gameUpdate[2].content %>
-                </p>
-                <a href="">查看全文</a>
-              </div>
-            </div>
-            <div class="newsbut">
+
+          <div class="renewAll" id="renewAll">
+            <ul class="cards">
+              <% gameUpdate.forEach(function(update) { %>
+                <li>
+                  <a href="" class="card">
+                    <img src="/img/news/<%= update.news_img %>" class="card__image" alt="" />
+                    <div class="card__overlay">
+                      <div class="card__header">
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+                        <img class="card__thumb" src="/img/news/<%= update.news_img %>" alt="" />
+                        <div class="card__header-text">
+                          <h3 class="card__title"><%= update.news_title %></h3>
+                        </div>
+                      </div>
+                      <p class="card__description"><%= update.content %></p>
+                    </div>
+                  </a>
+                </li>
+              <% }) %>
+             
+            </ul>
+            <div class="renwebut">
               <a href="/news/games_updates">查看更多</a>
             </div>
           </div>
+
+
           <div class="discountAll" id="discountAll">
-            <div class="discountindex">
-              <div class="discountpic">
-                <img src="/img/news/<%- promotion[0].news_img %>" alt="" />
-              </div>
-              <div class="discounttext">
-                <h2><%- promotion[0].news_title %></h2>
-                <p>
-                  <%- promotion[0].content %>
-                </p>
-                <p>
-                  <%- promotion[0].dateTime %>
-                </p>
-                <a href="">查看全文</a>
-              </div>
-            </div>
-            <div class="discountindex mg-top">
-              <div class="discountpic">
-                <img src="/img/news/<%- promotion[1].news_img %>" alt="" />
-              </div>
-              <div class="discounttext">
-                <h2><%- promotion[1].news_title %></h2>
-                <p>
-                  <%- promotion[1].content %>
-                </p>
-                <p>
-                  <%- promotion[1].dateTime %>
-                </p>
-                <a href="">查看全文</a>
-              </div>
-            </div>
-            <div class="discountindex mg-top">
-              <div class="discountpic">
-                <img src="/img/news/<%- promotion[2].news_img %>" alt="" />
-              </div>
-              <div class="discounttext">
-                <h2><%- promotion[2].news_title %></h2>
-                <p>
-                  <%- promotion[2].content %>
-                </p>
-                <p>
-                  <%- promotion[2].dateTime %>
-                </p>
-                <a href="">查看全文</a>
-              </div>
-            </div>
-            <div class="newsbut">
+            <ul class="cards">
+              <% promotion.forEach(function(promotion) { %>
+                <li>
+                  <a href="" class="card">
+                    <img src="/img/news/<%= promotion.news_img %>" class="card__image" alt="" />
+                    <div class="card__overlay">
+                      <div class="card__header">
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+                        <img class="card__thumb" src="/img/news/<%= promotion.news_img %>" alt="" />
+                        <div class="card__header-text">
+                          <h3 class="card__title"><%= promotion.news_title %></h3>
+                          <span class="card__status"><%= promotion.dateTime %></span>
+                        </div>
+                      </div>
+                      <p class="card__description"><%= promotion.content %></p>
+                    </div>
+                  </a>
+                </li>
+              <% }) %>
+             
+            </ul>
+            <div class="renwebut">
               <a href="/news/products_promotions">查看更多</a>
             </div>
           </div>
+
+
           <div class="productAll" id="productAll">
-            <div class="discountindex">
-              <div class="discountpic">
-                <img src="/img/news/<%- newproduct[0].news_img %>" alt="" />
-              </div>
-              <div class="discounttext">
-                <h2><%- newproduct[0].news_title %></h2>
-                <p>
-                  <%- newproduct[0].content %>
-                </p>
-                <p>
-                  <%- newproduct[0].dateTime %>
-                </p>
-                <a href="">查看全文</a>
-              </div>
-            </div>
-            <div class="discountindex mg-top">
-              <div class="discountpic">
-                <img src="/img/news/<%- newproduct[1].news_img %>" alt="" />
-              </div>
-              <div class="discounttext">
-                <h2><%- newproduct[1].news_title %></h2>
-                <p>
-                  <%- newproduct[1].content %>
-                </p>
-                <p>
-                  <%- newproduct[1].dateTime %>
-                </p>
-                <a href="">查看全文</a>
-              </div>
-            </div>
-            <div class="discountindex mg-top">
-              <div class="discountpic">
-                <img src="/img/news/<%- newproduct[2].news_img %>" alt="" />
-              </div>
-              <div class="discounttext">
-                <h2><%- newproduct[2].news_title %></h2>
-                <p>
-                  <%- newproduct[2].content %>
-                </p>
-                <p>
-                  <%- newproduct[2].dateTime %>
-                </p>
-                <a href="">查看全文</a>
-              </div>
-            </div>
-            <div class="newsbut">
-              <a href="/news/products_promotions">查看更多</a>
+            <ul class="cards">
+              <% newproduct.forEach(function(newproduct) { %>
+                <li>
+                  <a href="" class="card">
+                    <img src="/img/news/<%= newproduct.news_img %>" class="card__image" alt="" />
+                    <div class="card__overlay">
+                      <div class="card__header">
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+                        <img class="card__thumb" src="/img/news/<%= newproduct.news_img %>" alt="" />
+                        <div class="card__header-text">
+                          <h3 class="card__title"><%= newproduct.news_title %></h3>
+                        </div>
+                      </div>
+                      <p class="card__description"><%= newproduct.content %></p>
+                    </div>
+                  </a>
+                </li>
+              <% }) %>
+             
+            </ul>
+            <div class="renwebut">
+              <a href="/news/new_products">查看更多</a>
             </div>
           </div>
         </div>
@@ -372,36 +308,6 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
     </script>
     <script src="/js/app.js"></script>
 
-    <!-- splide -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var main = new Splide("#main-carousel", {
-          type: "fade",
-          rewind: true,
-          pagination: false,
-          arrows: false,
-        });
-
-        var thumbnails = new Splide("#thumbnail-carousel", {
-          fixedWidth: 100,
-          fixedHeight: 60,
-          gap: 10,
-          rewind: true,
-          pagination: false,
-          isNavigation: true,
-          breakpoints: {
-            600: {
-              fixedWidth: 60,
-              fixedHeight: 44,
-            },
-          },
-        });
-
-        main.sync(thumbnails);
-        main.mount();
-        thumbnails.mount();
-      });
-    </script>
 </body>
 
 </html>
