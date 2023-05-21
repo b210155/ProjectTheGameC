@@ -156,4 +156,41 @@ page.get("/api/product_ageLimit/:product_id/:user_id", (req, res) => {
   );
 });
 
+//////////////////////////////////////////////////////////////////////////////////
+///    購物車頁             ///////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+/* 購物車商品 */
+page.get("/api/shopping_carts/user/:userID", (req, res) => {
+  var sql =
+    "SELECT shopping_carts.*, products.product_name, products.product_type, products.image FROM shopping_carts JOIN products ON shopping_carts.product_id = products.product_id WHERE shopping_carts.user_id = ?";
+  config.query(
+    sql,
+    [req.params.userID], // 名稱照 /: 打
+    function (err, results, fields) {
+      if (err) {
+        res.send("出錯：", err);
+      } else {
+        res.send(JSON.stringify(results));
+      }
+    }
+  );
+});
+
+/* 總金額 */
+page.get("/api/shoppingCartsTotal/user/:userID", (req, res) => {
+  var sql =
+    "SELECT SUM(price) AS total_price FROM shopping_carts WHERE user_id = ?;";
+  config.query(
+    sql,
+    [req.params.userID], // 名稱照 /: 打
+    function (err, results, fields) {
+      if (err) {
+        res.send("出錯：", err);
+      } else {
+        res.send(JSON.stringify(results));
+      }
+    }
+  );
+});
+
 module.exports = page;

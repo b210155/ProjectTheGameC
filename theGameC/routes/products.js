@@ -8,8 +8,22 @@ const product_CRUD_delete = require("./product_CRUD/p_delete");
 const product_CRUD_update = require("./product_CRUD/p_update");
 
 /* 購物車頁 */
-page.get("/shopping_cart", (req, res) => {
-  res.render("shopping_cart");
+page.get("/shopping_cart", async (req, res) => {
+  let shoppingCartSelect = await axios.get(
+    `http://localhost/products/api/shopping_carts/user/${res.locals.LoginUserID}`
+  );
+
+  let shoppingCartTotal = await axios.get(
+    `http://localhost/products/api/shoppingCartsTotal/user/${res.locals.LoginUserID}`
+  );
+
+  console.log(shoppingCartSelect.data);
+  console.log("--", shoppingCartTotal.data[0]);
+  res.render("shopping_cart", {
+    SCdata: shoppingCartSelect.data,
+    SCtotal: shoppingCartTotal.data[0],
+    userID: res.locals.LoginUserID,
+  });
 });
 
 ///////////////////////////////////////////////////////////////////////////////

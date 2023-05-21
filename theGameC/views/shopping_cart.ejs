@@ -7,7 +7,7 @@
     <title>TheGameC - 首頁</title>
     <link rel="stylesheet" href="/style/style.css" />
     <link rel="stylesheet" href="/style/shopping_cart.css" />
-    <style></style>
+    <script src="/app/jquery.js"></script>
   </head>
   <body>
     <!-- header -->
@@ -15,31 +15,27 @@
 
     <!-- section1 最上方影片 + 封面 -->
     <!-- <section class="section1"> -->
-      <!-- <div class="s1container"><img src="/img/wallet/bg.jpg" /></div> -->
-      <!-- <div class="video"> -->
-        <!-- <img src="/img/shop/image 23.png" alt="" /> -->
-      <!-- </div> -->
+    <!-- <div class="s1container"><img src="/img/wallet/bg.jpg" /></div> -->
+    <!-- <div class="video"> -->
+    <!-- <img src="/img/shop/image 23.png" alt="" /> -->
+    <!-- </div> -->
     <!-- </section> -->
 
-<!-- 設定step 123區 -->
-<div class="thestepbox">
-  <div id="thestep1">
-    <h3>step1</h3>
-    <p class="thestepcontent">請先確認已登入過會員</p>
-  </div>
-  <div id="thestep2">
-    <h3>step2</h3>
-    <p class="thestepcontent">選擇商品與數量</p>
-  </div>
-  <div id="thestep3">
-    <h3>step3</h3>
-    <p class="thestepcontent">填寫信用卡資訊<br>點選確認結帳</p>
-  </div>
-</div>
-
-
-
-
+    <!-- 設定step 123區 -->
+    <div class="thestepbox">
+      <div id="thestep1">
+        <h3>step1</h3>
+        <p class="thestepcontent">請先確認已登入過會員</p>
+      </div>
+      <div id="thestep2">
+        <h3>step2</h3>
+        <p class="thestepcontent">選擇商品與數量</p>
+      </div>
+      <div id="thestep3">
+        <h3>step3</h3>
+        <p class="thestepcontent">填寫信用卡資訊<br />點選確認結帳</p>
+      </div>
+    </div>
 
     <!-- section2 購物車 -->
     <section class="section2">
@@ -48,15 +44,47 @@
       </div>
       <div class="cart">
         <ul>
-          <li>
+          <li class="liTitle">
             <span></span>
             <span>商品名稱</span>
+            <span>類型</span>
             <span>價格</span>
-            <span>小記</span>
             <span></span>
           </li>
           <!-- 樣本 -->
-          <li>
+          <% if(SCdata.length>0){ SCdata.map(function(v){ %>
+          <li class="singleSC">
+            <input
+              class="ForProductID"
+              name="pid<%- v.product_id %>"
+              type="hidden"
+              value="<%- v.product_id %>"
+            />
+            <span class="imgDiv"
+              ><img src="/img/Products/<%- v.image %>" alt=""
+            /></span>
+            <span><%- v.product_name %></span>
+            <span
+              ><div><span><%- v.product_type %></span></div>
+            </span>
+            <span
+              ><div>
+                <span>NT$</span><span id="cartCost"><%- v.price %></span>
+              </div>
+            </span>
+            <span onclick="delSC('<%- v.cart_id %>')"
+              ><img src="/img/shop/Trash.png"
+            /></span>
+          </li>
+          <% }) } else {%>
+          <div class="noProduct">
+            <p>您的購物車內尚未擁有商品</p>
+            <br />
+            <a href="/products">點我前往商品頁面</a>
+          </div>
+          <% } %>
+
+          <!-- <li>
             <span><img src="/img/shop/game/far_cry.jpg" alt="" /></span>
             <span>極地戰嚎3</span>
             <span
@@ -66,25 +94,14 @@
               ><div><span>NT$</span><span id="cartCost">499</span></div>
             </span>
             <span><img src="/img/shop/Trash.png" /></span>
-          </li>
-          <li>
-            <span><img src="/img/shop/game/far_cry.jpg" alt="" /></span>
-            <span>極地戰嚎3</span>
-            <span
-              ><div><span>單價 NT$</span><span>499</span></div>
-            </span>
-            <span
-              ><div><span>NT$</span><span id="cartCost">499</span></div>
-            </span>
-            <span><img src="/img/shop/Trash.png" /></span>
-          </li>
+          </li> -->
         </ul>
       </div>
     </section>
 
     <!-- section3 結帳 -->
     <section class="section3">
-      <form action="">
+      <form id="payForm" action="">
         <!-- 左邊部分 -->
         <div class="left">
           <div class="leftcontainer">
@@ -92,19 +109,34 @@
             <div class="creditEnter">
               <div>
                 <label for="">持卡人姓名</label> <br />
-                <input type="text" />
+                <input type="text" required />
               </div>
               <div>
                 <label for="">信用卡卡號</label> <br />
-                <input type="text" />
+                <input
+                  type="text"
+                  name="creditAccount"
+                  pattern="^(4[0-9]{12}(?:[0-9]{3})?)$|^5[1-5][0-9]{14}$|^35[0-9]{14}$"
+                  required
+                />
               </div>
               <div>
                 <label for="">有效日期</label> <br />
-                <input type="number" placeholder="月 / 年" />
+                <input
+                  type="text"
+                  placeholder="月 / 年"
+                  pattern="^(0[1-9]|1[0-2])\/([0-9]{2}|[0-9]{4})$"
+                  required
+                />
               </div>
               <div>
                 <label for="">安全碼</label> <br />
-                <input type="text" placeholder="背面三碼" />
+                <input
+                  type="text"
+                  placeholder="背面三碼"
+                  pattern="^[0-9]{3,4}$"
+                  required
+                />
               </div>
               <br /><br />
               <div class="cartCreditConfirmBtnDiv">
@@ -123,8 +155,11 @@
               </li>
               <hr />
               <li>
-                <span>訂單總計</span>
-                <span class="total">NT$<span id="total">0</span></span>
+                <span>訂單總計金額</span>
+                <span class="total"
+                  >NT$
+                  <span id="total"><%- SCtotal.total_price || 0 %></span></span
+                >
               </li>
             </ul>
           </div>
@@ -138,50 +173,116 @@
 
     <script src="/app/app.js"></script>
 
-    // ----------------以下為最上方step的設定---------------
-    // 取得所有的 <div> 元素
-      <script>
-    const stepDivs = document.querySelectorAll('.thestepbox > div');
+    <script>
+      // ----------------以下為最上方step的設定---------------
+      // 取得所有的 <div> 元素
+      const stepDivs = document.querySelectorAll(".thestepbox > div");
 
-    // 為每個 <div> 元素添加滑鼠懸停事件監聽器
-    stepDivs.forEach((div) => {
-      div.addEventListener('mouseenter', () => {
-        const h3 = div.querySelector('h3');
-        const p = div.querySelector('.thestepcontent');
+      // 為每個 <div> 元素添加滑鼠懸停事件監聽器
+      stepDivs.forEach((div) => {
+        div.addEventListener("mouseenter", () => {
+          const h3 = div.querySelector("h3");
+          const p = div.querySelector(".thestepcontent");
 
-        // 將 <h3> 元素往上滑動到 <div> 的最上方
-        h3.style.transform = 'translateY(-100%)';
+          // 將 <h3> 元素往上滑動到 <div> 的最上方
+          h3.style.transform = "translateY(-100%)";
 
-        // 顯示 <p> 元素在 <h3> 的正下方
-        p.style.display = 'block';
-        p.style.marginTop = '-12px';
-        p.style.transform = 'translateY(-60)';
+          // 顯示 <p> 元素在 <h3> 的正下方
+          p.style.display = "block";
+          p.style.marginTop = "-12px";
+          p.style.transform = "translateY(-60)";
 
-        // 增加 <div> 元素的高度
-        div.style.height = `${div.offsetHeight + 20}px`;
+          // 增加 <div> 元素的高度
+          div.style.height = `${div.offsetHeight + 20}px`;
+        });
+
+        // 滑鼠離開時恢復原來的位置和樣式
+        div.addEventListener("mouseleave", () => {
+          const h3 = div.querySelector("h3");
+          const p = div.querySelector(".thestepcontent");
+
+          // 將 <h3> 元素恢復到原來的位置
+          h3.style.transform = "none";
+
+          // 隱藏 <p> 元素
+          p.style.display = "none";
+          p.style.marginTop = "0";
+          p.style.transform = "none";
+
+          // 恢復 <div> 元素的原始高度
+          div.style.height = "";
+        });
       });
 
-      // 滑鼠離開時恢復原來的位置和樣式
-      div.addEventListener('mouseleave', () => {
-        const h3 = div.querySelector('h3');
-        const p = div.querySelector('.thestepcontent');
+      /* CRUD */
+      // 刪除
+      function delSC(x) {
+        $.ajax({
+          url: `http://localhost:80/products/api/DeleteSC`,
+          type: "DELETE",
+          data: {
+            cart_id: x,
+          },
+        }).done((data) => {
+          location.reload();
+        });
+      }
 
-        // 將 <h3> 元素恢復到原來的位置
-        h3.style.transform = 'none';
+      // 結帳
+      $(function () {
+        $("#payForm").on("submit", function (e) {
+          e.preventDefault();
+          let productIds = [];
 
-        // 隱藏 <p> 元素
-        p.style.display = 'none';
-        p.style.marginTop = '0';
-        p.style.transform = 'none';
-
-        // 恢復 <div> 元素的原始高度
-        div.style.height = '';
+          $(".singleSC").each(function () {
+            let productId = $(this).find('input[class="ForProductID"]').val();
+            productIds.push(productId);
+          });
+          // 傳入商品定單
+          $.ajax({
+            url: `http://localhost:80/products/api/product_orders`,
+            type: "POST",
+            data: {
+              user_id: "<%-userID%>",
+              products_id: JSON.stringify(productIds),
+              total_price: parseInt($("#total").text()),
+              credit_account: $("input[name='creditAccount']").val(),
+            },
+          }).done((data) => {
+            // 傳入使用者已擁有此商品
+            productIds.forEach(function (v) {
+              $.ajax({
+                url: `http://localhost:80/products/api/user_products`,
+                type: "POST",
+                data: {
+                  user_id: "<%-userID%>",
+                  product_id: v,
+                },
+              }).done((data) => {
+                $.ajax({
+                  url: `http://localhost:80/products/api/DeleteAllSC`,
+                  type: "DELETE",
+                  data: {
+                    user_id: "<%-userID%>",
+                  },
+                }).done((data) => {
+                  window.location = "/products/shopping_cart?deal=sussess";
+                });
+              });
+            });
+          });
+        });
       });
-    });
 
-  </script>
+      /* 交易結果 */
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const alertParam = urlParams.get("deal");
 
-
-
+        if (alertParam === "sussess") {
+          alert("結帳成功！");
+        }
+      });
+    </script>
   </body>
 </html>

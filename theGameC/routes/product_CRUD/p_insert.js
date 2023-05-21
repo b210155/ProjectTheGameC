@@ -39,4 +39,36 @@ page.post("/api/insertSC/PID/:product_id", (req, res) => {
   );
 });
 
+/* 使用者擁有商品 user_products */
+page.post("/api/user_products", (req, res) => {
+  var sql = "INSERT INTO user_products (user_id, product_id) VALUES (?, ?);";
+  config.query(
+    sql,
+    [req.body.user_id, req.body.product_id],
+    function (err, results, fields) {
+      console.log(results[0]);
+      res.send(JSON.stringify(results[0]));
+    }
+  );
+});
+
+/* 商品訂單 product_orders */
+page.post("/api/product_orders", (req, res) => {
+  var sql =
+    "INSERT INTO product_orders (user_id, products_id, total_price, credit_account) VALUES (?, ?, ?, ?);";
+  config.query(
+    sql,
+    [
+      req.body.user_id,
+      req.body.products_id,
+      req.body.total_price,
+      req.body.credit_account,
+    ],
+    function (err, results, fields) {
+      console.log(results[0]);
+      res.send(JSON.stringify(results[0]));
+    }
+  );
+});
+
 module.exports = page;
