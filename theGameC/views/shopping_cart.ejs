@@ -232,45 +232,48 @@
       $(function () {
         $("#payForm").on("submit", function (e) {
           e.preventDefault();
-          let productIds = [];
-
-          $(".singleSC").each(function () {
-            let productId = $(this).find('input[class="ForProductID"]').val();
-            productIds.push(productId);
-          });
-          // 傳入商品定單
-          $.ajax({
-            url: `http://localhost:80/products/api/product_orders`,
-            type: "POST",
-            data: {
-              user_id: "<%-userID%>",
-              products_id: JSON.stringify(productIds),
-              total_price: parseInt($("#total").text()),
-              credit_account: $("input[name='creditAccount']").val(),
-            },
-          }).done((data) => {
-            // 傳入使用者已擁有此商品
-            productIds.forEach(function (v) {
-              $.ajax({
-                url: `http://localhost:80/products/api/user_products`,
-                type: "POST",
-                data: {
-                  user_id: "<%-userID%>",
-                  product_id: v,
-                },
-              }).done((data) => {
+          if (parseInt("<%- SCdata.length %>") > 0) {
+            let productIds = [];
+            $(".singleSC").each(function () {
+              let productId = $(this).find('input[class="ForProductID"]').val();
+              productIds.push(productId);
+            });
+            // 傳入商品定單
+            $.ajax({
+              url: `http://localhost:80/products/api/product_orders`,
+              type: "POST",
+              data: {
+                user_id: "<%-userID%>",
+                products_id: JSON.stringify(productIds),
+                total_price: parseInt($("#total").text()),
+                credit_account: $("input[name='creditAccount']").val(),
+              },
+            }).done((data) => {
+              // 傳入使用者已擁有此商品
+              productIds.forEach(function (v) {
                 $.ajax({
-                  url: `http://localhost:80/products/api/DeleteAllSC`,
-                  type: "DELETE",
+                  url: `http://localhost:80/products/api/user_products`,
+                  type: "POST",
                   data: {
                     user_id: "<%-userID%>",
+                    product_id: v,
                   },
                 }).done((data) => {
-                  window.location = "/products/shopping_cart?deal=sussess";
+                  $.ajax({
+                    url: `http://localhost:80/products/api/DeleteAllSC`,
+                    type: "DELETE",
+                    data: {
+                      user_id: "<%-userID%>",
+                    },
+                  }).done((data) => {
+                    window.location = "/products/shopping_cart?deal=sussess";
+                  });
                 });
               });
             });
-          });
+          } else {
+            alert("您的購物車內目前沒有任何商品。");
+          }
         });
       });
 
