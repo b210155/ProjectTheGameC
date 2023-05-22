@@ -1184,26 +1184,31 @@ body {
 ////////////////////////////
 ////////////////////////////
 
+/* star rating */
 .star-rating {
-  input[type="radio"] {
-    display: none; /* 隱藏原始的 radio 按鈕 */
-  }
-  label {
-    font-size: 0;
-    cursor: pointer;
-    display: inline-block;
-    width: 22.5px;
-    height: 22.5px;
-    background: url("../img/reviews/Star_Empty.png") no-repeat;
-    background-size: cover;
-  }
+  display: inline-block;
+  direction: rtl; /* 使星星從右至左排序，不作用於 inline */
+  font-size: 0;
+  width: fit-content;
+  // background-color: blue;
 }
 
-.star_notFilled {
-  background-image: url("../img/reviews/Star_Empty.png");
+.star-rating input[type="radio"] {
+  display: none; /* 隱藏原始的 radio 按鈕 */
 }
-.star_filled {
-  background-image: url("../img/reviews/Star.png");
+
+.star-rating label {
+  cursor: pointer;
+  display: inline-block;
+  width: 22.5px;
+  height: 22.5px;
+  background: url("../img/reviews/Star_Empty.png") no-repeat;
+  background-size: cover;
+}
+
+.star-rating input[type="radio"]:checked ~ label {
+  background: url("../img/reviews/Star.png") no-repeat;
+  background-size: cover;
 }
 
 // 切換遊戲

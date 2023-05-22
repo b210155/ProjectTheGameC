@@ -168,6 +168,14 @@
       </form>
     </section>
 
+    <dialog class="paySussess">
+      <div>
+        <img src="/img/login/login_logo.png" alt="" /><br />
+        <span>交易完成</span>
+        <p onclick="closeDialog()">關閉</p>
+      </div>
+    </dialog>
+
     <!-- footer -->
     <%- include('share/footer')%>
 
@@ -294,9 +302,14 @@
         const alertParam = urlParams.get("deal");
 
         if (alertParam === "sussess") {
-          alert("結帳成功！");
+          document.querySelector(".paySussess").showModal();
         }
       });
+
+      /* 關閉交易成功 */
+      function closeDialog() {
+        document.querySelector(".paySussess").close();
+      }
     </script>
   </body>
 </html>

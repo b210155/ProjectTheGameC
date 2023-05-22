@@ -99,21 +99,17 @@
               <div>
                 <span>評分：</span
                 ><span class="star-rating">
-                  <input
-                    id="star1"
-                    type="radio"
-                    name="rating"
-                    value="1" />
-                  <label for="star1" title="1 star" class="star"></label>
-                  <input id="star2" type="radio" name="rating" value="2" />
-                  <label for="star2" title="2 stars" class="star"></label>
-                  <input id="star3" type="radio" name="rating" value="3" />
-                  <label for="star3" title="3 stars" class="star"></label>
-                  <input id="star4" type="radio" name="rating" value="4" />
-                  <label for="star4" title="4 stars" class="star"></label>
                   <input id="star5" type="radio" name="rating" value="5" />
-                  <label for="star5" title="5 stars" class="star"></label
-                ></span>
+                  <label for="star5" class="star" title="5 stars"></label>
+                  <input id="star4" type="radio" name="rating" value="4" />
+                  <label for="star4" class="star" title="4 stars"></label>
+                  <input id="star3" type="radio" name="rating" value="3" />
+                  <label for="star3" class="star" title="3 stars"></label>
+                  <input id="star2" type="radio" name="rating" value="2" />
+                  <label for="star2" class="star" title="2 stars"></label>
+                  <input id="star1" type="radio" name="rating" value="1" />
+                  <label for="star1" class="star" title="1 star"></label>
+                </span>
               </div>
               <div>
                 <span>您的評分：</span> <br />
@@ -262,27 +258,30 @@
     <script src="/app/app.js"></script>
 
     <script>
+
      $("input[name=rating]").on("change", function () {
         var inputRating = $("input[name=rating]:checked").val();
         $("#yourRating").html(inputRating);
-      });
 
-      var stars = document.getElementsByClassName("star");
+        var stars = document.getElementsByClassName("star");
 
-      for (var i = 0; i < stars.length; i++) {
-        stars[i].addEventListener("click", function () {
-          var rating = parseInt(this.previousElementSibling.value);
+        for (var i = 0; i < parseInt(inputRating); i++) {
+         stars[i].addEventListener("click", function () {
+           var rating = parseInt(this.previousElementSibling.value);
 
           // 移除所有星
-          for (var j = 0; j < stars.length; j++) {
-            stars[j].classList.remove("star_filled");
-          }
+        for (var j = 0; j < stars.length; j++) {
+         stars[j].classList.remove("star_filled");
+        }
 
-          for (var k = 0; k < rating; k++) {
-            stars[k].classList.add("star_filled");
-          }
-        });
-      }
+        for (var k = 0; k < rating; k++) {
+          stars[k].classList.add("star_filled");
+       }
+      });
+    }
+      });
+
+ 
 
       /* 點小圖換大圖 */
       function selectPic(x) {

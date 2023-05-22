@@ -857,11 +857,20 @@ body {
   color: rgb(122, 122, 122);
 }
 
+/* star rating */
+.star-rating {
+  display: inline-block;
+  direction: rtl; /* 使星星從右至左排序，不作用於 inline */
+  font-size: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .star-rating input[type=radio] {
   display: none; /* 隱藏原始的 radio 按鈕 */
 }
+
 .star-rating label {
-  font-size: 0;
   cursor: pointer;
   display: inline-block;
   width: 22.5px;
@@ -870,12 +879,9 @@ body {
   background-size: cover;
 }
 
-.star_notFilled {
-  background-image: url("../img/reviews/Star_Empty.png");
-}
-
-.star_filled {
-  background-image: url("../img/reviews/Star.png");
+.star-rating input[type=radio]:checked ~ label {
+  background: url("../img/reviews/Star.png") no-repeat;
+  background-size: cover;
 }
 
 .gameChangeDiv {

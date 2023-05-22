@@ -387,3 +387,39 @@
   margin-top: 2px;
   /* border: 1px solid orange; */
 }
+
+// 交易成功
+.paySussess {
+  width: 400px;
+  border: none;
+  padding: 70px 0px;
+  box-shadow: 0 2px 8px black;
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    span {
+      text-align: center;
+      color: #1c3d5c;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    p {
+      margin-top: 40px;
+      font-size: 1.35rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    p:hover {
+      color: #b5b5b5;
+    }
+  }
+}
