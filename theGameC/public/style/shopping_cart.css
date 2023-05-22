@@ -48,10 +48,10 @@
   gap: 15px;
 }
 .section2 .title img {
-  width: 30px;
+  width: 35px;
 }
 .section2 .title span {
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 .section2 .cart {
@@ -304,14 +304,17 @@
 /* 以下為最上方step的設定 */
 .thestepbox {
   /* border: 1px solid red; */
+  margin: 80px 0;
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 300px;
 }
 
 .thestepbox div {
   cursor: pointer;
-  width: 200px;
-  height: 150px;
+  width: 350px;
+  height: 300px;
   background-color: #e7e7e7;
   border-radius: 15px;
   margin: 20px;
@@ -324,10 +327,11 @@
   align-items: center;
   justify-content: center;
   box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.4);
+  transition: 0.5s;
 }
 
 .thestepbox h3 {
-  font-size: 30px;
+  font-size: 2.5rem;
   color: #1c3d5c;
   /* border: 1px solid red; */
 }
@@ -335,7 +339,7 @@
 .thestepbox p {
   padding-left: 5px;
   padding-right: 5px;
-  font-size: 16px;
+  font-size: 1.25rem;
   display: none;
   margin-top: 2px;
   /* border: 1px solid orange; */

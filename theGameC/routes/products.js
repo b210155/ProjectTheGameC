@@ -19,11 +19,16 @@ page.get("/shopping_cart", async (req, res) => {
 
   console.log(shoppingCartSelect.data);
   console.log("--", shoppingCartTotal.data[0]);
-  res.render("shopping_cart", {
-    SCdata: shoppingCartSelect.data,
-    SCtotal: shoppingCartTotal.data[0],
-    userID: res.locals.LoginUserID,
-  });
+
+  if (req.session.userId) {
+    res.render("shopping_cart", {
+      SCdata: shoppingCartSelect.data,
+      SCtotal: shoppingCartTotal.data[0],
+      userID: res.locals.LoginUserID,
+    });
+  } else {
+    res.redirect("/login?alert=needLogin");
+  }
 });
 
 ///////////////////////////////////////////////////////////////////////////////

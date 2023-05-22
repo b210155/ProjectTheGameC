@@ -25,15 +25,15 @@
     <div class="thestepbox">
       <div id="thestep1">
         <h3>step1</h3>
-        <p class="thestepcontent">請先確認已登入過會員</p>
+        <p class="thestepcontent">請先確認已登入會員</p>
       </div>
       <div id="thestep2">
         <h3>step2</h3>
-        <p class="thestepcontent">選擇商品與數量</p>
+        <p class="thestepcontent">檢查購物車的商品與數量</p>
       </div>
       <div id="thestep3">
         <h3>step3</h3>
-        <p class="thestepcontent">填寫信用卡資訊<br />點選確認結帳</p>
+        <p class="thestepcontent">填寫信用卡資訊<br /><br />點選確認結帳</p>
       </div>
     </div>
 
@@ -185,12 +185,17 @@
           const p = div.querySelector(".thestepcontent");
 
           // 將 <h3> 元素往上滑動到 <div> 的最上方
-          h3.style.transform = "translateY(-100%)";
+          $(h3).css({
+            transform: "translateY(-100%)",
+            transition: "transform 0.4s",
+          });
 
           // 顯示 <p> 元素在 <h3> 的正下方
-          p.style.display = "block";
-          p.style.marginTop = "-12px";
-          p.style.transform = "translateY(-60)";
+          $(p).fadeIn();
+          $(p).css({
+            marginTop: "-12px",
+            transform: "translateY(-60)",
+          });
 
           // 增加 <div> 元素的高度
           div.style.height = `${div.offsetHeight + 20}px`;
@@ -202,12 +207,18 @@
           const p = div.querySelector(".thestepcontent");
 
           // 將 <h3> 元素恢復到原來的位置
-          h3.style.transform = "none";
+          $(h3).css({
+            transform: "none",
+            transition: "transform 0.6s",
+          });
 
           // 隱藏 <p> 元素
-          p.style.display = "none";
-          p.style.marginTop = "0";
-          p.style.transform = "none";
+          // $(p).fadeOut();
+          $(p).css({
+            display: "none",
+            marginTop: "0",
+            transform: "none",
+          });
 
           // 恢復 <div> 元素的原始高度
           div.style.height = "";
