@@ -436,9 +436,13 @@ footer div.footer-s2 p {
   object-position: center;
   /* position: absolute; */
   /* top: 30px; */
+ 
 }
 .video{
   margin-top: 80px;
+  box-shadow: 0 0 10px 2px rgba(0, 217, 255, 0.9);
+  border: 4px solid hsla(200, 100%, 75%, 0.5);
+ 
 }
 
 /* ------- */
@@ -604,14 +608,7 @@ h2 {
   width: 750px !important;
 }
 
-#changebg {
-  /* border: 1px solid red; */
-  /* background-repeat: no-repeat; */
-  /* background-position: bottom; */
-  /* background-size: cover; */
-  /* height: 600px; auto */
-  /* width: 100%; */
-}
+
 
 .theoutbox img {
   width: 100%;
@@ -888,6 +885,7 @@ width: 250px;
 .picbox5 button:hover {
   font-weight: bolder;
   cursor: pointer;
+
 }
 
 .picbox4 h3 {
@@ -995,12 +993,22 @@ width: 250px;
   margin-top: 20px;
   margin-bottom: 20px;
   background-color: #e7e7e7;
+  background: rgba(0, 140, 255, 0.6);
+  box-shadow: 0 0 10px 2px rgba(0, 217, 255, 0.8);
+  border: 4px solid hsla(200, 100%, 75%, 0.5);
   display: flex;
   width: 800px;
   justify-content: center;
   align-items: center;
   gap: 15px;
 }
+
+
+
+
+
+
+
 
 .result-item a {
   padding: 20px;
@@ -1017,13 +1025,15 @@ width: 250px;
   height: 150px;
   margin-bottom: 5px;
   /* border: 2px solid gray; */
-  object-fit: contain;
+  /* object-fit: contain; */
+  object-fit: cover;
 }
 
 .result-item a p {
   /* margin: 0; */
   width: 250px;
   color: black;
+  color: #fff;
   font-weight: bolder;
   /* border: 2px solid gray; */
   /* text-align: center; */
@@ -1052,16 +1062,64 @@ width: 250px;
 
 
 
+/* --------------------測試最下方區塊的三顆按鈕-------------------------------- */
+.thehoverbutton {
+  padding: 15px 25px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+ }
+ 
+ .thehoverbutton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 5px;
+  background: rgba(0, 140, 255, 0.4);
+  z-index: -1;
+  transition: all 250ms
+ }
+ 
+ .thehoverbutton:hover {
+  color: #e8e8e8;
+ }
+ 
+ .thehoverbutton:hover::before {
+  width: 100%;
+ }
 
 
 
 
-
-
-
-
-
-
+/* ----------右下角快速往上鍵--------------- */
+.thetopbtn{
+  background-color: #e7e7e7;
+  background-color:rgba(231, 231, 231, 0.8);
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  position: fixed;
+   right: 0;
+   bottom: 0;
+   margin-right: 10px;
+}
 
 
 

@@ -181,13 +181,13 @@
         <!--.picbox4  結束標籤 -->
 
         <div class="picbox5">
-          <button id="theshootingbtn" class="thesgbtn" data-gametype="射擊遊戲">
+          <button id="theshootingbtn" class="thesgbtn thehoverbutton" data-gametype="射擊遊戲">
             射擊遊戲
           </button>
-          <button id="theactionbtn" class="theabtn" data-gametype="冒險遊戲">
+          <button id="theactionbtn" class="theabtn thehoverbutton" data-gametype="冒險遊戲">
             冒險遊戲
           </button>
-          <button id="theracingbtn" class="therbtn" data-gametype="競技遊戲">
+          <button id="theracingbtn" class="therbtn  thehoverbutton" data-gametype="競技遊戲">
             競技遊戲
           </button>
         </div>
@@ -196,6 +196,12 @@
     </div>
     <!--.theoutbox  結束標籤 -->
 
+    <!--網頁右下方的快速往上鍵 -->
+<div class="thetopbtn">
+  <a  href="#" id="totop">
+    <img src="/img/header/topimg.png" width="60px" height="60px"></a>
+</div>   <!--.thetopbtn  結束標籤 -->
+    
     <!-- footer -->
     <%- include('share/footer')%>
 
@@ -688,6 +694,22 @@
   function getGameUrl(x){
     window.location = `/games/game_ID/${x}`
   }
+
+
+//當點籍到右下角按鈕時網頁會回到最上方
+const totop = document.getElementById('totop');
+
+totop.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+
+
+
+
 </script>
 
 </html>
