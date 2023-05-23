@@ -35,4 +35,4 @@ VALUES
 ('myuser17', 'password17', 'myuser17@example.com', '0988890123', '2006-05-17', 0),
 ('myuser18', 'password18', 'myuser18@example.com', '0999901234', '2007-06-18', 0),
 ('myuser19', 'password19', 'myuser19@example.com', '0911012345', '2008-07-19', 0),
-('myuser20', 'password20', 'myuser20@example.com', '0922123456', '2009-08-20', 0);
+('myuser20', 'password20', 'myuser20@example.com', '0922123456', '2009-08-20', 0)
