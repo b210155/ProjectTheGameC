@@ -1096,6 +1096,7 @@ transform: scale(1.2);
   border: 4px solid hsla(200, 100%, 75%, 0.5);
   transition: all 250ms;
   overflow: hidden;
+  font-weight:bolder ;
  }
  
  .thehoverbutton::before {
