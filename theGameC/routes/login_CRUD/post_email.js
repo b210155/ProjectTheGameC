@@ -54,7 +54,7 @@ page.post('/getVerification', (req, res) => {
                     <span style="color:rgb(0,0,0);font-size:15px"> </span>
                     <div>
                       <span style="color:rgb(0,0,0);font-size:15px"> </span>
-                      <p><span style="color:rgb(0,0,0);font-size:15px">ThegameC</span></p>
+                      <p><span style="color:rgb(0,0,0);font-size:15px">TheGameC</span></p>
                       <span style="color:rgb(0,0,0)"> </span>
                       <h5><span style="color:rgb(119,119,119);font-size:13px">此為系統郵件，請勿回覆。</span></h5>
                       <div class="yj6qo"></div>
