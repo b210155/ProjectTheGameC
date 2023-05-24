@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors"); // 允許不同網域請求
 const bodyParser = require("body-parser"); // 允許不同網域請求
+const cookieParser = require("cookie-parser");
 
 /* 設定 port 90 可連近來 */
 const setting = {
@@ -31,6 +32,8 @@ app.use(
 );
 
 /* 常用中介軟體設置 */
+app.use(cookieParser());
+
 app.use((req, res, next) => {
   // 所有路由都套用 req.session.userId
   if (req.session.userId) {

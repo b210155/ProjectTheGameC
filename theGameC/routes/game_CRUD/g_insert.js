@@ -34,4 +34,22 @@ page.post("/api/insertUG/GID/:game_id", (req, res) => {
   );
 });
 
+//////////////////////////////////////////////////////////////////////////////////
+///    新遊戲單頁             ///////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+page.get("/api/newGamePage/Game_type", (req, res) => {
+  const game_type = req.query.game_type;
+  console.log("++", game_type);
+
+  var sql = "SELECT * FROM games WHERE game_type = ?;";
+  config.query(sql, [game_type], function (err, results, fields) {
+    if (err) {
+      res.send("出錯：", err);
+    } else {
+      res.send(JSON.stringify(results));
+      // console.log(JSON.stringify(results));
+    }
+  });
+});
+
 module.exports = page;
