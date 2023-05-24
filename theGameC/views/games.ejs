@@ -46,7 +46,7 @@
     <!-- section1 最上方影片 + 封面 -->
     <section class="section1">
       <div class="s1container">
-        <video  src="/img/games/ps55.mp4" autoplay muted loop style="filter: blur(10px);" width="100%"></video>
+        <video  src="/img/games/PS55.mp4" autoplay muted loop style="filter: blur(10px);" width="100%"></video>
       <div class="video">
         <video src="/img/games/PS55.mp4"  autoplay muted loop >
           </video>
@@ -80,7 +80,7 @@
         <% apple.forEach(function(item) { %>
           <div class="image-box" data-gamestype="<%- item.game_type %>" onclick="getGameUrl('<%- item.game_id %>')">
             <img src="/img/Games/<%- item.image %>" />
-            <img class="hover-image" src="/img/Games/GameTypeBg/hoverimg.jpeg" alt="" />
+            <!-- <img class="hover-image" src="/img/Games/GameTypeBg/hoverimg.jpeg" alt="" /> -->
           </div>
           <% }); %>
 
@@ -552,7 +552,7 @@
       success: function (info) {
         // console.log('有成功' + info);
         var data = JSON.parse(info);
-        console.log(data);
+       
 
         //射擊遊戲
         $(".thesgbtn").click(function () {
