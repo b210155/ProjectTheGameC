@@ -18,7 +18,11 @@ body {
   }
 }
 
-.background {
+////////////////////////////////
+////////////////////////////////
+/* 背景 */
+// 射擊遊戲
+.background_shooting {
   background-image: url("../img/Games/GameTypeBg/Shooting.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -28,9 +32,37 @@ body {
   height: 100vh;
   position: absolute;
   z-index: -1;
-  filter: brightness(40%);
+  filter: brightness(50%);
+}
+// 冒險遊戲
+.background_avg {
+  background-image: url("../img/Games/GameTypeBg/avg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+  filter: brightness(90%);
+}
+// 競技遊戲
+.background_com {
+  background-image: url("../img/Games/GameTypeBg/esport.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+  filter: brightness(80%);
 }
 
+//////////////////////////////////////
+//////////////////////////////////////
 .allScreen {
   display: flex;
   width: 100%;
@@ -98,6 +130,7 @@ body {
         position: absolute;
         font-size: 1.5rem;
         font-weight: 600;
+        letter-spacing: 4px;
         color: white;
         bottom: 30px;
         left: 25px;
@@ -128,6 +161,15 @@ body {
       // flex: 8;
       //background-color: rgba(210, 105, 30, 0.8);
       display: flex;
+      position: relative;
+      .gameAge {
+        width: 70px;
+        height: 70px;
+        position: absolute;
+        z-index: 6;
+        top: 30px;
+        right: 35px;
+      }
       .s2left {
         width: 40%;
         // background-color: aquamarine;
@@ -143,6 +185,8 @@ body {
           display: flex;
           flex-direction: column;
           border-radius: 10px;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
           height: 100vh;
           .s2Ltop {
             display: flex;
@@ -286,6 +330,269 @@ body {
         }
       }
     }
+    /* 中間(s2)評論功能 */
+    .section2_comment {
+      .createComment {
+        background-color: #4a4a4a;
+        width: 90%;
+        margin: 100px auto 30px auto;
+        padding: 10px;
+        position: relative;
+        border-radius: 10px;
+        .commentAreaBtnDiv {
+          display: flex;
+          align-items: center;
+          margin-bottom: 20px;
+          h2 {
+            color: white;
+          }
+          #commentAreaBtn {
+            background-color: #131313;
+            border: 1px solid #131313;
+            border-radius: 6px;
+            padding: 10px 15px;
+            font-weight: 600;
+            color: white;
+            font-size: 1rem;
+            margin-left: auto;
+            transition: 0.15s;
+            cursor: pointer;
+          }
+          #commentAreaBtn:hover {
+            background-color: #000000;
+            border: 1px solid rgb(196, 196, 196);
+            color: rgb(176, 176, 176);
+          }
+        }
+
+        // 未登入
+        .commitNotLogin {
+          background-color: #3b3b3b;
+          padding: 25px 50px;
+          border-radius: 5px;
+          div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            span {
+              color: white;
+              font-size: 1.35rem;
+            }
+            a {
+              font-size: 1.2rem;
+              font-weight: 600;
+              text-decoration: none;
+              text-align: center;
+              background-color: white;
+              padding: 10px 20px;
+              border-radius: 5px;
+              cursor: pointer;
+              transition: 0.2s;
+            }
+            a:hover {
+              background-color: rgb(172, 172, 172);
+            }
+            a:visited {
+              color: inherit;
+            }
+          }
+        }
+
+        .commitLogin {
+          background-color: #3b3b3b;
+          height: 400px;
+          padding: 25px 50px;
+          border-radius: 5px;
+          display: flex;
+          .s2left {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            div {
+              span {
+                color: white;
+                font-size: 1.25rem;
+              }
+              div {
+                display: flex;
+                justify-content: center;
+                align-items: end;
+                line-height: 4rem;
+                gap: 10px;
+                #yourRating,
+                #averageRating {
+                  margin: 15px 0;
+                  font-size: 4rem;
+                }
+              }
+            }
+          }
+          .s2right {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            p {
+              color: white;
+              font-size: 1.25rem;
+            }
+            textarea {
+              width: 100%;
+              height: 70%;
+              padding: 10px 15px;
+              font-size: 1.5rem;
+              border-radius: 2.5px;
+              resize: none;
+            }
+            div {
+              text-align: end;
+              button {
+                font-size: 1.2rem;
+                font-weight: 600;
+                text-decoration: none;
+                text-align: center;
+                background-color: white;
+                padding: 7px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: 0.15s;
+              }
+              button:hover {
+                background-color: rgb(172, 172, 172);
+              }
+            }
+          }
+        }
+
+        .Comment_edit_deleteButton {
+          margin: 10px 0;
+          button {
+            background-color: #0e0e0e;
+            border: 1px solid #0e0e0e;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 600;
+            padding: 10px 17px;
+            color: white;
+            transition: 0.15s;
+            cursor: pointer;
+          }
+          button:hover {
+            background-color: #000000;
+            border: 1px solid rgb(196, 196, 196);
+            color: rgb(176, 176, 176);
+          }
+        }
+      }
+    }
+    /* 中間(s2)推薦遊戲 */
+    .section2_suggest {
+      background-color: #4a4a4a;
+      width: 90%;
+      margin: 0 auto;
+      margin-top: 50px;
+      padding: 20px;
+      border-radius: 10px;
+      h2 {
+        font-size: 1.5rem;
+        color: white;
+      }
+      .recommendedProducts {
+        width: 100%;
+        .recomProduct {
+          width: 90%;
+          height: 230px;
+          margin: 20px auto;
+          background-color: #272727;
+          padding: 20px;
+          border-radius: 7.5px;
+          display: flex;
+          .recPImgDiv {
+            width: 25%;
+            height: 100%;
+            border-radius: 5px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              width: auto;
+              height: 100%;
+            }
+          }
+          .recPInfo {
+            width: 60%;
+            padding: 10px 0 10px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            gap: 10px;
+            .recPtitle {
+              flex: 5;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              gap: 10px;
+              h3 {
+                color: white;
+                font-size: 1.4rem;
+              }
+              div {
+                #recPtype {
+                  padding: 3px 15px;
+                  background-color: rgb(0, 0, 0);
+                  color: #ffffff;
+                  margin-right: 15px;
+                  font-size: 0.95rem;
+                  font-weight: 600;
+                  border-radius: 30px;
+                  border: 2px solid rgb(201, 201, 201);
+                  text-align: center;
+                }
+              }
+            }
+            .recPTextLimit {
+              flex: 5;
+              overflow: hidden;
+              p {
+                color: white;
+                line-height: 1.5rem;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3; // 顯示最大行數
+                overflow: hidden;
+                text-overflow: ellipsis; // 超過就 ...
+              }
+            }
+          }
+          .recPgoPage {
+            width: 15%;
+            display: flex;
+            justify-content: end;
+            align-items: end;
+            a {
+              background-color: #3b3b3b;
+              text-decoration: none;
+              border: none;
+              border-radius: 7.5px;
+              color: white;
+              font-size: 1rem;
+              padding: 10px 20px;
+              margin-right: 10px;
+              transition: 0.15s;
+              cursor: pointer;
+            }
+            a:hover {
+              background-color: #7f7f7f;
+              color: rgb(0, 0, 0);
+            }
+          }
+        }
+      }
+    }
   }
 
   /* 右邊功能 bar */
@@ -420,3 +727,103 @@ body {
     linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
   border-radius: 4px;
 }
+
+/////////////////////////////////////
+/////////////////////////////////////
+/* 已發表過評論 */
+.alreadyComment * {
+  user-select: none;
+  filter: opacity(0.6);
+  pointer-events: none;
+}
+.alreadyComment::after {
+  content: "已發表評論，您可以對評論進行修改或刪除";
+  font-size: 1.75rem;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 15px 35px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/////////////////////////////
+/////////////////////////////
+/* editComment dialog */
+.commentEditDialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 35%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: rgba(104, 104, 104, 1);
+  width: 40%;
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 7px black;
+  #commentEditForm {
+    display: flex;
+    gap: 20px;
+    p {
+      color: white;
+      font-size: 1.15rem;
+      margin: 10px 0;
+    }
+    .editDialogLeft {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      select {
+        width: 100%;
+        font-size: 1.25rem;
+        padding: 2.5px;
+      }
+      .editRatingBig {
+        margin-top: auto;
+        margin-bottom: 55px;
+        text-align: center;
+        font-size: 4.6rem;
+      }
+    }
+    .editDialogRight {
+      flex: 8;
+      textarea {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 1.5rem;
+        border-radius: 2.5px;
+        resize: none;
+      }
+      div {
+        width: 100%;
+        padding: 0 5px;
+        display: flex;
+        justify-content: end;
+        gap: 20px;
+        button {
+          margin-top: 7.5px;
+          padding: 10px 15px;
+          font-size: 1.05rem;
+          border-radius: 5px;
+          border: 1px solid white;
+          background-color: #000000;
+          color: #ffffff;
+          font-weight: 600;
+          cursor: pointer;
+        }
+        button:hover {
+          border: 1px solid rgb(170, 170, 170);
+          background-color: #000000;
+          color: rgb(122, 122, 122);
+        }
+      }
+    }
+  }
+}
+
+//////////////////////////////
+//////////////////////////////

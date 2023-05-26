@@ -63,7 +63,7 @@ section p {
   transition: 0.25s;
 }
 .section2 .SkinAndCost div.SkinDiv {
-  filter: brightness(70%);
+  filter: brightness(100%);
   background-color: rgb(41, 41, 41);
   width: -moz-fit-content;
   width: fit-content;
@@ -71,6 +71,7 @@ section p {
   border-radius: 10px;
   border: 3px solid rgba(66, 66, 66, 0.3);
   box-shadow: 0 0 15px rgb(46, 0, 0);
+  position: relative;
 }
 .section2 .SkinAndCost div.SkinDiv .SkinImg {
   border-radius: 10px;
@@ -111,11 +112,11 @@ section p {
   color: white;
 }
 .section2 .SkinAndCost:hover {
-  filter: brightness(155%);
+  filter: brightness(120%);
   cursor: pointer;
 }
 .section2 .SkinAndCost:hover div.SkinDiv {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 .section2 .SkinAndCost:hover .costDiv .cost {
   filter: brightness(150%);

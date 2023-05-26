@@ -9,8 +9,9 @@
     <script type="text/javascript" src="/app/jquery.js"></script>
     <style>
       .already {
-        filter: brightness(20%);
+        filter: brightness(50%);
         pointer-events: none;
+        transform: scale(0.88);
       }
 
       #treasure {
@@ -55,6 +56,7 @@
         onclick="selectSkin(1, '菁英計畫：史瓦妮', 150, 'img/skin1.png')"
       >
         <div class="SkinDiv">
+          <!-- <div class="buy"><p>已擁有</p></div> -->
           <div class="SkinImg">
             <img src="img/skin1.png" alt="" />
           </div>
@@ -79,6 +81,7 @@
         onclick="selectSkin(2,'永恆榮耀 劫', 150, 'img/skin2.png')"
       >
         <div class="SkinDiv">
+          <!-- <div class="buy">已擁有</div> -->
           <div class="SkinImg">
             <img src="img/skin2.png" alt="" />
           </div>
@@ -102,6 +105,7 @@
         onclick="selectSkin(3,'女巫集會 魔甘娜', 225, 'img/skin3.png')"
       >
         <div class="SkinDiv">
+          <!-- <div class="buy">已擁有</div> -->
           <div class="SkinImg">
             <img src="img/skin3.png" alt="" />
           </div>
@@ -125,6 +129,7 @@
         onclick="selectSkin(4,'文明末日 賽恩', 150, 'img/skin4.png')"
       >
         <div class="SkinDiv">
+          <!-- <div class="buy">已擁有</div> -->
           <div class="SkinImg">
             <img src="img/skin4.png" alt="" />
           </div>
@@ -148,6 +153,7 @@
         onclick="selectSkin(5,'靈花祭 阿璃', 225, 'img/skin5.png')"
       >
         <div class="SkinDiv">
+          <!-- <div class="buy">已擁有</div> -->
           <div class="SkinImg">
             <img src="img/skin5.png" alt="" />
           </div>
@@ -243,6 +249,7 @@
           if (mylolSkin == e.dataset.value) {
             // 乖乖到網頁查屬性 e.dataset.value
             $(`div[data-value='${e.dataset.value}']`).addClass("already");
+            // $(`div.buy`).css("display", "flex");
           }
         });
       });
@@ -286,7 +293,7 @@
                 console.log(res);
               },
               error: function (jqXHR, textStatus, errorThrown) {
-                console.log("put error：", errorThrown);
+                console.log("error：", errorThrown);
               },
             });
 
@@ -300,7 +307,7 @@
                 pay: parseInt(cost.val()),
               },
               error: function (jqXHR, textStatus, errorThrown) {
-                console.log("post error：", errorThrown);
+                console.log("error：", errorThrown);
               },
             }).done((data) => {
               document.querySelector("dialog").close();

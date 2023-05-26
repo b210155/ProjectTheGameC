@@ -198,34 +198,39 @@ page.get("/game_ID/:game_id", async (req, res) => {
   switch (gameSelect.data.game_type) {
     case "射擊遊戲":
       typeIcon = "/img/Games/GameTypeBg/typeIShooting.png";
-      typeCss = "ProductPageBgShooting";
+      typeCss = "background_shooting";
       typeName = gameSelect.data.game_type;
       break;
     case "冒險遊戲":
       typeIcon = "/img/Games/GameTypeBg/typeIAVG.png";
-      typeCss = "ProductPageBgAVG";
+      typeCss = "background_avg";
       typeName = gameSelect.data.game_type;
       break;
     case "競技遊戲":
       typeIcon = "/img/Games/GameTypeBg/typeICom.png";
-      typeCss = "ProductPageBgCom";
+      typeCss = "background_com";
       typeName = gameSelect.data.game_type;
       break;
   }
   // 年齡限制
   var ageRating = "";
+  var ageImg = "";
   switch (gameSelect.data.age_rating) {
     case "6":
       ageRating = "保護級";
+      ageImg = "tools/R6.jpg";
       break;
     case "12":
       ageRating = "輔導級";
+      ageImg = "tools/R12.png";
       break;
     case "18":
       ageRating = "限制級";
+      ageImg = "tools/R18.jpg";
       break;
     default:
       ageRating = "普遍級";
+      ageImg = "tools/R0.jpg";
       break;
   }
 
@@ -308,6 +313,7 @@ page.get("/game_ID/:game_id", async (req, res) => {
         typeIcon: typeIcon,
         typeCss: typeCss,
         ageRating: ageRating,
+        ageImg: ageImg,
         gameRating: gameRating,
         u_g_review: user_gameReview.data,
         login_user_id: res.locals.LoginUserID,
@@ -324,6 +330,7 @@ page.get("/game_ID/:game_id", async (req, res) => {
         typeIcon: typeIcon, // 不同種類 icon
         typeCss: typeCss, // 不同總類 CSS
         ageRating: ageRating, // 年齡分級
+        ageImg: ageImg,
         gameRating: gameRating, // 遊戲平均分數
         u_g_review: user_gameReview.data,
         login_user_id: res.locals.LoginUserID, // 登入 id
