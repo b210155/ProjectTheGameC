@@ -193,4 +193,17 @@ page.get("/api/shoppingCartsTotal/user/:userID", (req, res) => {
   );
 });
 
+/* 選擇所有遊戲 */
+page.get("/api/productAll/", (req, res) => {
+  var sql =
+    "SELECT *, DATE_FORMAT(created_at, '%Y年-%m月-%d日') AS formatted_created_at FROM `products`;";
+  config.query(
+    sql, // 名稱照 /: 打
+    function (err, results, fields) {
+      console.log(results[0]);
+      res.send(JSON.stringify(results));
+    }
+  );
+});
+
 module.exports = page;

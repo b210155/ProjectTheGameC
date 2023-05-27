@@ -25,4 +25,16 @@ page.put("/api/updatePR/PID/:product_id", (req, res) => {
   );
 });
 
+/* 加入購買 products.sql */
+page.put("/api/addBuy/PID", (req, res) => {
+  var sql = "UPDATE products SET buy_count = ? WHERE product_id = ?;";
+  config.query(
+    sql,
+    [req.body.buy_count, req.body.product_id],
+    function (err, results, fields) {
+      console.log(results[0]);
+      res.send(JSON.stringify(results[0]));
+    }
+  );
+});
 module.exports = page;

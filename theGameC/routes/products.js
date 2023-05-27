@@ -17,14 +17,26 @@ page.get("/shopping_cart", async (req, res) => {
     `http://localhost/products/api/shoppingCartsTotal/user/${res.locals.LoginUserID}`
   );
 
-  console.log(shoppingCartSelect.data);
-  console.log("--", shoppingCartTotal.data[0]);
+  let productData = await axios.get(
+    `http://localhost/products/api/productAll/`
+  );
+
+  let productIDarr = [];
+  productData.data.forEach((v) => {
+    productIDarr.push(v.product_id);
+  });
+  // console.log(productIDarr);
+  // console.log(productIDarr.product_id, "545665156");
+  // console.log(shoppingCartSelect.data);
+  // console.log("--", shoppingCartTotal.data[0]);
 
   if (req.session.userId) {
     res.render("shopping_cart", {
       SCdata: shoppingCartSelect.data,
       SCtotal: shoppingCartTotal.data[0],
       userID: res.locals.LoginUserID,
+      productData: productData,
+      productIDarr: productIDarr,
     });
   } else {
     res.redirect("/login?alert=needLogin");

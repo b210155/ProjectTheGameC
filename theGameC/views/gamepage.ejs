@@ -407,8 +407,16 @@
                 image: $("input[name='gameCoverImg']").val(),
               },
             }).done((data) => {
+              $.ajax({
+              url: `http://localhost:80/games/api/addDownload/GID/${gameId}`,
+              type: "PUT",
+              data: {
+                game_id: gameId,
+                downloads: parseInt('<%- gameData.downloads %>') + 1
+              },
+            }).done((data)=>{
               alert("已將遊戲加入遊戲庫！");
-              location.reload();
+              location.reload();})
             });
           } else {
             alert(
