@@ -35,7 +35,7 @@ page.put("/updateRecharge/:user_id", (req, res) => {
         res.send("Update recharge 出錯：", err);
       } else {
         console.log("Update recharge 成功:", results);
-        res.send(results);
+        res.send(req.body.c_coin_balance);
       }
     }
   );

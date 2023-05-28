@@ -15,7 +15,7 @@ page.put("/api/updateGR/GID/:game_id", (req, res) => {
     [req.body.rating, req.body.comment, req.body.user_id, req.params.game_id],
     function (err, results, fields) {
       console.log(results[0]);
-      res.send(JSON.stringify(results[0]));
+      res.send(JSON.stringify(req.body));
     }
   );
 });

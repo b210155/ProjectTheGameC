@@ -151,7 +151,7 @@
       <div class="wrapper content-wrapper wrapper1">
         <% games.forEach(game=> { %>
           <% if (game.product_type==='動作' ) { %>
-            <li class="item" <% if (isUserLoggedIn) { %> draggable="true" <% } %> data-product-id="<%= game.product_id
+            <li class="item productitem" <% if (isUserLoggedIn) { %> draggable="true" <% } %> data-product-id="<%= game.product_id
                   %>" data-price="<%= game.price %>" data-userid="<%= userId %>">
                       <div class="storeboximg"><img src="/img/Products/<%= game.image %>" alt="遊戲圖片"></div>
                       <div class="storeboxcon">
@@ -163,7 +163,7 @@
                         </h2>
                         <h3>NT$<%= game.price %>
                         </h3>
-                        <a href="/products/product_id/<%- game.product_id %>">前往頁面</a>
+                        <a href="/products/product_id/<%- game.product_id %>" class="productlink">前往頁面</a>
                         <div class="storedel remove-item"><i class="fa-solid fa-trash"></i></div>
                       </div>
             </li>
@@ -173,7 +173,7 @@
       <div class="wrapper content-wrapper wrapper2">
         <% games.forEach(game=> { %>
           <% if (game.product_type==='冒險' ) { %>
-            <li class="item" <% if (isUserLoggedIn) { %> draggable="true" <% } %> data-product-id="<%= game.product_id
+            <li class="item productitem" <% if (isUserLoggedIn) { %> draggable="true" <% } %> data-product-id="<%= game.product_id
                   %>" data-price="<%= game.price %>" data-userid="<%= userId %>">
                   <div class="storeboximg"><img src="/img/Products/<%= game.image %>" alt="遊戲圖片"></div>
                       <div class="storeboxcon">
@@ -185,7 +185,7 @@
                         </h2>
                         <h3>NT$<%= game.price %>
                         </h3>
-                        <a href="/products/product_id/<%- game.product_id %>">前往頁面</a>
+                        <a href="/products/product_id/<%- game.product_id %>" class="productlink">前往頁面</a>
                         <div class="storedel remove-item"><i class="fa-solid fa-trash"></i></div>
                       </div>
             </li>
@@ -195,7 +195,7 @@
       <div class="wrapper content-wrapper wrapper3">
         <% games.forEach(game=> { %>
           <% if (game.product_type==='模擬' ) { %>
-            <li class="item" <% if (isUserLoggedIn) { %> draggable="true" <% } %> data-product-id="<%= game.product_id
+            <li class="item productitem" <% if (isUserLoggedIn) { %> draggable="true" <% } %> data-product-id="<%= game.product_id
                   %>" data-price="<%= game.price %>" data-userid="<%= userId %>">
                   <div class="storeboximg"><img src="/img/Products/<%= game.image %>" alt="遊戲圖片"></div>
                       <div class="storeboxcon">
@@ -207,7 +207,7 @@
                         </h2>
                         <h3>NT$<%= game.price %>
                         </h3>
-                        <a href="/products/product_id/<%- game.product_id %>">前往頁面</a>
+                        <a href="/products/product_id/<%- game.product_id %>" class="productlink">前往頁面</a>
                         <div class="storedel remove-item"><i class="fa-solid fa-trash"></i></div>
                       </div>
             </li>
@@ -217,7 +217,7 @@
       <div class="wrapper content-wrapper wrapper4">
         <% games.forEach(game=> { %>
           <% if (game.product_type==='策略' ) { %>
-            <li class="item" <% if (isUserLoggedIn) { %> draggable="true" <% } %> data-product-id="<%= game.product_id
+            <li class="item productitem" <% if (isUserLoggedIn) { %> draggable="true" <% } %> data-product-id="<%= game.product_id
                   %>" data-price="<%= game.price %>" data-userid="<%= userId %>">
                   <div class="storeboximg"><img src="/img/Products/<%= game.image %>" alt="遊戲圖片"></div>
                       <div class="storeboxcon">
@@ -229,7 +229,7 @@
                         </h2>
                         <h3>NT$<%= game.price %>
                         </h3>
-                        <a href="/products/product_id/<%- game.product_id %>">前往頁面</a>
+                        <a href="/products/product_id/<%- game.product_id %>" class="productlink">前往頁面</a>
                         <div class="storedel remove-item"><i class="fa-solid fa-trash"></i></div>
                       </div>
             </li>
@@ -239,7 +239,7 @@
       <div class="wrapper content-wrapper wrapper5">
         <% games.forEach(game=> { %>
           <% if (game.product_type==='運動與競技' ) { %>
-            <li class="item" <% if (isUserLoggedIn) { %> draggable="true" <% } %> data-product-id="<%= game.product_id
+            <li class="item productitem" <% if (isUserLoggedIn) { %> draggable="true" <% } %> data-product-id="<%= game.product_id
                   %>" data-price="<%= game.price %>" data-userid="<%= userId %>">
                   <div class="storeboximg"><img src="/img/Products/<%= game.image %>" alt="遊戲圖片"></div>
                       <div class="storeboxcon">
@@ -251,7 +251,7 @@
                         </h2>
                         <h3>NT$<%= game.price %>
                         </h3>
-                        <a href="/products/product_id/<%- game.product_id %>">前往頁面</a>
+                        <a href="/products/product_id/<%- game.product_id %>" class="productlink">前往頁面</a>
                         <div class="storedel remove-item"><i class="fa-solid fa-trash"></i></div>
                       </div>
             </li>
@@ -263,7 +263,6 @@
         <div class="cart">
           <div class="top-buttons">
             <button id="cart-button" class="top-button"><i class="fa-solid fa-cart-shopping"></i></button>
-            <button id="heart-button" class="top-button"><i class="fa-solid fa-heart"></i></button>
           </div>
           <h3>購物清單:</h3>
           <ul class="cart-items" id="cartitems"></ul>

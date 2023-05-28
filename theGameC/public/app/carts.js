@@ -37,13 +37,13 @@ items.forEach((item) => {
 });
 
 // 滑鼠放入購物車不消失
-//  cart.addEventListener("mouseover", () => {
-//      cartContainer.style.right = "10px";
-//  });
+  cart.addEventListener("mouseover", () => {
+      cartContainer.style.right = "10px";
+  });
 
-//  cart.addEventListener("mouseout", () => {
-//      cartContainer.style.right = "-25%";
-// });
+  cart.addEventListener("mouseout", () => {
+      cartContainer.style.right = "-25%";
+});
 
 
 cart.addEventListener("dragover", (e) => {
@@ -212,6 +212,10 @@ wrapper.addEventListener("dragover", (e) => {
             cartContainer.classList.remove("over");
         }
     }
+     cartContainer.style.right = "10px";
+     sideButtons.forEach((button) => {
+         button.classList.add("hidden");
+     });
 });
 
 wrapper.addEventListener("dragleave", () => {

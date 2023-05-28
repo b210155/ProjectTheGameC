@@ -14,8 +14,9 @@ page.post("/api/insertGR/GID/:game_id", (req, res) => {
     sql,
     [req.params.game_id, req.body.user_id, req.body.rating, req.body.comment],
     function (err, results, fields) {
-      console.log(results[0]);
-      res.send(JSON.stringify(results[0]));
+      console.log("---------", req.body, "------------");
+      // res.send(JSON.stringify(results[0]));
+      res.send(JSON.stringify(req.body));
     }
   );
 });

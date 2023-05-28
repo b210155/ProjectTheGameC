@@ -58,7 +58,7 @@ body {
   height: 100vh;
   position: absolute;
   z-index: -1;
-  filter: brightness(80%);
+  filter: brightness(70%);
 }
 
 //////////////////////////////////////
@@ -332,10 +332,23 @@ body {
     }
     /* 中間(s2)評論功能 */
     .section2_comment {
+      .chartCover {
+        width: 90%;
+        height: 275px;
+        overflow: hidden;
+        margin: 0 auto;
+        margin-top: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background-color: #4a4a4a;
+      }
       .createComment {
         background-color: #4a4a4a;
         width: 90%;
-        margin: 100px auto 30px auto;
+        margin: 30px auto 30px auto;
         padding: 10px;
         position: relative;
         border-radius: 10px;
@@ -827,3 +840,6 @@ body {
 
 //////////////////////////////
 //////////////////////////////
+#myChart {
+  color: white;
+}

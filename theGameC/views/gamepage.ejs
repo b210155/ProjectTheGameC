@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/style/gamePack.css" />
     <link rel="stylesheet" href="/style/comment.css" />
     <script type="text/javascript" src="/app/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
     <style></style>
   </head>
 
@@ -113,6 +114,9 @@
         </div>
         <!-- 中間：評論 -->
         <div class="section2_comment">
+          <div class="chartCover">
+            <canvas id="myChart"></canvas>
+          </div>
           <!-- 評論功能 -->
           <div class="createComment">
             <div class="commentAreaBtnDiv"><h2>發表評論</h2><span id="commentAreaBtn">查看評論區</span></div>
@@ -572,6 +576,61 @@
            break;
       }
       });
+
+
+      /////////////////////////
+      /////////////////////////
+      /* 長條圖 */
+      Chart.defaults.font.size = 20;
+      Chart.defaults.font.color = 'white';
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['1分', '2分', '3分', '4分', '5分'],
+                datasets: [{
+                    label: '評分人數',
+                    data: [ parseInt('<%- gameChart.rating_1||0 %>'), parseInt('<%- gameChart.rating_2||0 %>'), parseInt('<%- gameChart.rating_3||0 %>'), parseInt('<%- gameChart.rating_4||0 %>'), parseInt('<%- gameChart.rating_5||0 %>')], //這裡的數值應該要換成你從資料庫得到的數值
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.85)',
+                        'rgba(54, 162, 235, 0.85)',
+                        'rgba(255, 206, 86, 0.85)',
+                        'rgba(75, 192, 192, 0.85)',
+                        'rgba(153, 102, 255, 0.85)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+    scales: {
+        y: {
+            beginAtZero: true,
+            ticks: {
+                color: 'white' // 更改 Y 軸刻度顏色
+            }
+        },
+        x: {
+            ticks: {
+                color: 'white' // 更改 X 軸刻度顏色
+            }
+        }
+    },
+    plugins: {
+        legend: {
+            labels: {
+                color: 'white' // 更改圖例文字顏色
+            }
+        }
+    }
+}
+        });
     </script>
   </body>
 </html>

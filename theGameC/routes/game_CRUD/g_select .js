@@ -176,4 +176,21 @@ page.get("/api/game_ageLimit/:game_id/:user_id", (req, res) => {
   );
 });
 
+/* 評分長條圖 */
+page.get("/api/comment_chart/:game_id", (req, res) => {
+  var sql =
+    "SELECT  game_id, SUM(CASE WHEN rating = 1 THEN 1 ELSE 0 END) AS rating_1, SUM(CASE WHEN rating = 2 THEN 1 ELSE 0 END) AS rating_2, SUM(CASE WHEN rating = 3 THEN 1 ELSE 0 END) AS rating_3, SUM(CASE WHEN rating = 4 THEN 1 ELSE 0 END) AS rating_4, SUM(CASE WHEN rating = 5 THEN 1 ELSE 0 END) AS rating_5 FROM game_reviews WHERE game_id = ? GROUP BY game_id;";
+  config.query(
+    sql,
+    [req.params.game_id], // 名稱照 /: 打
+    function (err, results, fields) {
+      if (err) {
+        res.send("出錯：", err);
+      } else {
+        res.send(JSON.stringify(results[0]));
+      }
+    }
+  );
+});
+
 module.exports = page;

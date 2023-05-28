@@ -306,6 +306,13 @@ page.get("/game_ID/:game_id", async (req, res) => {
   //   `http://http://localhost/games/api/newGamePage/Game_type/${game_type}`
   // );
 
+  /* 選取評分長條圖 */
+  let gameChart = await axios.get(
+    `http://localhost:80/games/api/comment_chart/${req.params.game_id}`
+  );
+
+  console.log("------", gameChart);
+
   var game_type;
   if (req.params.game_id <= gameAmount.data.amount) {
     if (res.locals.LoginUserID) {
@@ -324,6 +331,7 @@ page.get("/game_ID/:game_id", async (req, res) => {
         ageLimit: age_limit.data,
         allGames: allGames.data,
         SelectGame_type: req.query.game_type,
+        gameChart: gameChart.data,
       });
     } else {
       res.render("gamepage", {
@@ -341,6 +349,7 @@ page.get("/game_ID/:game_id", async (req, res) => {
         ageLimit: age_limit.data,
         allGames: allGames.data,
         SelectGame_type: req.query.game_type,
+        gameChart: gameChart.data,
       });
     }
   } else {

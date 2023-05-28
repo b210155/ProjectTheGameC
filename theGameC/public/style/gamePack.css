@@ -55,7 +55,7 @@ body span {
   height: 100vh;
   position: absolute;
   z-index: -1;
-  filter: brightness(80%);
+  filter: brightness(70%);
 }
 
 .allScreen {
@@ -318,10 +318,23 @@ body span {
   width: auto;
   height: 100%;
 }
+.allScreen .section2 .section2_comment .chartCover {
+  width: 90%;
+  height: 275px;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #4a4a4a;
+}
 .allScreen .section2 .section2_comment .createComment {
   background-color: #4a4a4a;
   width: 90%;
-  margin: 100px auto 30px auto;
+  margin: 30px auto 30px auto;
   padding: 10px;
   position: relative;
   border-radius: 10px;
@@ -769,4 +782,8 @@ body span {
   border: 1px solid rgb(170, 170, 170);
   background-color: #000000;
   color: rgb(122, 122, 122);
+}
+
+#myChart {
+  color: white;
 }/*# sourceMappingURL=gamePack.css.map */
